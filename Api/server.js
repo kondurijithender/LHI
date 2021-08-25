@@ -53,8 +53,8 @@ const Brand = db.brand;
 const User = db.user;
 
 db.mongoose
-  //  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-  .connect(`mongodb+srv://jithender:admin@123@cluster0.ve2xe.mongodb.net/agrisoft`, {
+   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  //.connect(`mongodb+srv://jithender:admin@123@cluster0.ve2xe.mongodb.net/lhi`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -76,15 +76,7 @@ app.use(function (req, res, next) {
 });
 // routes
 require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
-require("./app/routes/brands.routes")(app);
-require("./app/routes/product.routes")(app);
-require("./app/routes/warehouse.routes")(app);
-require("./app/routes/route.routes")(app);
-require("./app/routes/distributor.routes")(app);
-require("./app/routes/order.routes")(app);
-require("./app/routes/notifications.routes")(app);
-require("./app/routes/delveryboy.routes")(app);
+require("./app/routes/questionnaire.routes")(app);
 
 
 
@@ -97,114 +89,5 @@ app.listen(PORT, () => {
 });
 
 function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "distributor"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Distributor' to roles collection");
-      });
-
-      new Role({
-        name: "delivery-boy"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Delivery Boy' to roles collection");
-      });
-
-      new Role({
-        name: "admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'admin' to roles collection");
-      });
-      new Role({
-        name: "brand-admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'brand admin' to roles collection");
-      });
-    }
-  });
-  Brand.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Brand({
-        name: "Sabari Milk",
-        image: `brands/sabari.jpg`
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Sabari Milk' to Brand collection");
-      });
-
-      new Brand({
-        name: "Menma Milk",
-        image: `brands/menma.png`
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Menma Milk' to Brand collection");
-      });
-
-      new Brand({
-        name: "Malabar Milk",
-        image: `brands/malabar.png`
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Malabar Milk' to Brand collection");
-      });
-    }
-  });
-  User.estimatedDocumentCount((err, count) => {
-    if (!err) {
-      let newPassword = 'admin';
-      Role.findOne({
-        name: 'admin'
-      })
-        .exec((err, role) => {
-          if (role) {
-            console.log(role);
-            if (role.length === 0) {
-              bcrypt.genSalt(10, function (err, salt) {
-                // Call error-handling middleware:
-                if (err) { return res.send({ error: true, message: err }); }
-                bcrypt.hash(newPassword, salt, function (err, hash) {
-                  new User({
-                    name: "admin",
-                    username: "admin",
-                    email: "admin@yopmail.com",
-                    password: hash,
-                    roles: role._id
-                  }).save(err => {
-                    if (err) {
-                      console.log("error", err);
-                    }
-                  })
-                });
-              })
-            }
-          }
-        })
-    }
-  });
+ 
 }
