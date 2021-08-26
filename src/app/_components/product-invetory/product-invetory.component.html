@@ -1,0 +1,93 @@
+<header>
+    <p class="page-breadcrumb"> <span routerLink="/home"> Dashboard </span>/ <span routerLink="/distributor"> {{seletedBrand.name}} </span> / Product Inventory</p>
+    <h3 class="page-title">Product Inventory</h3>
+    <button type="button" class="btn btn-primary add-new" (click)="open(mymodal)"> + Add New</button>
+</header>
+
+<section class="main-section">
+    <div class="page-center-content custom-scrollbar">
+        <div class="row">
+            <div class="col-sm-6" *ngFor="let product of products">
+                <div class="product">
+                    <div class="product-img">
+                        <img src="{{serverImagePath}}/{{product.fileName}}" default="{{ defaultImage }}"  class="img-fluidimg-thumbnail" alt="product image">
+                    </div>
+                    <span class="product-toggle">
+                        <span>{{product.status ? 'Active' : 'Inactive'}}</span>
+                        <input type="checkbox" [checked]="product.status" id="{{product._id}}" (change)="changeProductStatus(product._id,!product.status)"/>
+                        <label for="{{product._id}}"> Toggle</label>
+                    </span>
+                    <div class="product-data">
+                        <h5>{{product.name}}</h5>
+                        <div>
+                            <button type="button" class="btn btn-primary" (click)="edit(mymodal, product._id, product.name)">Edit</button>
+                            <button type="button" class="btn btn-outline-light" (click)="remove(product._id, product.name)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-body">
+        <div class="add-new-product agrisoft-forms">
+            <h4>Add New Product</h4>
+            <div class="form-section custom-scrollbar">
+                <form class="row g-3" [formGroup]="addProductform" (ngSubmit)="onSubmit()">
+                    <div class="col-md-8">
+                        <label class="form-label">Enter Product Name</label>
+                        <input formControlName="name" id="name" required type="text" class="form-control">
+                        <div *ngIf="submitted && f.name.invalid" class="invalid-feedback">
+                            Product Name is Required
+                          </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Packets</label>
+                        <div class="btn-group radio-btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" formControlName="packet" name="packet" [value]="12" autocomplete="off"> 12
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" formControlName="packet" name="packet" [value]="20" autocomplete="off"> 20
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" formControlName="packet" name="packet" [value]="25" autocomplete="off"> 25
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-12">
+                        <p>Upload Brand Image</p>
+                        <div class="upload-imge">
+                            <div class="upload-placeholder">
+                                <label for="product-img">
+                                    <img [src]="productImage" for="product-img" alt="upload Image">
+                                </label>
+                                <input type="file" required name="productImage" (change)="uploadImage($event)" id="product-img">
+                            </div>
+                            <div class="upload-info">
+                                <ul>
+                                    <li>*Maximum Limit Should not exceed more than 1MB</li>
+                                    <li>*Supports only JPG and PNG only</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-12">
+                        
+                        <div *ngIf="submitted && productimgCheck" class="invalid-feedback">
+                            <div>Please Upload an Product Image</div>
+                            </div>
+                        <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>

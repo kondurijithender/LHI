@@ -1,0 +1,91 @@
+.main-section{
+    .distributor-center-content{
+        .card{
+            display: block;
+            float: left;
+            width: 100%;
+            max-width: 300px;
+            min-height: 150px;
+            margin-right: 50px;
+            margin-bottom: 50px;
+            border: none;
+            background-color: #ffffff;
+            box-shadow: 0 2px 24px 0 rgba(1,1,1,0.11);
+            text-align: center;
+            border-radius: 10px;
+            transition: ease-in-out all 0.3s;
+            cursor: pointer;
+            &:focus{
+                outline: none;
+                border: none;
+            }
+            .card-head{
+                width: 40%;
+                float: left;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+                padding: 25px 30px;
+            }
+            .card-img-top{
+                max-width: 100%;
+                fill: #295360;
+                display: inline-block;
+                transition: ease-in-out all 0.3s;
+            }
+            &.distributors{
+                .card-img-top{
+                    fill: #258B1F;
+                }
+            }
+            &.inventory{
+                .card-img-top{
+                    fill: #EBB74C;
+                }
+            }
+            &.invoice{
+                .card-img-top{
+                    fill: rgba(153,77,152,0.78);
+                }
+            }
+            &.order_management{
+                .card-img-top{
+                    fill: #B51C59;
+                }
+            }
+            &.account_management{
+                .card-img-top{
+                    fill: #295360;
+                }
+            }
+            &:hover{
+                background-color: #258B1F;
+                .card-img-top{
+                    fill: #ffffff;
+                }   
+                .card-title{
+                    color: #ffffff !important;
+                }
+            }
+            .card-body{
+                padding: 10px;
+                float: left;
+                width: 60%;
+                height: 150px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                .card-title{
+                    margin: 0;
+                    text-align: left;
+                    font-size: 20px;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 24px;
+                    color: #5A5A5A;
+                    transition: ease-in-out all 0.3s;
+                }
+            }
+        }
+    }
+}

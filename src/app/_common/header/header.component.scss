@@ -1,0 +1,73 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+
+    .input-group{
+        margin: 0 !important;
+        input{
+            border: none !important;
+            background: none;
+            &::placeholder{
+                color: #5A5A5A;
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 0;
+                line-height: 20px;
+                opacity: 0.8;
+            }
+        }
+        .input-group-text{
+            background: none;
+            border: none;
+        }
+        .input-group-prepend{
+            display: flex;
+            align-items: center;
+        }
+    }
+    .navbar-nav{
+        .notification{
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            margin: 0 10px;
+            position: relative;
+            svg{
+                opacity: 0.55;
+            }
+            .count{
+                position: absolute;
+                display: inline-block;
+                font-size: 10px;
+                background: #A02A2A;
+                color: #fff;
+                top: -4px;
+                border-radius: 50%;
+                width: 16px;
+                height: 16px;
+                text-align: center;
+                z-index: 1;
+                right: 3px;
+            }
+        }
+        .dropdown-toggle{
+            display: flex;
+            align-items: center;
+            opacity: 1;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 21px;
+            &::after{
+                opacity: 0.3;
+            }
+            svg{
+                margin-right: 5px;
+                position: relative;
+                top: -2px;
+            }
+        }
+    }
+}

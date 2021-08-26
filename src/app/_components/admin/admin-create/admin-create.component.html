@@ -1,0 +1,77 @@
+<header>
+  <p class="page-breadcrumb">
+    <span routerLink="/home"> Dashboard </span>/
+    <span routerLink="/admin"> Brand Admin </span> / Admin
+  </p>
+  <h3 class="page-title">{{ formType === 'create' ? 'Add New' : formType }}</h3>
+</header>
+
+<section class="main-section">
+  <div class="add-new-distributor agrisoft-forms">
+    <h4>Admin Information</h4>
+    <div class="form-section custom-scrollbar">
+      <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="col-md-12">
+          <label class="form-label">Brand</label>
+          <select name="" class="form-control" formControlName="brandId" #brand [ngClass]="{ 'is-invalid': submitted && f.brandId.errors }">
+            <option *ngFor="let item of brands; let i = index" value="{{item._id}}">{{item.name}}</option>
+          </select>
+          <div *ngIf="submitted && f.brandId.errors" class="invalid-feedback">
+            <div *ngIf="f.brandId.errors.required">Brand is required</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Enter Admin Name</label>
+          <input type="text" class="form-control" formControlName="name"  [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+             <div *ngIf="f.name.errors.required">Name is required</div>
+             <div *ngIf="f.name.errors.maxlength">Your name cannot exceed 10 characters.</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Enter User Name</label>
+          <input type="text" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.maxlength">Your Username cannot exceed 10 characters.</div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+
+
+
+
+
+        <div class="col-12">
+          <button [disabled]="loading" class="btn btn-primary btn-block">
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            {{ formType === 'create' ? 'Add Admin' : 'Update Admin' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

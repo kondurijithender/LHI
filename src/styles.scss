@@ -1,0 +1,488 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Bold.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Bold.woff') format('woff'),
+        url('assets/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Black.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Black.woff') format('woff'),
+        url('assets/fonts/Poppins-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Italic.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Italic.woff') format('woff'),
+        url('assets/fonts/Poppins-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ExtraLight.woff2') format('woff2'),
+        url('assets/fonts/Poppins-ExtraLight.woff') format('woff'),
+        url('assets/fonts/Poppins-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ExtraBold.woff2') format('woff2'),
+        url('assets/fonts/Poppins-ExtraBold.woff') format('woff'),
+        url('assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Light.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Light.woff') format('woff'),
+        url('assets/fonts/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Medium.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Medium.woff') format('woff'),
+        url('assets/fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-SemiBold.woff2') format('woff2'),
+        url('assets/fonts/Poppins-SemiBold.woff') format('woff'),
+        url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Thin.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Thin.woff') format('woff'),
+        url('assets/fonts/Poppins-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Regular.woff2') format('woff2'),
+        url('assets/fonts/Poppins-Regular.woff') format('woff'),
+        url('assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Black.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Black.woff') format('woff'),
+        url('assets/fonts/Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Italic.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Italic.woff') format('woff'),
+        url('assets/fonts/Roboto-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Bold.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Bold.woff') format('woff'),
+        url('assets/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Light.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Light.woff') format('woff'),
+        url('assets/fonts/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Medium.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Medium.woff') format('woff'),
+        url('assets/fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Regular.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Regular.woff') format('woff'),
+        url('assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Thin.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Thin.woff') format('woff'),
+        url('assets/fonts/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    width: 100%;
+    min-height: 100%;
+    display: grid;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+alert{
+    .alert{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 25px;
+    }
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    app-root{
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+}
+
+.custom-scrollbar{
+    // max-height: 600px;
+    overflow-y: visible;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 4px;
+        background-color: #EEEEEE;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: #258B1F;
+    }
+}
+
+app-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    background: linear-gradient(252.47deg, #79C56A 0%, #549E49 100%);
+}
+
+
+.modal-open .modal {
+  display: flex !important;
+  align-items: center !important;
+  .modal-dialog {
+    flex-grow: 1;
+    max-width: 700px;
+    .modal-content{
+        border: none;
+        border-radius: 10px;
+    }
+  }
+}
+
+// .alert {
+//     position: absolute;
+//     bottom: 15px;
+//     right: 15px;
+//     background: #255d95;
+//     color: #fff;
+//     border: none;
+//     border-radius: 0;
+//     margin: 0;
+// }
+
+header{
+    padding: 20px 50px;
+    float: left;
+    width: 100%;
+    max-width: 1820px;
+    position: relative;
+    .page-title{
+        color: #000000;
+        font-family: 'Roboto', sans-serif;
+        font-size: 40px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 47px;
+        margin: 20px 0;
+    }
+    .page-sub-title,
+    .page-breadcrumb{
+        color: #5A5A5A;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    span{
+        cursor: pointer;
+    }
+    p{
+        margin: 0;
+    }
+
+    .add-new{
+        margin: 25px 40px;
+        height: 39px;
+        width: 140px;
+        border-radius: 19.5px;
+        background-color: #255D95;
+        border: none;
+    }
+}
+
+.main-section{
+    padding: 20px 50px;
+    float: left;
+    width: 100%;
+    max-width: 1820px;
+    &>div{
+        float: left;
+        width: 100%;
+    }
+}
+
+$someColor : #258B1F;
+
+.timepicker {
+
+    .timepicker__header {
+      background-color: $someColor !important;
+    }
+  
+    .clock-face__clock-hand {
+      background-color: $someColor !important;
+  
+      &::after {
+        background-color: $someColor !important;
+      }
+  
+      &::before {
+        border-color: $someColor !important;
+      }
+    }
+  
+    .clock-face__number {
+      > span.active {
+        background-color: $someColor !important;
+      }
+    }
+  
+    button:not(.timepicker-dial__item) {
+      color: $someColor !important;
+    }
+  }
+
+.agrisoft-forms{
+    form{
+        float: left;
+        max-width: 650px;
+        &>div{
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: visible;
+        }
+        .form-label{
+            position: absolute;
+            margin-left: 25px;
+            padding: 0 15px;
+            top: -8px;
+            background-color: #ffffff;
+            z-index: 2;
+            color: rgba(48, 48, 48, 0.8);
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 16px;
+        }
+        .form-text{
+            display: flex;
+            align-items: center;
+            label{
+                color: #000000;
+                font-size: 16px;
+                letter-spacing: 0;
+                line-height: 19px;
+            }
+        }
+        input,
+        select{
+            border: 1px solid #979797;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            height: 46px;
+            padding-right: 15px;
+            padding-left: 15px;
+            color: #000000;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 15px;
+            &.inputDisabled{
+                pointer-events: none;
+            }
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active
+            {
+                -webkit-box-shadow: 0 0 0 30px white inset !important;
+                background: none;
+            }
+            &:read-only{
+                background-color: #ffffff;
+            }
+        }
+        input{
+            &:focus,
+            &:disabled, &.inputDisabled{
+                background: none !important;
+                border-color: #cccccc;
+            }
+        }
+        select{
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='32' viewBox='0 0 24 26' width='40' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h30v30H0z' fill='none'/></svg>") !important;
+            background-repeat: no-repeat;
+            background-position-x: 98%;
+            background-position-y: 63%;
+            &:disabled, &.inputDisabled{
+                background-color: #ffffff;
+                border-color: #cccccc;
+            }
+        }
+
+        .radio-btn-group{
+            margin-top: 10px;
+            margin-left: 5px;
+            label{
+                background-color: #e6e6e6;
+                border-color: #e6e6e6;
+                color: #000000;
+                &.active,
+                &:focus,
+                &:active{
+                    background-color: #258B1F !important;
+                    border-color: #258B1F !important;
+                }
+            }
+            input{
+                display: none;
+            }
+        }
+        button{
+            border-radius: 5px;
+            background-color: #E77649;
+            border: none;
+            outline: none;
+            height: 46px;
+            &:hover, &:active, &:focus{
+                background-color: #258B1F;
+            }
+        }
+        .error-message{
+            margin: 0;
+            font-size: 13px;
+            &::before{
+                content: "*";
+            }
+        }
+    }
+    .upload-imge{
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        .upload-placeholder{
+            width: 150px;
+            border: 1px solid #979797;
+            overflow: hidden;
+            img{
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+            }
+            label{
+                margin: 0;
+            }
+            input{
+                display: none;
+            }
+        }
+        ul{
+            list-style-type: none;
+            list-style-position: inside;
+            li{
+                color: #838383;
+                font-size: 12px;
+                letter-spacing: 0;
+            }
+        }
+    }
+    .invalid-feedback {
+      display: block !important;
+    }
+}

@@ -1,0 +1,16 @@
+<header>
+    <h3 class="page-title">Dashboard</h3>
+    <p class="page-sub-title">Welcome back!</p>
+</header>
+
+<section class="main-section">
+    <div class="page-center-content">
+        
+        <div class="card" *ngFor="let item of brands" (click)="gotoBrands(item._id)" >
+            <img src="{{serverImagePath}}/{{item.image}}" class="card-img-top" alt="{{item.name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+            </div>
+        </div>
+    </div>
+</section>

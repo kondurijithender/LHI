@@ -1,0 +1,50 @@
+.logo {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    svg{
+        path{
+            fill: #258B1F;
+        }
+        text{
+            fill: #0C1C3A;
+        }
+    }
+}
+
+nav{
+    margin: 100px 0;
+    .nav-header{
+        display: block;
+        color: #5A5A5A;
+        padding: 15px 25px 0;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+
+    }
+    .nav-link{
+        color: #000000;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 25px;   
+        display: block;
+        padding: 15px 20px;
+        margin: 10px 0 15px;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        &.active{
+            background-color: #258B1F;
+            box-shadow: 0 2px 13px 0 rgba(27,27,27,0.38);
+            border-radius: 5px;
+            color: #fff;
+            font-weight: 500;
+        }
+        svg{
+            position: relative;
+            top: -2px;
+            margin-right: 10px;
+        }
+    }
+}

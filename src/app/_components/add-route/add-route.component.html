@@ -1,0 +1,208 @@
+<header>
+  <p class="page-breadcrumb">
+    <span routerLink="/home"> Home </span> /
+    <span routerLink="/warehouses"> Wearhouses </span> /
+    <span routerLink="/routes"> {{warehouseName}} </span> / Route
+  </p>
+  <h3 class="page-title">Route</h3>
+</header>
+
+<section class="main-section">
+  <div class="add-new-route agrisoft-forms">
+    <h4 *ngIf="id"> Edit {{formType}} </h4>
+    <h4 *ngIf="!id"> Add New Route</h4>
+    <div class="form-section custom-scrollbar">
+      <form
+        class="row g-3 needs-validation"
+        [formGroup]="addRoute"
+        (ngSubmit)="onNewRouteSubmit()"
+      >
+        <div class="col-8">
+          <label class="form-label">Wearhouse</label>
+          <input
+            name="wearhouse"
+            formControlName="warehouse"
+            type="text"
+            class="form-control"
+          />
+          <p *ngIf="f.warehouse.invalid && submitted" class="text-danger error-message">Please select Warehouse from the list</p>
+        </div>
+        <div class="col-4">
+        </div>
+
+        <div class="col-8">
+          <label class="form-label">Route Name</label>
+          <input
+            name="RouteName"
+            formControlName="name"
+            type="text"
+            maxlength="3"
+            class="form-control"
+          />
+        </div>
+        <div class="col-4"></div>
+
+        <div class="clearfix"></div>
+
+        <div
+          class="col-12 dropPoint"
+          *ngFor="
+            let item of DropPointList;
+            last as isLast;
+            let i = index;
+            trackBy: trackByFn
+          "
+        >
+          <div class="row">
+            <div class="col-8">
+              <label class="form-label">Drop Point {{ i + 1 }}</label>
+              <input
+                type="text"
+                pattern="[0-9]*"
+                (change)="dropPoint($event, i)"
+                required
+                class="form-control"
+                [value]="item ? item : ''"
+              />
+            </div>
+            <div class="col-4">
+              <button
+                type="submit"
+                *ngIf="isLast"
+                [hidden]="DropPointList.length >= 15"
+                class="btn add-item btn-primary btn-block"
+                (click)="addDropPoint(i)"
+              >
+                + Add Drop Point
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <h4>Set Order Type</h4>
+        </div>
+
+        <div class="col-3 form-text">
+          <label class="form-label-block">Open</label>
+        </div>
+        <div class="col-5">
+          <div class="input-group">
+            <div class="input-group-text">
+              <label for="OpenTime">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-clock"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
+                  />
+                  <path
+                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
+                  />
+                </svg>
+              </label>
+            </div>
+            <input
+              type="text"
+              [ngxTimepicker]="OpenTimePicket"
+              name="OpenTime"
+              id="OpenTime"
+              formControlName="openTime"
+              class="form-control"
+            />
+            <ngx-material-timepicker #OpenTimePicket></ngx-material-timepicker>
+            <div class="clearfix"></div>
+          </div>
+          <p *ngIf="f.openTime.invalid && submitted" class="text-danger error-message">Open Time is Required</p>
+        </div>
+        <div class="col-4"></div>
+
+        <div class="col-3 form-text">
+          <label class="form-label-block">Close</label>
+        </div>
+        <div class="col-5">
+          <div class="input-group">
+            <div class="input-group-text">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-clock"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
+                />
+                <path
+                  d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
+                />
+              </svg>
+            </div>
+            <input
+              type="text"
+              [ngxTimepicker]="CloseTimePicket"
+              name="CloseTime"
+              id="CloseTime"
+              formControlName="closeTime"
+              class="form-control"
+            />
+            <ngx-material-timepicker #CloseTimePicket></ngx-material-timepicker>
+            <div class="clearfix"></div>
+          </div>
+          <p *ngIf="f.closeTime.invalid && submitted" class="text-danger error-message">Close Time is Required</p>
+        </div>
+        <div class="col-4"></div>
+
+        <div class="clearfix"></div>
+        <br>
+        <div class="col-12">
+          <h4>Delivery Boy Details</h4>
+        </div>
+
+        <div class="col-8">
+          <label class="form-label">User Name</label>
+          <input
+            name="code"
+            formControlName="code"
+            type="text"
+            class="form-control"
+            required
+            [disabled]='true'
+          />
+          <p *ngIf="f.code.invalid && submitted" class="text-danger error-message">Please Enter Valid User Name</p>
+        </div>
+        <div class="col-4"></div>
+
+        <div class="col-8 generate-password">
+          <label class="form-label">Password</label>
+          <input
+            name="password"
+            formControlName="password"
+            type="text"
+            class="form-control"
+            required
+          />
+          <span class="btn btn-primary" (click)="passwordGen()">Generate</span>
+          <p *ngIf="f.password.invalid && submitted" class="text-danger error-message">Please Enter Valid Password</p>
+        </div>
+        <div class="col-4"></div>
+
+        <div class="clearfix"></div>
+        <div class="col-12" *ngIf="!RouterValid">
+          <span class="input-group-text invalid-feedback">Please Enter required fields</span>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            {{ id ? 'Update Route' : 'Add Route'}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

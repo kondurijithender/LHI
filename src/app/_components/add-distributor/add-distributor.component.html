@@ -1,0 +1,165 @@
+<header>
+  <p class="page-breadcrumb">
+    <span routerLink="/home"> Dashboard </span>/
+    <span routerLink="/distributor"> {{seletedBrand.name}} </span> / <span routerLink="/distributors"> Distributors </span>
+  </p>
+  <h3 class="page-title">{{ formType === 'Add New' ? 'Add New' : formType }}</h3>
+</header>
+
+<section class="main-section">
+  <div class="add-new-distributor agrisoft-forms">
+    <h4>Distributor Information</h4>
+
+
+    <div class="form-section custom-scrollbar">
+      <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="col-12">
+          <h3 class="distributor-id-prefix" *ngIf="code">
+            {{distributorCode}}
+            <svg xmlns="http://www.w3.org/2000/svg" *ngIf="isValid" width="18" height="18" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" *ngIf="!isValid" width="18" height="18" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
+          </h3>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-7">
+          <label class="form-label">Enter Distributor Name</label>
+          <div class="input-set">
+            <input type="text" class="form-control distributor-name" [ngClass]="formType != 'Add New' ? 'inputDisabled' : 'notDisabled'" formControlName="name" (keyup)="distributorCodeGenerate()" />
+            <input type="text" class="form-control distributor-prifix" maxlength="3"  formControlName="code" (keyup)="distributorCodeGenerate(true)" [readonly]="isManual" tabstop="false" tabindex="1"/>
+          </div>
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <label class="form-label">Brand</label>
+          <input type="text" class="form-control brand-field" [ngClass]="formType != 'Add New' ? 'inputDisabled' : 'notDisabled'" formControlName="brand" />
+          <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+            <div *ngIf="f.brand.errors.required">Brand is required</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Warehouse</label>
+          <select name="warehouse" class="form-control" formControlName="warehouse" #warehouse [ngClass]="formType != 'Add New' ? 'inputDisabled' : 'notDisabled'" (change)="onChangeWarehouse(warehouse.value)">
+            <option value="">--Select--</option>
+            <option *ngFor="let warehouse of warehouseList; let i = index" [value]="warehouse._id">{{warehouse.name}}</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Route</label>
+          <select name="route" class="form-control" formControlName="route" [ngClass]="formType != 'Add New' ? 'inputDisabled' : 'notDisabled'" #route (change)="onChangeRoute(route.value)">
+            <option value="">--Select--</option>
+            <option *ngFor="let route of routeList; let i = index" value="{{route._id}}">{{route.name}}</option>
+          </select>
+          <div *ngIf="submitted && f.route.errors" class="invalid-feedback">
+            <div *ngIf="f.route.errors.required">Route is required</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Drop Point</label>
+          <select name="dropPoint" class="form-control" [ngClass]="formType != 'Add New' ? 'inputDisabled' : 'notDisabled'" formControlName="dropPoint" (change)="distributorCodeGenerate()">
+            <option value="">--Select--</option>
+            <option  *ngFor="let point of DropPoint" value="{{point}}">{{point}}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" formControlName="email" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Contact Number</label>
+          <input type="text" class="form-control" NumOnly maxlength="12" formControlName="phone" />
+          <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">Phone is required</div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <label class="form-label">Delivery Address</label>
+          <input type="text" class="form-control" formControlName="address" />
+          <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-12">
+          <h4>Set Product Price</h4>
+        </div>
+        <br />
+
+        <div class="col-12 brandProducts" *ngFor="let product of productValue">
+          <div class="row">
+            <div class="col-md-6 form-text">
+              <label class="form-label-block">{{product.name}}</label>
+            </div>
+            <div class="col-md-2">
+              <input type="text" pattern="[0-9]*" [value]="product.price ? product.price : 0" min="0" maxlength="4" NumOnly inputmode=”numeric”  required min="1" (change)="onChangeEvent($event, product.productId)" class="form-control" />
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+
+        <div class="clearfix spaceDivider"></div>
+
+        <div class="col-12">
+          <h4>Set Credit Limit</h4>
+        </div>
+        <br />
+        <div class="col-md-6">
+          <label class="form-label">Set Crate Limit</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="crateLimit"
+            pattern="[0-9]*"
+            min="0"
+            maxlength="4"
+            NumOnly
+          />
+          <div *ngIf="submitted && f.crateLimit.errors" class="invalid-feedback">
+            <div *ngIf="f.crateLimit.errors.required">Crate limit is required</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Set Cash Limit</label>
+          <input type="text" pattern="[0-9]*" min="0" maxlength="4" NumOnly class="form-control" formControlName="cashLimit" />
+          <div *ngIf="submitted && f.cashLimit.errors" class="invalid-feedback">
+            <div *ngIf="f.cashLimit.errors.required">Cash limit limit is required</div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="col-12">
+          <label class="form-label">Generate Password</label>
+          <div class="generate-pass">
+            <input type="text" class="form-control" formControlName="password" maxlength="6"/>
+            <button class="btn" type="button" id="button-addon2" (click)="passwordGen()">Random Password</button>
+          </div>
+        </div>
+        <div class="col-12">
+          <div *ngIf="submitted && priceValidation" class="invalid-feedback">
+            Please Fill All Product Prices
+          </div>
+          <button [disabled]="loading" class="btn btn-primary btn-block">
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            {{ formType === 'Add New' ? 'Add New' : 'Update' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

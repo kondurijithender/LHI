@@ -1,0 +1,15 @@
+app-sidenav{
+    background-color: #D9E6FF80;
+    min-width: 270px;
+    padding: 40px;
+    flex: 1;
+}
+
+main{   
+    flex: 6;
+    app-header,
+    app-main{
+        float: left;
+        width: 100%;
+    }
+}
