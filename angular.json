@@ -1,12 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "28736775-647d-4384-9e2a-bc19b2fa6e48"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AgriSoftAdmin": {
+    "LHI": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,27 +20,20 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AgriSoftAdmin",
+            "outputPath": "dist/LHI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "src/styles.sass"
             ],
-            "scripts": [
-              "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/popper.js/dist/umd/popper.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -56,42 +46,43 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "10mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "50kb",
-                  "maximumError": "50kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
-              ],
               "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AgriSoftAdmin:build"
+            "browserTarget": "LHI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AgriSoftAdmin:build:production"
+              "browserTarget": "LHI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AgriSoftAdmin:build"
+            "browserTarget": "LHI:build"
           }
         },
         "test": {
@@ -103,8 +94,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -129,16 +119,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AgriSoftAdmin:serve"
+            "devServerTarget": "LHI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AgriSoftAdmin:serve:production"
+              "devServerTarget": "LHI:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "AgriSoftAdmin"
+    }},
+  "defaultProject": "LHI"
 }
