@@ -89,5 +89,51 @@ app.listen(PORT, () => {
 });
 
 function initial() {
- 
+  Role.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+    
+      new Role({
+        name: "admin"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'admin' to roles collection");
+      });
+    }
+  });
+  
+  User.estimatedDocumentCount((err, count) => {
+    if (!err) {
+      let newPassword = 'admin';
+      Role.findOne({
+        name: 'admin'
+      })
+        .exec((err, role) => {
+          if (role) {
+            console.log(role);
+            if (role.length === 0) {
+              bcrypt.genSalt(10, function (err, salt) {
+                // Call error-handling middleware:
+                if (err) { return res.send({ error: true, message: err }); }
+                bcrypt.hash(newPassword, salt, function (err, hash) {
+                  new User({
+                    name: "admin",
+                    username: "admin",
+                    email: "admin@yopmail.com",
+                    password: hash,
+                    roles: role._id
+                  }).save(err => {
+                    if (err) {
+                      console.log("error", err);
+                    }
+                  })
+                });
+              })
+            }
+          }
+        })
+    }
+  });
 }

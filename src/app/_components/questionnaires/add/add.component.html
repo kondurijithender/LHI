@@ -1,0 +1,45 @@
+<header>
+    <p class="page-breadcrumb">
+      <span routerLink="/home"> Dashboard </span>/
+    </p>
+    <h3 class="page-title">{{ formType === 'Add New' ? 'Add New' : formType }}</h3>
+  </header>
+  
+  <section class="main-section">
+    <div class="add-new-distributor agrisoft-forms">
+      <h4>Distributor Information</h4>
+  
+  
+      <div class="form-section custom-scrollbar">
+        <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+          
+          
+          <div class="col-md-7">
+            <label class="form-label">Enter Distributor Name</label>
+            <div class="input-set">
+             
+              <input type="text" class="form-control distributor-prifix" maxlength="3"  formControlName="code" abstop="false" tabindex="1"/>
+            </div>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+          </div>
+  
+         
+          <div class="col-12">
+            <div *ngIf="submitted" class="invalid-feedback">
+              Please Fill All Product Prices
+            </div>
+            <button [disabled]="loading" class="btn btn-primary btn-block">
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span>
+              {{ formType === 'Add New' ? 'Add New' : 'Update' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  

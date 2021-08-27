@@ -12,29 +12,15 @@ import { environment } from '../environments/environment';
 import { SidenavComponent } from './_common/sidenav/sidenav.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { HeaderComponent } from './_common/header/header.component';
-import { DistributorComponent } from './_components/distributor/distributor.component';
-import { DistributorsListComponent } from './_components/distributors-list/distributors-list.component';
-import { AddDistributorComponent } from './_components/add-distributor/add-distributor.component';
-import { ProductInvetoryComponent } from './_components/product-invetory/product-invetory.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { OrderManagementComponent } from './_components/order-management/order-management.component';
-import { OrderInvoiceComponent } from './_components/order-invoice/order-invoice.component';
-import { AccountManagementComponent } from './_components/account-management/account-management.component';
-import { OrderSearchPipe } from './_pipes/order-search.pipe';
-import { SearchHighlightDirective } from './_directive/search-highlight.directive';
 import { LoginComponent } from './_components/login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertComponent } from './_alert';
 import { ToastrModule } from 'ngx-toastr';
-import { AddRouteComponent } from './_components/add-route/add-route.component';
-import { RoutesListComponent } from './_components/routes-list/routes-list.component';
-import { NumOnlyDirective } from './_directive/num-only.directive';
-import { ImagePreloadDirective } from './_directive/Image-preload.directive';
-import { AdminComponent } from './_components/admin/admin.component';
-import { AdminCreateComponent } from './_components/admin/admin-create/admin-create.component';
-import { WarehousesComponent } from './_components/warehouses/warehouses.component';
+import { QuestionnairesComponent } from './_components/questionnaires/questionnaires.component';
+import { AddQuestionnairesComponent } from './_components/questionnaires/add/add.component';
 
 
 @NgModule({
@@ -44,23 +30,9 @@ import { WarehousesComponent } from './_components/warehouses/warehouses.compone
     SidenavComponent,
     HeaderComponent,
     DashboardComponent,
-    DistributorComponent,
-    DistributorsListComponent,
-    AddDistributorComponent,
-    ProductInvetoryComponent,
-    OrderManagementComponent,
-    OrderInvoiceComponent,
-    AccountManagementComponent,
-    OrderSearchPipe,
-    SearchHighlightDirective,
     LoginComponent,
-    AddRouteComponent,
-    RoutesListComponent,
-    NumOnlyDirective,
-    ImagePreloadDirective,
-    AdminComponent,
-    AdminCreateComponent,
-    WarehousesComponent,
+    QuestionnairesComponent,
+    AddQuestionnairesComponent,
   ],
   imports: [
     BrowserModule,
