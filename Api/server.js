@@ -53,8 +53,8 @@ const Brand = db.brand;
 const User = db.user;
 
 db.mongoose
-   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-  //.connect(`mongodb+srv://jithender:admin@123@cluster0.ve2xe.mongodb.net/lhi`, {
+   //.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(`mongodb+srv://jithender:admin@123@cluster0.ve2xe.mongodb.net/lhi`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -113,7 +113,7 @@ function initial() {
         .exec((err, role) => {
           if (role) {
             console.log(role);
-            if (role.length === 0) {
+            // if (role.length === 0) {
               bcrypt.genSalt(10, function (err, salt) {
                 // Call error-handling middleware:
                 if (err) { return res.send({ error: true, message: err }); }
@@ -131,7 +131,7 @@ function initial() {
                   })
                 });
               })
-            }
+          //  }
           }
         })
     }

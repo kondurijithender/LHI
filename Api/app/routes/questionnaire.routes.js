@@ -17,11 +17,9 @@ const { check } = require('express-validator')
 //     "/api/route",
 //     authJwt.verifyToken,
 //     [
-//       check('name')
+//       check('questionnaire')
 //         .notEmpty()
-//         .withMessage('name is required')
-//         .isLength({ min: 3, max: 6 })
-//         .withMessage('Must be at 3 chars long'),
+//         .withMessage('questionnaire is required'),
 //       check('warehouse')
 //         .notEmpty()
 //         .withMessage('warehouse is required'),
