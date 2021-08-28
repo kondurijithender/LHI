@@ -487,3 +487,15 @@ $someColor : #58e9cc;
       display: block !important;
     }
 }
+
+app-dashboard,
+app-questionnaires{
+    display: block;
+    width: 95%;
+    max-height: 95%;
+    margin: 2.5%;
+    float: left;
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #e4e9f2;
+}
