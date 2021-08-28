@@ -1,35 +1,65 @@
 
 <header>
-    <p class="page-breadcrumb"> <span routerLink="/home"> Dashboard </span>/  Questionnaires</p>
     <h3 class="page-title">Questionnaires</h3>
-    <button type="button" class="btn btn-primary add-new" routerLink="/add-questionnaire"> + Add New</button>
 </header>
 <section class="main-section">
-    <div class="distributors-list">
-        <div class="distributors-table">
-            <table class="table table-striped">
+    <div class="Question-list">
+        <div class="Question-table">
+            <table class="table">
                 <thead>
                   <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
+                    <th>Actions</th>
+                    <th>Question</th>
+                    <th class="dimention">Dimension</th>
+                    <th class="block-index">Block Index</th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <button routerLink="/add-questionnaire">+</button>
+                    </th>
+                    <th>
+                      <input type="text" width="100%">
+                    </th>
+                    <th class="dimention">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </th>
+                    <th class="block-index">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
+                    <td>Edit Del</td>
+                    <td>Learning in my organization isn't primarily seen to be a compliance requirement</td>
+                    <td class="dimention">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </td>
+                    <td class="block-index">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                  </tr>
-                  <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
+                    <td>Edit Del</td>
+                    <td>Learning in my organization isn't primarily seen to be a compliance requirement</td>
+                    <td class="dimention">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </td>
+                    <td class="block-index">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </td>
                   </tr>
                 </tbody>
               </table>

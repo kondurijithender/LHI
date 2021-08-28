@@ -259,48 +259,27 @@ app-login{
 // }
 
 header{
-    padding: 20px 50px;
+    padding: 0;
     float: left;
     width: 100%;
-    max-width: 1820px;
     position: relative;
     .page-title{
         color: #000000;
-        font-family: 'Roboto', sans-serif;
-        font-size: 40px;
+        font-size: 22px;
+        margin: 0;
+        padding: 10px 20px;
         font-weight: 500;
         letter-spacing: 0;
         line-height: 47px;
-        margin: 20px 0;
-    }
-    .page-sub-title,
-    .page-breadcrumb{
-        color: #5A5A5A;
-        font-size: 14px;
-        font-weight: 500;
-    }
-    span{
-        cursor: pointer;
-    }
-    p{
-        margin: 0;
-    }
-
-    .add-new{
-        margin: 25px 40px;
-        height: 39px;
-        width: 140px;
-        border-radius: 19.5px;
-        background-color: #255D95;
-        border: none;
+        border-bottom: solid thin #edf1f7;
     }
 }
 
 .main-section{
-    padding: 20px 50px;
     float: left;
     width: 100%;
-    max-width: 1820px;
+    padding: 0 20px;
+    margin: 20px 0;
     &>div{
         float: left;
         width: 100%;
@@ -489,13 +468,14 @@ $someColor : #58e9cc;
 }
 
 app-dashboard,
-app-questionnaires{
+app-questionnaires,
+app-add{
     display: block;
     width: 95%;
     max-height: 95%;
     margin: 2.5%;
     float: left;
     background: #ffffff;
-    padding: 20px;
+    padding: 0;
     border: 1px solid #e4e9f2;
 }

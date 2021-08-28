@@ -1,0 +1,35 @@
+.Question-table{
+    margin: 0;
+    table{
+        margin: 0;
+        tr{
+            &:nth-of-type(odd) td{
+                background: #f2f1fe6b;
+            }
+            background: none !important;
+            th{
+                font-weight: 600;
+                vertical-align: middle;
+                border: 1px solid #edf1f7;
+                background: none;
+            }
+            td{
+                font-weight: 400;
+                border: 1px solid #edf1f7;
+                vertical-align: middle;
+                select{
+                    background: none !important;
+                    border: none;
+                }
+            }
+            .dimention, .block-index{
+                text-align: center;
+                select{
+                    width: 50px !important;
+                    text-align: center;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
