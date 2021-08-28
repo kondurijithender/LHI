@@ -1,23 +1,15 @@
-.logo {
+.logo{
     width: 100%;
-    margin: 0;
     text-align: center;
-    svg{
-        path{
-            fill: #258B1F;
-        }
-        text{
-            fill: #0C1C3A;
-        }
-    }
+    font-weight: 400;
+    padding: 25px;
 }
 
 nav{
-    margin: 100px 0;
     .nav-header{
         display: block;
         color: #5A5A5A;
-        padding: 15px 25px 0;
+        padding: 10px;
         font-size: 13px;
         font-weight: 500;
         line-height: 20px;
@@ -28,17 +20,22 @@ nav{
         font-size: 16px;
         font-weight: 500;
         letter-spacing: 0;
-        line-height: 25px;   
+        line-height: 30px;   
         display: block;
-        padding: 15px 20px;
-        margin: 10px 0 15px;
+        border-bottom: solid thin #45455e1f;
+        padding: 15px 25px;
+        margin: 0;
         letter-spacing: 0.5px;
         cursor: pointer;
         &.active{
-            background-color: #258B1F;
-            box-shadow: 0 2px 13px 0 rgba(27,27,27,0.38);
-            border-radius: 5px;
-            color: #fff;
+            color: #58e9cc;
+            font-weight: 500;
+            &:hover{
+                color: #58e9cc;
+            }
+        }
+        &:hover{
+            color: #45455e;
             font-weight: 500;
         }
         svg{
