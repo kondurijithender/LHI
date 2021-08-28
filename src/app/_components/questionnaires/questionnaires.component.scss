@@ -12,6 +12,13 @@
                 vertical-align: middle;
                 border: 1px solid #edf1f7;
                 background: none;
+                input, select{
+                    border: 1px solid #ced4da;
+                    vertical-align: middle;
+                    width: 100%;
+                    margin: 0;
+                    height: 40px;
+                }
             }
             td{
                 font-weight: 400;
@@ -25,9 +32,14 @@
             .dimention, .block-index{
                 text-align: center;
                 select{
-                    width: 50px !important;
+                    width: 60px !important;
                     text-align: center;
-                    padding: 10px;
+                    padding: 5px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    text-indent: 1px;
+                    text-overflow: '';
+                    text-align-last:center;
                 }
             }
         }
