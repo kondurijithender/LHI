@@ -42,6 +42,18 @@
                     text-align-last:center;
                 }
             }
+            .Actions{
+                text-align: center;
+                svg{
+                    width: 24px;
+                    margin: 0 15px;
+                    fill: #454560;
+                    cursor: pointer;
+                    :hover{
+                        fill: #454560;
+                    }
+                }
+            }
         }
     }
 }
