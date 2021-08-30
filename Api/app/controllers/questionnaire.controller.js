@@ -51,13 +51,22 @@ exports.delete = async (req, res, next) => {
     res.send({ message: "Questionnaire was deleted successfully!" });
   });
 }
+exports.getById = async (req, res, next) => {
+  const questionnaire = await Questionnaire.findById(req.params.id).populate("dimensionId");
+  // validate
+  if (!questionnaire) res.status(400).send({ error: true, message: 'Questionnaire not found' });
+  res.status(200).send({ questionnaire });
+};
 exports.getAll = async (req, res) => {
   try {
     const { type } = req.query;
     let condition = {};
     if('type' in req.query) condition = { type };
-    Questionnaire.find(condition, (err, questionnaires) => {
+    Questionnaire.find(condition)
+    .populate("dimensionId")
+    .exec((err, questionnaires) => {
       if (err) {
+        console.log(err);
         res.status(500).send({ error: true, message: err });
         return;
       }

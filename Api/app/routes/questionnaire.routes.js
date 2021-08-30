@@ -3,7 +3,11 @@ const { check } = require('express-validator')
 const controller = require("../controllers/questionnaire.controller");
 
 module.exports = function (app) {
-
+  app.get(
+    "/api/questionnaire/:id",
+    authJwt.verifyToken,
+    controller.getById
+  );
   app.get(
     "/api/questionnaire",
     authJwt.verifyToken,

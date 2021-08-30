@@ -7,7 +7,7 @@ const Questionnaire = mongoose.model(
     dimensionId: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Index"
+        ref: "Dimension"
       }
     ],
     blockIndex: Number,
