@@ -247,31 +247,46 @@ app-login{
   }
 }
 
-// .alert {
-//     position: absolute;
-//     bottom: 15px;
-//     right: 15px;
-//     background: #255d95;
-//     color: #fff;
-//     border: none;
-//     border-radius: 0;
-//     margin: 0;
-// }
-
 header{
     padding: 0;
     float: left;
     width: 100%;
     position: relative;
+    border-bottom: solid thin #edf1f7;
+    padding: 0 25px;
     .page-title{
         color: #000000;
         font-size: 22px;
         margin: 0;
-        padding: 10px 20px;
+        padding: 10px 0;
         font-weight: 500;
         letter-spacing: 0;
         line-height: 47px;
-        border-bottom: solid thin #edf1f7;
+        float: left;
+    }
+    .btn{
+        float: right;
+        padding: 8px 20px;
+        border: solid thin #6e6f8a;
+        border-radius: 0;
+        margin: 10px 0;
+        vertical-align: middle;
+        font-size: 18px;
+        transition: ease-in-out all 0.2s;
+        &:hover{
+            background: #6e6f8a;
+            color: #ffffff;
+            svg{
+                fill: #ffffff;
+            }
+        }
+        svg{
+            position: relative;
+            top: -2px;
+            width: 14px;
+            margin-left: 10px;
+            transition: ease-in-out all 0.2s;
+        }
     }
 }
 
