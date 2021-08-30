@@ -13,6 +13,7 @@ import { SidenavComponent } from './_common/sidenav/sidenav.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { HeaderComponent } from './_common/header/header.component';
 
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './_components/login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -51,6 +52,7 @@ import { AddQuestionnairesComponent } from './_components/questionnaires/add/add
       closeButton: true,
       preventDuplicates: true,
     }),
+    TextareaAutosizeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

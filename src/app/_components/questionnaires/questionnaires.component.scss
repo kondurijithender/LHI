@@ -12,25 +12,36 @@
                 vertical-align: middle;
                 border: 1px solid #edf1f7;
                 background: none;
-                input, select{
-                    border: 1px solid #ced4da;
-                    vertical-align: middle;
-                    width: 100%;
-                    margin: 0;
-                    height: 40px;
-                }
             }
             td{
                 font-weight: 400;
                 border: 1px solid #edf1f7;
                 vertical-align: middle;
+                input, textarea{
+                    border: 1px solid #ced4da;
+                    vertical-align: middle;
+                    width: 100%;
+                    margin: 0;
+                    resize: none;
+                    padding: 7px;
+                    &:read-only {
+                        background: none;
+                        border: none;
+                        padding: 10px 0;
+                    }
+                }
                 select{
-                    background: none !important;
-                    border: none;
+                    border: 1px solid #ced4da;
+                    &:disabled{
+                        background: none !important;
+                        border: none;
+                        color: #000000;
+                    }
                 }
             }
             .dimention, .block-index{
                 text-align: center;
+                width: 150px;
                 select{
                     width: 60px !important;
                     text-align: center;
@@ -44,9 +55,14 @@
             }
             .Actions{
                 text-align: center;
+                width: 200px;
+                .btn{
+                    border: none;
+                    border-radius: 0;
+                    margin: 0 5px;
+                }
                 svg{
                     width: 24px;
-                    margin: 0 15px;
                     fill: #454560;
                     cursor: pointer;
                     :hover{

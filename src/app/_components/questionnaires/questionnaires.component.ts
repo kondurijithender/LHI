@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionnairesComponent implements OnInit {
 
+  rapidPageValue = "Learning in my organization isn't primarily seen to be a compliance requirement Learning in my organization isn't primarily ";
+  
+  DisableEditable = true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  editable(): void{
+    this.DisableEditable = false;
+  }
+
+  update(): void{
+    this.DisableEditable = true;
   }
 
 }
