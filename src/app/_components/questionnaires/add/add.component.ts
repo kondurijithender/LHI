@@ -29,6 +29,7 @@ export class AddQuestionnairesComponent implements OnInit {
   id: string;
   formType: string = 'Add New';
   isValid: boolean = false;
+  dimensionsList: any = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,13 +37,26 @@ export class AddQuestionnairesComponent implements OnInit {
     private router: Router,
     private alertService: AlertService,
     private apiService: ApiService
-  ) {}
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      this.id = params.id;
+      if (this.id) {
+        this.formType = 'Update';
+        this.loadQuestionnairesDetails();
+    }
+    });
+
+  }
 
   
 
   ngOnInit() {
+    this.loadDimensions();
     this.form = this.formBuilder.group({
-      name: ['', Validators.required]
+      questionnaire: ['', Validators.required],
+      dimensionId: ['', Validators.required],
+      blockIndex: ['', Validators.required],
+      type: ['', Validators.required]
     });
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -56,20 +70,21 @@ export class AddQuestionnairesComponent implements OnInit {
     this.submitted = true;
     // reset alerts on submit
     this.alertService.clear();
-
+    console.log(this.form, this.form.invalid , this.isValid);
+    
     // stop here if form is invalid
-    if (this.form.invalid || !this.isValid) {
+    if (this.form.invalid) {
       return;
     }
     this.loading = true;
-
     if (!this.id) {
       this.apiService
-        .create('distributor', this.form.value)
+        .create('questionnaire', this.form.value)
         .pipe(first())
         .subscribe(
           (data) => {
-            this.router.navigate(['distributors']);
+            this.alertService.success(data.message);
+            this.router.navigate(['questionnaires']);
           },
           (error) => {
             this.alertService.error(error);
@@ -78,11 +93,12 @@ export class AddQuestionnairesComponent implements OnInit {
         );
     } else {
       this.apiService
-        .update('distributor', this.form.value, this.id)
+        .update('questionnaire', this.form.value, this.id)
         .pipe(first())
         .subscribe(
           (data) => {
-            this.router.navigate(['distributors']);
+            this.alertService.success(data.message);
+            this.router.navigate(['questionnaires']);
           },
           (error) => {
             this.alertService.error(error);
@@ -90,5 +106,36 @@ export class AddQuestionnairesComponent implements OnInit {
           }
         );
     }
+  }
+  loadQuestionnairesDetails() {
+    this.apiService
+      .readSingle('questionnaire', this.id)
+      .pipe(first())
+      .subscribe(
+        (data) => {
+          const dimensionId = data.questionnaire.dimensionId ? data.questionnaire.dimensionId[0]._id : '';
+          this.f.questionnaire.setValue(data.questionnaire.questionnaire);
+          this.f.dimensionId.setValue(dimensionId);
+          this.f.blockIndex.setValue(data.questionnaire.blockIndex);
+          this.f.type.setValue(data.questionnaire.type);
+        },
+        (error) => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      );
+  }
+  loadDimensions() {
+    this.apiService
+      .readAll('dimension')
+      .subscribe(
+        (data) => {
+          this.dimensionsList = data.dimensions;
+        },
+        (error) => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      );
   }
 }

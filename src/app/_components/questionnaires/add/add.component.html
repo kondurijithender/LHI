@@ -8,25 +8,44 @@
           
           <div class="mb-3">
             <label for="Question" class="form-label">Question</label>
-            <textarea class="form-control" id="Question" placeholder="Type Your Question" rows="3"></textarea>
+            <textarea class="form-control" id="Question" placeholder="Type Your Question" rows="3" formControlName="questionnaire"></textarea>
+            <div *ngIf="submitted && f.questionnaire.errors" class="text-danger">
+              <div *ngIf="f.questionnaire.errors.required">Questionnaire is required</div>
+            </div>
           </div>
           
           <div class="mb-3">
             <label for="Dimension" class="form-label">Dimension</label>
-            <select name="Dimension" class="form-control" id="Dimension">
-              <option value="Dimension 1">Dimension 1</option>
-              <option value="Dimension 1">Dimension 1</option>
-              <option value="Dimension 1">Dimension 1</option>
+            <select name="Dimension" class="form-control" id="Dimension" formControlName="dimensionId">
+              <option value="Dimension 1" *ngFor="let item of dimensionsList; let i = index" [value]="item._id">{{item.name}}</option>
             </select>
+            <div *ngIf="submitted && f.dimensionId.errors"  class="text-danger">
+              <div *ngIf="f.dimensionId.errors.required">Dimension is required</div>
+            </div>
           </div>
 
           <div class="mb-3">
             <label for="Dimension" class="form-label">Block Index</label>
-            <select name="Block Index	" class="form-control" id="Block Index	">
-              <option value="Dimension 1">Block Index	 1</option>
-              <option value="Dimension 1">Block Index	 1</option>
-              <option value="Dimension 1">Block Index	 1</option>
+            <select name="Block Index	" class="form-control" id="Block Index" formControlName="blockIndex">
+              <option value="1">Block Index 1</option>
+              <option value="2">Block Index	2</option>
+              <option value="3">Block Index	3</option>
+              <option value="4">Block Index	4</option>
+              <option value="5">Block Index	5</option>
             </select>
+            <div *ngIf="submitted && f.blockIndex.errors"  class="text-danger">
+              <div *ngIf="f.blockIndex.errors.required">BlockIndex is required</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="Dimension" class="form-label">Type</label>
+            <select name="Block Index	" class="form-control" id="Block Index" formControlName="type">
+              <option value="employee">Employee</option>
+              <option value="learner">Learner</option>
+            </select>
+            <div *ngIf="submitted && f.type.errors"  class="text-danger">
+              <div *ngIf="f.type.errors.required">Type is required</div>
+            </div>
           </div>
 
           <div class="mb-3">
@@ -34,7 +53,11 @@
               Please Fill All Product Prices
             </div>
             <button [disabled]="loading" class="btn btn-primary btn-block">
-              Add
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span>
+              {{ formType === 'Add New' ? 'Add New' : 'Update' }}
             </button>
           </div>
         </form>
