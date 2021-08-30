@@ -42,19 +42,11 @@ exports.signin = (req, res) => {
       let token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400 // 24 hours
       });
-
-      let role = 'admin';
-
-      for (let i = 0; i < user.roles.length; i++) {
-        role = user.roles[i].name;
-      }
-      console.log(user);
       res.status(200).send({
         id: user._id,
         name: user.name,
         username: user.username,
         email: user.email,
-        role,
         accessToken: token
       });
     });

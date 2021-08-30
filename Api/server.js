@@ -77,6 +77,8 @@ app.use(function (req, res, next) {
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/questionnaire.routes")(app);
+require("./app/routes/dimension.routes")(app);
+require("./app/routes/industry.routes")(app);
 
 
 
@@ -113,7 +115,7 @@ function initial() {
         .exec((err, role) => {
           if (role) {
             console.log(role);
-            // if (role.length === 0) {
+            if (role.length === 0) {
               bcrypt.genSalt(10, function (err, salt) {
                 // Call error-handling middleware:
                 if (err) { return res.send({ error: true, message: err }); }
@@ -131,7 +133,7 @@ function initial() {
                   })
                 });
               })
-          //  }
+            }
           }
         })
     }

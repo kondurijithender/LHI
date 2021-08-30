@@ -1,84 +1,97 @@
 const db = require("../models");
-const Route = db.route;
-const Warehouse = db.warehouse;
-const ApiError = require('../error/ApiError');
+const Questionnaire = db.questionnaire;
+const Survey = db.survey;
 const { validationResult } = require('express-validator');
 var bcrypt = require("bcryptjs");
 
 exports.create = (req, res, next) => {
-  const { name, warehouse, openTime, closeTime, locations, code, password } = req.body
+  const { questionnaire, dimensionId, blockIndex, type } = req.body
   // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(422).json({ error: true, message: errors.array() })
   }
 
-  const route = new Route({
-    name,
-    warehouse,
-    openTime,
-    closeTime,
-    locations,
-    code,
-    password,
-    passwordHash: bcrypt.hashSync(password, 8)
+  const q = new Questionnaire({
+    questionnaire,
+    dimensionId,
+    blockIndex,
+    type
   });
 
-  route.save((err, user) => {
+  q.save((err, user) => {
     if (err) res.status(500).send({ error: true, message: err });
-    res.send({ message: "route was created successfully!" });
+    res.send({ message: "Questionnaire was created successfully!" });
   });
 
 };
 
 exports.update = async (req, res, next) => {
-  const { openTime, closeTime, locations, code, password } = req.body
-  const route = await Route.findById(req.params.id);
+  const { questionnaire, dimensionId, blockIndex, type } = req.body
+  const q = await Questionnaire.findById(req.params.id);
   // validate
-  if (!route) res.status(400).send({ error: true, message: 'Route not found' });
-  route.openTime = openTime;
-  route.closeTime = closeTime;
-  route.locations = locations;
-  route.code = code ? code : route.code;
-  route.password = password ? password : route.password;
-  route.passwordHash = password ? bcrypt.hashSync(password, 8) : route.passwordHash;
+  if (!q) res.status(400).send({ error: true, message: 'Questionnaire not found' });
+  q.questionnaire = questionnaire;
+  q.dimensionId = dimensionId;
+  q.blockIndex = blockIndex;
+  q.type = type;
 
-  route.save((err, product) => {
+  q.save((err, questionnaire) => {
     if (err) res.status(500).send({ error: true, message: err });
-    res.send({ message: "Route was updated successfully!" });
+    res.send({ message: "Questionnaire was updated successfully!" });
   });
 };
 exports.delete = async (req, res, next) => {
-  const route = await Route.findById(req.params.id);
+  const q = await Questionnaire.findById(req.params.id);
   // validate
-  if (!route) res.status(500).send({ error: true, message: 'Route not found' });
+  if (!q) res.status(500).send({ error: true, message: 'Questionnaire not found' });
 
-  Route.findByIdAndRemove(route._id, (err, product) => {
+  Questionnaire.findByIdAndRemove(q._id, (err, product) => {
     if (err) res.status(500).send({ error: true, message: err });
-    res.send({ message: "Route was deleted successfully!" });
+    res.send({ message: "Questionnaire was deleted successfully!" });
   });
 }
-exports.getById = async (req, res, next) => {
-  const route = await Route.findById(req.params.id);
-  // validate
-  if (!route) res.status(400).send({ error: true, message: 'Route not found' });
-  res.send({ route });
-};
 exports.getAll = async (req, res) => {
-  const warehouse = await Warehouse.findById(req.query.warehouse);
-  // validate
-  if (!warehouse) res.status(400).send({ error: true, message: 'Warehouse not found' });
-  else {
-    Route.find({ warehouse: req.query.warehouse }, (err, routes) => {
+  try {
+    const { type } = req.query;
+    let condition = {};
+    if('type' in req.query) condition = { type };
+    Questionnaire.find(condition, (err, questionnaires) => {
       if (err) {
         res.status(500).send({ error: true, message: err });
         return;
       }
       res.status(200).send({
-        routes,
+        questionnaires,
       });
     });
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({ error: true, message: err });
   }
+};
+exports.survey = (req, res, next) => {
+  const { name, designation, companyName, businessSector, email, questionnaires } = req.body
+  // Finds the validation errors in this request and wraps them in an object with handy functions
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ error: true, message: errors.array() })
+  }
+
+  const s = new Survey({
+    name,
+    designation,
+    companyName,
+    businessSector,
+    email,
+    questionnaires,
+  });
+
+  s.save((err, user) => {
+    if (err) res.status(500).send({ error: true, message: err });
+    res.send({ message: "Survey was created successfully!" });
+  });
+
 };
 
 

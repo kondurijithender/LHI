@@ -1,53 +1,60 @@
 const { authJwt } = require("../middlewares");
 const { check } = require('express-validator')
+const controller = require("../controllers/questionnaire.controller");
 
- module.exports = function (app) {
+module.exports = function (app) {
 
-//   app.get(
-//     "/api/route/:id",
-//     authJwt.verifyToken,
-//     controller.getById
-//   );
-//   app.get(
-//     "/api/route",
-//     authJwt.verifyToken,
-//     controller.getAll
-//   );
-//   app.post(
-//     "/api/route",
-//     authJwt.verifyToken,
-//     [
-//       check('questionnaire')
-//         .notEmpty()
-//         .withMessage('questionnaire is required'),
-//       check('warehouse')
-//         .notEmpty()
-//         .withMessage('warehouse is required'),
-//       check('openTime')
-//         .notEmpty()
-//         .withMessage('openTime is required'),
-//       check('closeTime')
-//         .notEmpty()
-//         .withMessage('closeTime is required')
-//     ],
-//     controller.create
-//   );
-//   app.put(
-//     "/api/route/:id",
-//     authJwt.verifyToken,
-//     [
-//       check('openTime')
-//         .notEmpty()
-//         .withMessage('openTime is required'),
-//       check('closeTime')
-//         .notEmpty()
-//         .withMessage('closeTime is required')
-//     ],
-//     controller.update
-//   );
-//   app.delete(
-//     "/api/route/:id",
-//     authJwt.verifyToken,
-//     controller.delete
-//   );
+  app.get(
+    "/api/questionnaire",
+    authJwt.verifyToken,
+    controller.getAll
+  );
+  app.post(
+    "/api/questionnaire",
+    authJwt.verifyToken,
+    [
+      check('questionnaire')
+        .notEmpty()
+        .withMessage('questionnaire is required'),
+      check('dimensionId')
+        .notEmpty()
+        .withMessage('dimensionId is required'),
+      check('blockIndex')
+        .notEmpty()
+        .withMessage('blockIndex is required'),
+      check('type')
+        .notEmpty()
+        .withMessage('type is required')
+    ],
+    controller.create
+  );
+  app.put(
+    "/api/questionnaire/:id",
+    authJwt.verifyToken,
+    [
+      check('questionnaire')
+        .notEmpty()
+        .withMessage('questionnaire is required'),
+      check('dimensionId')
+        .notEmpty()
+        .withMessage('dimensionId is required'),
+      check('blockIndex')
+        .notEmpty()
+        .withMessage('blockIndex is required'),
+      check('type')
+        .notEmpty()
+        .withMessage('type is required')
+    ],
+    controller.update
+  );
+  app.delete(
+    "/api/questionnaire/:id",
+    authJwt.verifyToken,
+    controller.delete
+  );
+  app.post(
+    "/api/suvey",
+    authJwt.verifyToken,
+    controller.survey
+  );
 };
