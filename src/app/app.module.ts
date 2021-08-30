@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +24,7 @@ import { AlertComponent } from './_alert';
 import { ToastrModule } from 'ngx-toastr';
 import { QuestionnairesComponent } from './_components/questionnaires/questionnaires.component';
 import { AddQuestionnairesComponent } from './_components/questionnaires/add/add.component';
+import { ConfigurationComponent } from './_components/configuration/configuration.component';
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { AddQuestionnairesComponent } from './_components/questionnaires/add/add
     LoginComponent,
     QuestionnairesComponent,
     AddQuestionnairesComponent,
+    ConfigurationComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import { AddQuestionnairesComponent } from './_components/questionnaires/add/add
       closeButton: true,
       preventDuplicates: true,
     }),
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    AccordionModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

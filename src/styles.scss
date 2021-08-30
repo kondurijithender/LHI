@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
 @font-face {
     font-family: 'Poppins';
     src: url('assets/fonts/Poppins-Bold.woff2') format('woff2'),
@@ -484,7 +486,8 @@ $someColor : #58e9cc;
 
 app-dashboard,
 app-questionnaires,
-app-add{
+app-add,
+app-configuration{
     display: block;
     width: 95%;
     max-height: 95%;

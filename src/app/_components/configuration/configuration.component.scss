@@ -1,29 +1,37 @@
+.card-body{
+    padding: 0 !important;
+}
 .Question-table{
     margin: 0;
     table{
         margin: 0;
         tr{
+            background: none !important;    
+            .Dimention-Value{
+                text-align: left !important;
+            }
             &:nth-of-type(odd) td{
                 background: #f2f1fe6b;
             }
-            background: none !important;
             th{
                 font-weight: 600;
                 vertical-align: middle;
                 border: 1px solid #edf1f7;
                 background: none;
+                text-align: center;
             }
             td{
                 font-weight: 400;
                 border: 1px solid #edf1f7;
                 vertical-align: middle;
-                input, textarea{
+                input{
                     border: 1px solid #ced4da;
                     vertical-align: middle;
                     width: 100%;
                     margin: 0;
                     resize: none;
-                    padding: 7px;
+                    text-align: center;
+                    padding: 10px;
                     &:read-only {
                         background: none;
                         border: none;
