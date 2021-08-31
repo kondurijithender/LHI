@@ -21,7 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr  *ngFor="let item of questionnairesList; let i = index">
+                  <tr *ngFor="let item of questionnairesList; let i = index">
                     <td>{{item.questionnaire}}</td>
                     <td class="dimention">
                       {{ item.dimensionId.length > 0 ? item.dimensionId[0].name : '' }}
