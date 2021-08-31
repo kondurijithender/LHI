@@ -19,7 +19,8 @@ export class ConfigurationComponent implements OnInit {
     this.getDimensions();
   }
 
-  editable(): void{
+  editable(index: any): void{
+    console.log(index)
     this.DimentionEdit = true;
   }
 
