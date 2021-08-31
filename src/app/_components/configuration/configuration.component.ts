@@ -23,9 +23,15 @@ export class ConfigurationComponent implements OnInit {
     this.DimentionEdit = true;
   }
 
-  update(item: any): void{
-    console.log(item);
-    this.DimentionEdit = false;
+  updateIndustry(item: any): void{
+    this._api.update("industry", item, item._id).subscribe(data => {
+      this.DimentionEdit = false;
+    })
+  }
+  updateDimention(item: any): void{
+    this._api.update("dimension", item, item._id).subscribe(data => {
+      this.DimentionEdit = false;
+    })
   }
   getDimensions() {
     this._api.readAll("dimension").subscribe(data => {
@@ -37,9 +43,8 @@ export class ConfigurationComponent implements OnInit {
       this.industryList = data.industries;
     })
   }
-  updateValue(item: any, event: any) {
-    console.log(item);
-    console.log(event.value);
+  updateValue(item: any,key: any, event: any) {
+    item[key] = parseInt(event.target.value);
   }
 
 }
