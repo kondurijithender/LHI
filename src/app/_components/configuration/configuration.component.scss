@@ -1,5 +1,29 @@
-accordion-group{
+accordion-group {
     margin-bottom: 20px;
+    ::ng-deep {
+      div {
+        &>div.panel-heading.card-header.panel-enabled {
+          background-color: #ffffff; 
+          
+          .btn-link {
+              color: rgb(6, 10, 9); // change the accordion heading buttons style
+              font-weight: 500;
+              font-size: 20px;
+              &:hover, &:focus, &:active{
+                  text-decoration: none;
+              }
+          }
+        }
+
+        &>div.panel-body.card-block.card-body{
+            padding: 0 !important;
+        }
+  
+        &>div.panel-collapse.collapse.in.show>div {
+          background-color: hsla(210, 10%, 83%, 0.10); // change the expanded content style
+        }
+      }
+    }
 }
 .Question-table{
     margin: 0;
