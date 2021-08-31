@@ -12,6 +12,7 @@ export class ConfigurationComponent implements OnInit {
   DimentionEdit = false;
   industryList: any = [];
   dimentionsList: any = [];
+  selectedIndex: any = null;
   constructor(private alertService: AlertService, private _api: ApiService) { }
 
   ngOnInit(): void {
@@ -20,13 +21,14 @@ export class ConfigurationComponent implements OnInit {
   }
 
   editable(index: any): void{
-    console.log(index)
+    this.selectedIndex = index;
     this.DimentionEdit = true;
   }
 
   updateIndustry(item: any): void{
     this._api.update("industry", item, item._id).subscribe(data => {
       this.DimentionEdit = false;
+      this.selectedIndex = null;
     })
   }
   updateDimention(item: any): void{
