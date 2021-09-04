@@ -12,11 +12,22 @@ import { ApiService } from './_service/api.service';
 })
 export class AppComponent implements OnInit{
   currentUser: User;
+
   constructor(
     private authService: AuthenticationService,
     private router: Router,
   ) {
   }
+
+  isAccessTocket():boolean{
+    if(this.currentUser && this.currentUser.accessToken)
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   ngOnInit() {
     this.authService.currentUser.subscribe(x => this.currentUser = x);
     if(this.currentUser.accessToken) {
@@ -25,7 +36,7 @@ export class AppComponent implements OnInit{
   }
   logout() {
     this.authService.logout();
-    this.router.navigate(['admin/login']);
+    this.router.navigate(['admin']);
 }
 isEmptyObject(obj: any) {
   return (obj && (Object.keys(obj).length === 0));

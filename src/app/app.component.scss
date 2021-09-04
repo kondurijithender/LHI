@@ -1,15 +1,15 @@
-app-sidenav{
-    background-color: #ffffff;
-    min-width: 270px;
-    padding: 0px;
-    flex: 1;
-}
 
 main{   
-    flex: 6;
-    app-header,
-    app-main{
-        float: left;
-        width: 100%;
+    display: flex;
+    width: 100%;
+    app-sidenav{
+        background-color: #ffffff;
+        min-width: 270px;
+        padding: 0px;
+        flex: 1;
+    }
+
+    .dashboard-session{
+        flex: 7;
     }
 }

@@ -1,13 +1,23 @@
-<div *ngIf="currentUser && currentUser.accessToken">
-<app-sidenav *ngIf="currentUser && currentUser.accessToken"></app-sidenav>
-<main>
-  <app-header  *ngIf="currentUser && currentUser.accessToken"></app-header>
-  <alert></alert>
-  <router-outlet></router-outlet>
+<main *ngIf="isAccessTocket()">
+  <ng-container *ngTemplateOutlet="admin"></ng-container>
 </main>
-</div>
-<div  *ngIf="!currentUser.accessToken">
+
+<main *ngIf="!isAccessTocket()">
+  <ng-container *ngTemplateOutlet="frontend"></ng-container>
+</main>
+<alert></alert>
+
+<ng-template #admin>
+  <app-sidenav></app-sidenav>
+  <div class="dashboard-session">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
+
+
+<ng-template #frontend>
   <router-outlet></router-outlet>
-</div>
+</ng-template>
 
 

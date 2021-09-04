@@ -9,13 +9,12 @@ import { QuestionnairesComponent } from './_components/admin/questionnaires/ques
 import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'admin/login', component: LoginComponent },
+  { path: '', component: FrontEndDashboardComponent},
+  { path: 'admin', component: LoginComponent },
   { path: 'admin/home', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'admin/questionnaires', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   { path: 'admin/add-questionnaire', component: AddQuestionnairesComponent, canActivate: [AuthGuard] },
-  { path: 'admin/configuration', component: ConfigurationComponent, canActivate: [AuthGuard] },
-  { path: 'home', component: FrontEndDashboardComponent },
+  { path: 'admin/configuration', component: ConfigurationComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
