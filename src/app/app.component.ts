@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
   }
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['admin/login']);
 }
 isEmptyObject(obj: any) {
   return (obj && (Object.keys(obj).length === 0));

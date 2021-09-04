@@ -1,4 +1,4 @@
-import { AlertService } from './../../_service/alert.service';
+import { AlertService } from './../../../_service/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ) {
       // redirect to home if already logged in
       if (this.authenticationService.currentUserValue) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['admin/home']);
       }
   }
 
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigate(['home']);
+                  this.router.navigate(['admin/home']);
               },
               error => {
                   this.alertService.error(error);
