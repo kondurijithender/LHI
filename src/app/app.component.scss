@@ -1,5 +1,5 @@
 
-main{   
+main.admin{ 
     display: flex;
     width: 100%;
     app-sidenav{
@@ -11,5 +11,29 @@ main{
 
     .dashboard-session{
         flex: 7;
+    }
+}
+
+main.frontend{
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    app-frontend-footer{
+        background: #454560;
+        padding: 100px 0;
+        float: left;
+        width: 100%;
+    }
+
+    router-outlet{
+        display: none;
+    }
+    
+    frontend-dashboard{
+        float: left;
+        width: 100%;
     }
 }

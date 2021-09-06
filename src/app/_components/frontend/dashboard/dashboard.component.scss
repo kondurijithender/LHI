@@ -1,31 +1,53 @@
-.main-section{
-    .page-center-content{
-        .card{
-            display: block;
-            float: left;
-            padding: 15px 0;
+.container{
+    padding: 80px 0;
+    &>div{
+        flex: 1;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    header{
+        flex: 1;
+        h3{
+            color: #454560;
+            font-size: 70px;
+            line-height: 1.2;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 24px;
+            line-height: 1.8;
+            color: #454560;
+        }
+    }
+
+    form{
+        width: 100%;
+        max-width: 500px;
+        background: #ffffff;
+        padding: 70px 50px 50px 50px;
+        min-height: 200px;
+        box-shadow: 0px 8px 15px #00000029;
+        border-radius: 50px;
+
+        input, select{
             width: 100%;
-            max-width: 300px;
-            margin-right: 50px;
-            margin-bottom: 30px;
+            height: 45px;
+            border-radius: 30px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .btn-primary{
+            margin-top: 20px;
+            font-size: 22px;
+            background-color: #56e7ce;
+            padding: 13px 50px;
+            font-weight: 400;
+            color: #ffffff;
+            border-radius: 50px;
             border: none;
-            background-color: #ffffff;
-            box-shadow: 0 2px 24px 0 rgba(1,1,1,0.11);
-            text-align: center;
-            border-radius: 10px;
-            cursor: pointer;
-            &:focus{
-                outline: none;
-                border: none;
-            }
-            img{
-                max-height: 110px;
-                width: auto;
-                padding: 5px 15px;
-            }
-            h5{
-                margin: 0;
-            }
         }
     }
 }

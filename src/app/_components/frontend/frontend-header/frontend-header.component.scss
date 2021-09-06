@@ -1,0 +1,33 @@
+header{
+    background-color: #ffffff;
+    min-height: 50px;
+    padding: 30px 0;
+    svg{
+        width: 180px;
+        position: relative;
+        top: -10px;
+    }
+    navbar{
+        background: none;
+    }
+    .navbar-collapse{
+        justify-content: space-between;
+        .navbar-nav{
+            margin-left: 18%;
+            li{
+                a{
+                    font-weight: 600;
+                    color: #1A1A1A;
+                    padding: 10px 15px;
+                }
+            }
+        }
+        .btn{
+            background-color: #56e7ce;
+            padding: 10px 25px;
+            font-weight: 400;
+            color: #ffffff;
+            border-radius: 50px;
+        }
+    }
+}

@@ -25,6 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { QuestionnairesComponent } from './_components/admin/questionnaires/questionnaires.component';
 import { AddQuestionnairesComponent } from './_components/admin/questionnaires/add/add.component';
 import { ConfigurationComponent } from './_components/admin/configuration/configuration.component';
+import { FrontendHeaderComponent } from './_components/frontend/frontend-header/frontend-header.component';
+import { FrontendFooterComponent } from './_components/frontend/frontend-footer/frontend-footer.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { ConfigurationComponent } from './_components/admin/configuration/config
     QuestionnairesComponent,
     AddQuestionnairesComponent,
     ConfigurationComponent,
+    FrontendHeaderComponent,
+    FrontendFooterComponent,
   ],
   imports: [
     BrowserModule,

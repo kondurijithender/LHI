@@ -1,8 +1,8 @@
-<main *ngIf="isAccessTocket()">
+<main *ngIf="isAccessTocket()" class="admin">
   <ng-container *ngTemplateOutlet="admin"></ng-container>
 </main>
 
-<main *ngIf="!isAccessTocket()">
+<main *ngIf="!isAccessTocket()" class="frontend">
   <ng-container *ngTemplateOutlet="frontend"></ng-container>
 </main>
 <alert></alert>
@@ -17,7 +17,9 @@
 
 
 <ng-template #frontend>
+  <app-frontend-header> </app-frontend-header>
   <router-outlet></router-outlet>
+  <app-frontend-footer></app-frontend-footer>
 </ng-template>
 
 
