@@ -7,14 +7,18 @@ import { ConfigurationComponent } from './_components/admin/configuration/config
 import { AddQuestionnairesComponent } from './_components/admin/questionnaires/add/add.component';
 import { QuestionnairesComponent } from './_components/admin/questionnaires/questionnaires.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-questionnaire/frontend-questionnaire.component';
 
 const routes: Routes = [
-  { path: '', component: FrontEndDashboardComponent},
   { path: 'admin', component: LoginComponent },
   { path: 'admin/home', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'admin/questionnaires', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   { path: 'admin/add-questionnaire', component: AddQuestionnairesComponent, canActivate: [AuthGuard] },
   { path: 'admin/configuration', component: ConfigurationComponent, canActivate: [AuthGuard]},
+  
+  { path: '', component: FrontEndDashboardComponent},
+  { path: 'questionnaires', component: FrontendQuestionnaireComponent },
+
 ];
 
 @NgModule({

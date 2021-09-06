@@ -13,4 +13,9 @@ export class FrontEndDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     
-  }}
+  }
+
+  validateForm(): void{
+    this.route.navigate(["/questionnaires"]);
+  }
+}

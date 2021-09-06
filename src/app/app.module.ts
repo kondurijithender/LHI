@@ -27,6 +27,7 @@ import { AddQuestionnairesComponent } from './_components/admin/questionnaires/a
 import { ConfigurationComponent } from './_components/admin/configuration/configuration.component';
 import { FrontendHeaderComponent } from './_components/frontend/frontend-header/frontend-header.component';
 import { FrontendFooterComponent } from './_components/frontend/frontend-footer/frontend-footer.component';
+import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-questionnaire/frontend-questionnaire.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FrontendFooterComponent } from './_components/frontend/frontend-footer/
     ConfigurationComponent,
     FrontendHeaderComponent,
     FrontendFooterComponent,
+    FrontendQuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
