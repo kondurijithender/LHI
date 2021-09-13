@@ -15,8 +15,7 @@
                   <tr>
                     <th>Question</th>
                     <th class="dimention">Dimension</th>
-                    <th class="block-index">Block Index</th>
-                    <th class="block-index">Type</th>
+                    <th class="block-index">Section</th>
                     <th class="Actions">Actions</th>
                   </tr>
                 </thead>
@@ -28,9 +27,6 @@
                     </td>
                     <td class="block-index">
                       {{item.blockIndex}}
-                    </td>
-                    <td class="block-index">
-                      {{item.type}}
                     </td>
                     <td class="Actions">
                       <button type="button" class="btn" [routerLink]="['/add-questionnaire']" [queryParams]="{id: item._id}">

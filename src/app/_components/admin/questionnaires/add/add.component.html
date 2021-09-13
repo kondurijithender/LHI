@@ -13,6 +13,48 @@
               <div *ngIf="f.questionnaire.errors.required">Questionnaire is required</div>
             </div>
           </div>
+          <div class="mb-3">
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Option 1" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Value" aria-label="Last name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Option 2" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Value" aria-label="Last name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Option 3" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Value" aria-label="Last name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Option 4" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Value" aria-label="Last name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Option 5" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Value" aria-label="Last name">
+              </div>
+            </div>
+          </div>
           
           <div class="mb-3">
             <label for="Dimension" class="form-label">Dimension</label>
@@ -25,29 +67,19 @@
           </div>
 
           <div class="mb-3">
-            <label for="Dimension" class="form-label">Block Index</label>
+            <label for="Dimension" class="form-label">Section</label>
             <select name="Block Index	" class="form-control" id="Block Index" formControlName="blockIndex">
-              <option value="1">Block Index 1</option>
-              <option value="2">Block Index	2</option>
-              <option value="3">Block Index	3</option>
-              <option value="4">Block Index	4</option>
-              <option value="5">Block Index	5</option>
+              <option value="1">Section 1</option>
+              <option value="2">Section	2</option>
+              <option value="3">Section	3</option>
+              <option value="4">Section 4</option>
+              <option value="5">Section	5</option>
             </select>
             <div *ngIf="submitted && f.blockIndex.errors"  class="text-danger">
-              <div *ngIf="f.blockIndex.errors.required">BlockIndex is required</div>
+              <div *ngIf="f.blockIndex.errors.required">Section is required</div>
             </div>
           </div>
-          <div class="mb-3">
-            <label for="Dimension" class="form-label">Type</label>
-            <select name="Block Index	" class="form-control" id="Block Index" formControlName="type">
-              <option value="employee">Employee</option>
-              <option value="learner">Learner</option>
-            </select>
-            <div *ngIf="submitted && f.type.errors"  class="text-danger">
-              <div *ngIf="f.type.errors.required">Type is required</div>
-            </div>
-          </div>
-
+          
           <div class="mb-3">
             <div *ngIf="submitted" class="invalid-feedback">
               Please Fill All Product Prices
