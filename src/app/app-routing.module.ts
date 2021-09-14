@@ -8,6 +8,7 @@ import { AddQuestionnairesComponent } from './_components/admin/questionnaires/a
 import { QuestionnairesComponent } from './_components/admin/questionnaires/questionnaires.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-questionnaire/frontend-questionnaire.component';
+import { ResultComponent } from './_components/frontend/result/result.component';
 
 const routes: Routes = [
   { path: 'admin', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   
   { path: '', component: FrontEndDashboardComponent},
   { path: 'questionnaires', component: FrontendQuestionnaireComponent },
+  { path: 'results', component: ResultComponent },
 
 ];
 

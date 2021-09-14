@@ -5,7 +5,6 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -28,6 +27,7 @@ import { ConfigurationComponent } from './_components/admin/configuration/config
 import { FrontendHeaderComponent } from './_components/frontend/frontend-header/frontend-header.component';
 import { FrontendFooterComponent } from './_components/frontend/frontend-footer/frontend-footer.component';
 import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-questionnaire/frontend-questionnaire.component';
+import { ResultComponent } from './_components/frontend/result/result.component';
 
 
 @NgModule({
@@ -44,6 +44,7 @@ import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-
     FrontendHeaderComponent,
     FrontendFooterComponent,
     FrontendQuestionnaireComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
