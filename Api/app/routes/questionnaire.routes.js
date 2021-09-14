@@ -26,9 +26,6 @@ module.exports = function (app) {
       check('blockIndex')
         .notEmpty()
         .withMessage('blockIndex is required'),
-      check('type')
-        .notEmpty()
-        .withMessage('type is required')
     ],
     controller.create
   );

@@ -1,6 +1,6 @@
 import { ApiService } from '../../../../_service/api.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/_service/alert.service';
 import { first } from 'rxjs/operators';
@@ -30,7 +30,28 @@ export class AddQuestionnairesComponent implements OnInit {
   formType: string = 'Add New';
   isValid: boolean = false;
   dimensionsList: any = [];
-
+  options: any = [
+    {
+      name: "Strongly Disagree",
+      value: "1"
+    },
+    {
+      name: "Disagree",
+      value: "2"
+    },
+    {
+      name: "Neutral",
+      value: "3"
+    },
+    {
+      name: "Agree",
+      value: "4"
+    },
+    {
+      name: "Strongly Agree",
+      value: "5"
+    }
+  ];
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -56,8 +77,11 @@ export class AddQuestionnairesComponent implements OnInit {
       questionnaire: ['', Validators.required],
       dimensionId: ['', Validators.required],
       blockIndex: ['', Validators.required],
-      type: ['', Validators.required]
+      options: this.createOptions(this.options),
+      values: this.createOptionsvalues(this.options)
+
     });
+    console.log(this.form.controls['options']);
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
@@ -65,12 +89,23 @@ export class AddQuestionnairesComponent implements OnInit {
   get f() {
     return this.form.controls;
   }
-
+  createOptions(input: any) {
+    const arr = input.map((i: any) => {
+      return new FormControl(i.name || false);
+    });
+    return new FormArray(arr);
+  }
+  createOptionsvalues(input: any) {
+    const arr = input.map((i: any) => {
+      return new FormControl(i.value || false);
+    });
+    return new FormArray(arr);
+  }
   onSubmit() {
     this.submitted = true;
     // reset alerts on submit
     this.alertService.clear();
-    console.log(this.form, this.form.invalid , this.isValid);
+    console.log(this.form);
     
     // stop here if form is invalid
     if (this.form.invalid) {
@@ -84,7 +119,7 @@ export class AddQuestionnairesComponent implements OnInit {
         .subscribe(
           (data) => {
             this.alertService.success(data.message);
-            this.router.navigate(['questionnaires']);
+            this.router.navigate(['admin/questionnaires']);
           },
           (error) => {
             this.alertService.error(error);
@@ -98,7 +133,7 @@ export class AddQuestionnairesComponent implements OnInit {
         .subscribe(
           (data) => {
             this.alertService.success(data.message);
-            this.router.navigate(['questionnaires']);
+            this.router.navigate(['admin/questionnaires']);
           },
           (error) => {
             this.alertService.error(error);
@@ -117,7 +152,8 @@ export class AddQuestionnairesComponent implements OnInit {
           this.f.questionnaire.setValue(data.questionnaire.questionnaire);
           this.f.dimensionId.setValue(dimensionId);
           this.f.blockIndex.setValue(data.questionnaire.blockIndex);
-          this.f.type.setValue(data.questionnaire.type);
+          this.f.options.setValue(data.questionnaire.options);
+          this.f.value.setValue(data.questionnaire.value);
         },
         (error) => {
           this.alertService.error(error);

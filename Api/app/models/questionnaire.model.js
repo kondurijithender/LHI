@@ -4,17 +4,16 @@ const Questionnaire = mongoose.model(
   "Questionnaire",
   new mongoose.Schema({
     questionnaire: String,
-    dimensionId: [
+    dimensionId: String,
+    dimension: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Dimension"
       }
     ],
     blockIndex: Number,
-    type: {
-      type: String,
-      enum: ["employee", "learner"]
-  }
+    options: [],
+    values: []
   })
 );
 
