@@ -31,6 +31,7 @@ import { ResultComponent } from './_components/frontend/result/result.component'
 import { AddIndustryComponent } from './_components/admin/configuration/add_industry/add.component';
 import { AddDimensionComponent } from './_components/admin/configuration/add_dimension/add.component';
 import { FrontEndDashboardComponent } from './_components/frontend/dashboard/dashboard.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { FrontEndDashboardComponent } from './_components/frontend/dashboard/das
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgApexchartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
