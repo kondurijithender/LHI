@@ -32,6 +32,7 @@ export class FrontendQuestionnaireComponent implements OnInit {
   getQuestionnaires() {
     this.apiService.readAll('questionnaire').subscribe((data) => {
       this.questionnairesList = data.questionnaires;
+      console.log(this.questionnairesList);
     });
   }
   onSubmit() {

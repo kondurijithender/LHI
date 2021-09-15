@@ -47,7 +47,7 @@ export class ResultComponent implements OnInit {
         },
       ],
       chart: {
-        height: 350,
+        height: 390,
         type: 'radar',
       },
       dataLabels: {
@@ -55,7 +55,7 @@ export class ResultComponent implements OnInit {
       },
       plotOptions: {
         radar: {
-          size: 140,
+          size: 160,
           polygons: {
             strokeColor: '#e9e9e9',
             fill: {
@@ -63,9 +63,6 @@ export class ResultComponent implements OnInit {
             },
           },
         },
-      },
-      title: {
-        text: 'Radar with Polygon Fill',
       },
       colors: ['#FF4560'],
       markers: {
