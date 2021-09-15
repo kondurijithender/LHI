@@ -1,9 +1,7 @@
 import { ApiService } from '../../../../_service/api.service';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -11,16 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/_service/alert.service';
 import { first } from 'rxjs/operators';
 
-class productdata {
-  productId: string;
-  price: string;
-  name: string;
-}
-
-class productdataNew {
-  productId: string;
-  price: number;
-}
 
 @Component({
   selector: 'app-dimension',

@@ -29,7 +29,7 @@
           <div class="mb-3">
             <label for="Dimension" class="form-label">Dimension</label>
             <select name="Dimension" class="form-control" id="Dimension" formControlName="dimensionId">
-              <option value="Dimension 1" *ngFor="let item of dimensionsList; let i = index" [value]="item._id">{{item.name}}</option>
+              <option *ngFor="let item of dimensionsList; let i = index" [value]="item._id">{{item.name}}</option>
             </select>
             <div *ngIf="submitted && f.dimensionId.errors"  class="text-danger">
               <div *ngIf="f.dimensionId.errors.required">Dimension is required</div>

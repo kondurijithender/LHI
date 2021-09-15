@@ -100,7 +100,7 @@ exports.survey = (req, res, next) => {
 
   s.save((err, user) => {
     if (err) res.status(500).send({ error: true, message: err });
-    res.send({ message: "Survey was created successfully!" });
+    res.send({ message: s._id });
   });
 
 };

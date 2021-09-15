@@ -10,7 +10,6 @@ module.exports = function (app) {
   );
   app.get(
     "/api/questionnaire",
-    authJwt.verifyToken,
     controller.getAll
   );
   app.post(
@@ -54,8 +53,7 @@ module.exports = function (app) {
     controller.delete
   );
   app.post(
-    "/api/suvey",
-    authJwt.verifyToken,
+    "/api/survey",
     controller.survey
   );
 };

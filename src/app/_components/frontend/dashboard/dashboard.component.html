@@ -1,31 +1,85 @@
 <section class="container">
-    <div>
-        <form class="user-form">
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Your Name">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Designation">
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Company Name">
-            </div>
-            <div class="mb-3">
-                <select name="Business Sector" id="" class="form-control" >
-                    <option value="Business Sector">Business Sector</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <input type="mail" class="form-control" placeholder="Official Mail ID">
-            </div>
-            <div class="mb-3">
-                <button type="submit" (click)="validateForm()" class="btn btn-primary">Go to Questionnaire</button>
-            </div>
-
-        </form>
-    </div>
-    <header>
-        <h3>Lorem ipsum Integrations heading</h3>
-        <p>Leading financial institutions attract, develop and retain high performing talent with EdCast.</p>
-    </header>
+  <div>
+    <form class="user-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Your Name"
+          formControlName="name"
+        />
+        <div *ngIf="submitted && f.name.errors" class="text-danger">
+          <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Designation"
+          formControlName="designation"
+        />
+        <div *ngIf="submitted && f.designation.errors" class="text-danger">
+          <div *ngIf="f.designation.errors.required">
+            Designation is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Company Name"
+          formControlName="companyName"
+        />
+        <div *ngIf="submitted && f.companyName.errors" class="text-danger">
+          <div *ngIf="f.companyName.errors.required">
+            Company Name is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <select name="Business Sector" id="" class="form-control" formControlName="businessSector">
+          <option *ngFor="let item of dimensionsList; let i = index" [value]="item._id">{{item.name}}</option>
+        </select>
+        <div *ngIf="submitted && f.businessSector.errors" class="text-danger">
+          <div *ngIf="f.businessSector.errors.required">
+            Business Sector is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <input
+          type="mail"
+          class="form-control"
+          placeholder="Official Mail ID"
+          formControlName="email"
+        />
+        <div *ngIf="submitted && f.email.errors" class="text-danger">
+          <div *ngIf="f.email.errors.required">
+            Email is required
+          </div>
+          <div *ngIf="f.email.errors.email">
+            Enter Valid Email Address
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <button type="submit" [disabled]="loading" class="btn btn-primary">
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span
+          >Go to Questionnaire
+        </button>
+      </div>
+    </form>
+  </div>
+  <header>
+    <h3>Lorem ipsum Integrations heading</h3>
+    <p>
+      Leading financial institutions attract, develop and retain high performing
+      talent with EdCast.
+    </p>
+  </header>
 </section>

@@ -6,7 +6,6 @@ module.exports = function (app) {
 
   app.get(
     "/api/dimension",
-    authJwt.verifyToken,
     controller.getAll
   );
   app.post(
