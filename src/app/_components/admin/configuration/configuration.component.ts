@@ -49,5 +49,19 @@ export class ConfigurationComponent implements OnInit {
   updateValue(item: any,key: any, event: any) {
     item[key] = parseInt(event.target.value);
   }
+  delIndustry(id:string):void{
+    if(confirm("Conform delete Industry")){
+      this._api.deleteIndex("industry",id).subscribe(data=>{
+        this.getIndustry();
+      });
+    }
+  }
+  delDimension(id:string):void{
+    if(confirm("Conform delete Dimension")){
+      this._api.deleteIndex("dimension",id).subscribe(data=>{
+        this.getDimensions();
+      });
+    }
+  }
 
 }

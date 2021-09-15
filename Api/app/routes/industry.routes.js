@@ -9,9 +9,24 @@ module.exports = function (app) {
     authJwt.verifyToken,
     controller.getAll
   );
+  app.post(
+    "/api/industry",
+    authJwt.verifyToken,
+    [
+      check('name')
+        .notEmpty()
+        .withMessage('industry is required')
+    ],
+    controller.create
+  );
   app.put(
     "/api/industry/:id",
     authJwt.verifyToken,
     controller.update
+  );
+  app.delete(
+    "/api/industry/:id",
+    authJwt.verifyToken,
+    controller.delete
   );
 };

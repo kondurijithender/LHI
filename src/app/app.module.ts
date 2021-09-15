@@ -28,6 +28,8 @@ import { FrontendHeaderComponent } from './_components/frontend/frontend-header/
 import { FrontendFooterComponent } from './_components/frontend/frontend-footer/frontend-footer.component';
 import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-questionnaire/frontend-questionnaire.component';
 import { ResultComponent } from './_components/frontend/result/result.component';
+import { AddIndustryComponent } from './_components/admin/configuration/add_industry/add.component';
+import { AddDimensionComponent } from './_components/admin/configuration/add_dimension/add.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { ResultComponent } from './_components/frontend/result/result.component'
     QuestionnairesComponent,
     AddQuestionnairesComponent,
     ConfigurationComponent,
+    AddIndustryComponent,
+    AddDimensionComponent,
     FrontendHeaderComponent,
     FrontendFooterComponent,
     FrontendQuestionnaireComponent,

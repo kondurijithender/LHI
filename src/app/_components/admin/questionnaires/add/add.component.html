@@ -5,7 +5,7 @@
     <div class="add-new-distributor agrisoft-forms">
       <div class="form-section row">
         <form class="g-3 col-6" [formGroup]="form" (ngSubmit)="onSubmit()">
-          
+
           <div class="mb-3">
             <label for="Question" class="form-label">Question</label>
             <textarea class="form-control" id="Question" placeholder="Type Your Question" rows="3" formControlName="questionnaire"></textarea>
@@ -13,7 +13,7 @@
               <div *ngIf="f.questionnaire.errors.required">Questionnaire is required</div>
             </div>
           </div>
-          
+
           <div class="mb-3" formArrayName="options" *ngFor="let item of options; let i=index;">
             <div class="row">
               <div class="col-6">
@@ -24,12 +24,11 @@
               </div>
             </div>
           </div>
-         
-          
+
+
           <div class="mb-3">
             <label for="Dimension" class="form-label">Dimension</label>
             <select name="Dimension" class="form-control" id="Dimension" formControlName="dimensionId">
-              <option value="0">Other</option>
               <option value="Dimension 1" *ngFor="let item of dimensionsList; let i = index" [value]="item._id">{{item.name}}</option>
             </select>
             <div *ngIf="submitted && f.dimensionId.errors"  class="text-danger">
@@ -50,7 +49,7 @@
               <div *ngIf="f.blockIndex.errors.required">Section is required</div>
             </div>
           </div>
-          
+
           <div class="mb-3">
             <div *ngIf="submitted" class="invalid-feedback">
               Please Fill All Product Prices
@@ -68,4 +67,3 @@
       </div>
     </div>
   </section>
-  

@@ -1,0 +1,50 @@
+<header>
+  <h3 class="page-title">Add New Dimension</h3>
+</header>
+<section class="main-section">
+  <div class="add-new-distributor agrisoft-forms">
+    <div class="form-section row">
+      <form class="g-3 col-6" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="Question" class="form-label">Dimension</label>
+          <input
+            class="form-control"
+            id="Question"
+            placeholder="Add New Dimension"
+            rows="3"
+            formControlName="name"
+          >
+          <div *ngIf="submitted && f.name.errors" class="text-danger">
+            <div *ngIf="f.name.errors.required">
+              Dimension is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">Score</label>
+          <input
+            class="form-control"
+           formControlName="score"
+           type="number"
+          >
+          <div *ngIf="submitted && f.score.errors" class="text-danger">
+            <div *ngIf="f.score.errors.required">
+              Score is required
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <button [disabled]="loading" class="btn btn-primary btn-block">
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            {{ formType === "Add New" ? "Add New" : "Update" }}
+          </button>
+        </div>
+      </form>
+      <div class="col-6"></div>
+    </div>
+  </div>
+</section>

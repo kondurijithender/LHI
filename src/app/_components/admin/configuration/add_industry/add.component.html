@@ -1,0 +1,155 @@
+<header>
+  <h3 class="page-title">Add New Industry</h3>
+</header>
+<section class="main-section">
+  <div class="add-new-distributor agrisoft-forms">
+    <div class="form-section row">
+      <form class="g-3 col-6" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="Question" class="form-label">Industry</label>
+          <input
+            class="form-control"
+            id="Question"
+            placeholder="Add New Industry"
+            rows="3"
+            formControlName="name"
+          >
+          <div *ngIf="submitted && f.name.errors" class="text-danger">
+            <div *ngIf="f.name.errors.required">
+              Industry is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">Companies</label>
+          <input
+            class="form-control"
+            formControlName="companies"
+            type="number"
+          >
+          <div *ngIf="submitted && f.companies.errors" class="text-danger">
+            <div *ngIf="f.companies.errors.required">
+              companies is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D1</label>
+          <input
+            class="form-control"
+            formControlName="D1"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D1.errors" class="text-danger">
+            <div *ngIf="f.D1.errors.required">
+              D1 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D2</label>
+          <input
+            class="form-control"
+            formControlName="D2"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D2.errors" class="text-danger">
+            <div *ngIf="f.D2.errors.required">
+              D2 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D3</label>
+          <input
+            class="form-control"
+            formControlName="D3"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D3.errors" class="text-danger">
+            <div *ngIf="f.D3.errors.required">
+              D3 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D4</label>
+          <input
+            class="form-control"
+            formControlName="D4"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D4.errors" class="text-danger">
+            <div *ngIf="f.D4.errors.required">
+              D4 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D5</label>
+          <input
+            class="form-control"
+            formControlName="D5"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D5.errors" class="text-danger">
+            <div *ngIf="f.D5.errors.required">
+              D5 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D6</label>
+          <input
+            class="form-control"
+            formControlName="D6"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D6.errors" class="text-danger">
+            <div *ngIf="f.D6.errors.required">
+              D6 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D7</label>
+          <input
+            class="form-control"
+            formControlName="D7"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D7.errors" class="text-danger">
+            <div *ngIf="f.D7.errors.required">
+              D7 is required
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="Question" class="form-label">D8</label>
+          <input
+            class="form-control"
+            formControlName="D8"
+            type="number"
+          >
+          <div *ngIf="submitted && f.D8.errors" class="text-danger">
+            <div *ngIf="f.D8.errors.required">
+              D8 is required
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <button [disabled]="loading" class="btn btn-primary btn-block">
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            {{ formType === "Add New" ? "Add New" : "Update" }}
+          </button>
+        </div>
+      </form>
+      <div class="col-6"></div>
+    </div>
+  </div>
+</section>

@@ -9,6 +9,16 @@ module.exports = function (app) {
     authJwt.verifyToken,
     controller.getAll
   );
+  app.post(
+    "/api/dimension",
+    authJwt.verifyToken,
+    [
+      check('name')
+        .notEmpty()
+        .withMessage('dimension is required')
+    ],
+    controller.create
+  );
   app.put(
     "/api/dimension/:id",
     authJwt.verifyToken,
@@ -18,5 +28,10 @@ module.exports = function (app) {
         .withMessage('score is required')
     ],
     controller.update
+  );
+  app.delete(
+    "/api/dimension/:id",
+    authJwt.verifyToken,
+    controller.delete
   );
 };

@@ -9,6 +9,8 @@ import { QuestionnairesComponent } from './_components/admin/questionnaires/ques
 import { AuthGuard } from './_helpers/auth.guard';
 import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-questionnaire/frontend-questionnaire.component';
 import { ResultComponent } from './_components/frontend/result/result.component';
+import { AddIndustryComponent } from './_components/admin/configuration/add_industry/add.component';
+import { AddDimensionComponent } from './_components/admin/configuration/add_dimension/add.component';
 
 const routes: Routes = [
   { path: 'admin', component: LoginComponent },
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'admin/questionnaires', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   { path: 'admin/add-questionnaire', component: AddQuestionnairesComponent, canActivate: [AuthGuard] },
   { path: 'admin/configuration', component: ConfigurationComponent, canActivate: [AuthGuard]},
-  
+  { path: 'admin/add-industry', component: AddIndustryComponent, canActivate: [AuthGuard] },
+  { path: 'admin/add-dimension', component: AddDimensionComponent, canActivate: [AuthGuard] },
+
   { path: '', component: FrontEndDashboardComponent},
   { path: 'questionnaires', component: FrontendQuestionnaireComponent },
   { path: 'results', component: ResultComponent },

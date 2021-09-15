@@ -69,7 +69,7 @@ export class AddQuestionnairesComponent implements OnInit {
 
   }
 
-  
+
 
   ngOnInit() {
     this.loadDimensions();
@@ -106,7 +106,7 @@ export class AddQuestionnairesComponent implements OnInit {
     // reset alerts on submit
     this.alertService.clear();
     console.log(this.form);
-    
+
     // stop here if form is invalid
     if (this.form.invalid) {
       return;

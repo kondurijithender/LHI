@@ -4,8 +4,7 @@ const Questionnaire = mongoose.model(
   "Questionnaire",
   new mongoose.Schema({
     questionnaire: String,
-    dimensionId: String,
-    dimension: [
+    dimensionId: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Dimension"
