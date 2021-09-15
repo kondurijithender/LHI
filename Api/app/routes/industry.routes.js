@@ -6,7 +6,6 @@ module.exports = function (app) {
 
   app.get(
     "/api/industry",
-    authJwt.verifyToken,
     controller.getAll
   );
   app.post(

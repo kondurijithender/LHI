@@ -81,6 +81,13 @@ exports.getAll = async (req, res) => {
     res.status(500).send({ error: true, message: err });
   }
 };
+exports.getSurvey = async (req, res, next) => {
+  const survey = await Survey.findById(req.query.id).populate("businessSector").populate("dimensionId");
+  // validate
+  if (!survey) res.status(400).send({ error: true, message: 'Survey not found' });
+  res.status(200).send({ survey });
+}
+
 exports.survey = (req, res, next) => {
   const { name, designation, companyName, businessSector, email, questionnaires } = req.body
   // Finds the validation errors in this request and wraps them in an object with handy functions
@@ -88,7 +95,6 @@ exports.survey = (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ error: true, message: errors.array() })
   }
-
   const s = new Survey({
     name,
     designation,

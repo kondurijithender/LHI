@@ -48,10 +48,10 @@ export class FrontEndDashboardComponent implements OnInit {
   }
   loadBusinessSectors() {
     this.apiService
-    .readAll('dimension')
+    .readAll('industry')
     .subscribe(
       (data) => {
-        this.dimensionsList = data.dimensions;
+        this.dimensionsList = data.industries.sort((a: any, b: any) => a.name.localeCompare(b.name));;
       },
       (error) => {
         this.loading = false;

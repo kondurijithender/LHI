@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ApiService } from '../../../_service/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as _ from 'lodash';
 import {
   ApexAxisChartSeries,
   ApexTitleSubtitle,
@@ -35,15 +38,33 @@ export type ChartOptions = {
 export class ResultComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public radarChartOptions: Partial<ChartOptions> | any;
-  public barChartOptions: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions: Partial<ChartOptions> | any;
   public dChartOptions: Partial<ChartOptions> | any;
+  surveyDetails: any;
+  id: string;
+  dimensionsList: any;
+  industryList: any;
+  indiaIndex: any = 0;
+  finalDimensionList: any;
 
-  constructor() {
+  constructor(
+    private apiService: ApiService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.radarChartOptions = {
       series: [
         {
-          name: 'Series 1',
-          data: [20, 100, 40, 30, 50, 80, 33],
+          name: 'India',
+          data: [25, 89, 98, 74, 95, 46, 78, 95],
+        },
+        {
+          name: 'Series 2',
+          data: [10, 89, 50, 74, 95, 46, 78, 95],
+        },
+        {
+          name: 'Series 3',
+          data: [90, 10, 55, 10, 30, 70, 10, 15],
         },
       ],
       chart: {
@@ -79,44 +100,27 @@ export class ResultComponent implements OnInit {
         },
       },
       xaxis: {
-        categories: [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-        ],
-      },
-      yaxis: {
-        tickAmount: 7,
-        labels: {
-          formatter: function (val: any, i: any) {
-            if (i % 2 === 0) {
-              return val;
-            } else {
-              return '';
-            }
-          },
-        },
+        categories: [],
       },
     };
-    this.barChartOptions = {
+    this.dimensionScoreChartOptions = {
       series: [
         {
-          name: 'serie1',
-          data: [44, 55, 41, 64, 22, 43, 21],
+          name: 'India',
+          data: [25, 89, 98, 74, 95, 46, 78, 95],
         },
         {
-          name: 'serie2',
-
-          data: [53, 32, 33, 52, 13, 44, 32],
+          name: 'Series 2',
+          data: [10, 89, 50, 74, 95, 46, 78, 95],
+        },
+        {
+          name: 'Series 3',
+          data: [90, 10, 55, 10, 30, 70, 10, 15],
         },
       ],
       chart: {
         type: 'bar',
-        height: 430,
+        height: 750,
       },
       plotOptions: {
         bar: {
@@ -165,5 +169,108 @@ export class ResultComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: any) => {
+      this.id = params.id;
+      if (this.id) {
+        this.loadDimensions();
+        this.loadIndustry();
+      }
+    });
+  }
+  loadSurvey() {
+    this.apiService.readAllById('survey', this.id).subscribe(
+      (data) => {
+        let result = data.survey;
+        this.surveyDetails = data.survey;
+        let dimensionList = result.questionnaires.map((res: any) => {
+          let obj: any = {};
+          obj['q_score'] = parseInt(res.values);
+          obj['dimension'] = res.dimensionId[0].name;
+          obj['_id'] = res.dimensionId[0]._id;
+          obj['d_score'] = parseInt(res.dimensionId[0].score);
+          return obj;
+        });
+
+        let dAvg = dimensionList.reduce((group: any, d: any) => {
+          if (!group[d.dimension]) {
+            group[d.dimension] = { ...d, count: 1 };
+            return group;
+          }
+          group[d.dimension].q_score += d.q_score;
+          group[d.dimension].count += 1;
+          return group;
+        }, {});
+        this.finalDimensionList = Object.keys(dAvg).map(function (x) {
+          const item = dAvg[x];
+          return {
+            dimension: item.dimension,
+            total: Math.round((item.q_score / item.count) * 20),
+            d_score: item.d_score,
+          };
+        });
+        const dimensionValues = this.finalDimensionList.map(
+          (res: any) => res.d_score
+        );
+        const scoreValues = this.finalDimensionList.map(
+          (res: any) => res.total
+        );
+        const industryValues = Object.values(
+          _.omit(
+            this.industryList.find(
+              (res: any) => res._id === this.surveyDetails.businessSector[0]._id
+            ),
+            ['companies', 'name', '_id']
+          )
+        );
+        console.log('dimensionValues', dimensionValues);
+        console.log('dimensionValues', dimensionValues);
+        console.log('dimensionValues', dimensionValues);
+        this.dimensionScoreChartOptions['series'][1].name =
+          this.surveyDetails.companyName;
+
+        this.dimensionScoreChartOptions['series'][2].name =
+          this.surveyDetails.businessSector[0].name;
+        this.dimensionScoreChartOptions['xaxis']['categories'] =
+          this.finalDimensionList.map((res: any) => res.dimension);
+        console.log(this.dimensionScoreChartOptions['series']);
+
+        this.radarChartOptions['series'][1].name =
+          this.surveyDetails.companyName;
+        this.radarChartOptions['series'][2].name =
+          this.surveyDetails.businessSector[0].name;
+        this.radarChartOptions['xaxis']['categories'] =
+          this.finalDimensionList.map((res: any) => res.dimension);
+      },
+      (error) => {
+        this.router.navigate(['/']);
+      }
+    );
+  }
+  loadDimensions() {
+    this.apiService.readAll('dimension').subscribe(
+      (data) => {
+        this.dimensionsList = data.dimensions.sort((a: any, b: any) =>
+          a.name.localeCompare(b.name)
+        );
+        this.indiaIndex = Math.round(
+          this.dimensionsList
+            .map((res: any) => res.score)
+            .reduce((a: any, b: any) => a + b) / this.dimensionsList.length
+        );
+      },
+      (error) => {}
+    );
+  }
+  loadIndustry() {
+    this.apiService.readAll('industry').subscribe(
+      (data) => {
+        this.industryList = data.industries.sort((a: any, b: any) =>
+          a.name.localeCompare(b.name)
+        );
+        this.loadSurvey();
+      },
+      (error) => {}
+    );
+  }
 }

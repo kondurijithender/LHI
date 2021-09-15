@@ -23,6 +23,7 @@
                         <th width="10%">D6</th>
                         <th width="10%">D7</th>
                         <th width="10%">D8</th>
+                        <th width="10%">Industry LHI (Rounded)</th>
                         <th width="15%">Action</th>
                       </tr>
                     </thead>
@@ -38,6 +39,7 @@
                         <td><input class="form-control" type="number" value="{{item.D6}}" [readonly]="i != selectedIndex" (keyup)="updateValue(item, 'D6', $event)"></td>
                         <td><input class="form-control" type="number" value="{{item.D7}}" [readonly]="i != selectedIndex" (keyup)="updateValue(item, 'D7', $event)"></td>
                         <td><input class="form-control" type="number" value="{{item.D8}}" [readonly]="i != selectedIndex" (keyup)="updateValue(item, 'D8', $event)"></td>
+                        <td><span>{{avgSum(item)}}</span></td>
                         <td class="Actions">
                             <button type="button" class="btn" [hidden]="DimentionEdit" (click)="editable(i)" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -60,7 +62,7 @@
                       </tr>
                       <tr>
                         <th>Total</th>
-                        <td>123</td>
+                        <td>124</td>
                         <td colspan="9"></td>
                       </tr>
                     </tbody>

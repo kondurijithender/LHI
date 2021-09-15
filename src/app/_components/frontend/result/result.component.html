@@ -20,28 +20,24 @@
           <h4 class="chart-box-head">Ovarall LHI Scoring</h4>
           <div>
             <ul class="ovarall-scorring-list">
-              <li>
-                <p>Ovarall Scoring 1</p>
-                <span>12</span>
+               <li>
+                <p>INDIA INDEX</p>
+                <span>{{indiaIndex}}</span>
               </li>
               <li>
-                <p>Ovarall Scoring 1</p>
-                <span>23</span>
-              </li>
-              <li>
-                <p>Ovarall Scoring 1</p>
+                <p>{{surveyDetails.companyName}}</p>
                 <span>123</span>
               </li>
               <li>
-                <p>Ovarall Scoring 1</p>
+                <p>{{surveyDetails.businessSector[0].name}}</p>
                 <span>23</span>
               </li>
               <li>
-                <p>Ovarall Scoring 1</p>
+                <p>Gap with Index</p>
                 <span>15</span>
               </li>
               <li>
-                <p>Ovarall Scoring 1</p>
+                <p>Gap with Sector</p>
                 <span>34</span>
               </li>
             </ul>
@@ -77,12 +73,12 @@
       <div class="score-dimentions chart-box">
         <h4 class="chart-box-head">Dimension Score Table</h4>
         <apx-chart
-          [series]="barChartOptions.series"
-          [chart]="barChartOptions.chart"
-          [dataLabels]="barChartOptions.dataLabels"
-          [plotOptions]="barChartOptions.plotOptions"
-          [xaxis]="barChartOptions.xaxis"
-          [stroke]="barChartOptions.stroke"
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
         ></apx-chart>
       </div>
     </div>

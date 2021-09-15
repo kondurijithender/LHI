@@ -52,6 +52,10 @@ module.exports = function (app) {
     authJwt.verifyToken,
     controller.delete
   );
+  app.get(
+    "/api/survey",
+    controller.getSurvey
+  );
   app.post(
     "/api/survey",
     controller.survey

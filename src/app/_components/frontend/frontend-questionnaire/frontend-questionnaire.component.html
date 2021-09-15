@@ -37,7 +37,7 @@
         <ul *ngIf="item.options.length && item.values.length">
           <li *ngFor="let op of item.options; let i = index">
             <label for="{{qNo}}{{ item.values[i] }}">
-              <input type="radio" name="block{{item.blockIndex}}-q{{qNo}}" id="{{qNo}}{{ item.values[i] }}" (change)="selectedOption(i, op, item.values[i] )"/>{{op}}
+              <input type="radio" name="block{{item.blockIndex}}-q{{qNo}}" id="{{qNo}}{{ item.values[i] }}" (change)="selectedOption(qNo, op, item.values[i] )"/>{{op}}
             </label>
           </li>
         </ul>
