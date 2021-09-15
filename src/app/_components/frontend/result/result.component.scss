@@ -74,7 +74,7 @@
 .chart-box{
     display: block;
     width: 100%;
-    min-height: 200px;
+    min-height: 100px;
     background-color: #ffffff;
     border-radius: 25px;
     box-shadow: 0px 10px 15px #00000029;
@@ -225,6 +225,59 @@
             color: #ffffff;
             font-size: 24px;
             font-weight: 500;
+        }
+    }
+    .footer-heading{
+        margin-top: 100px;
+        padding: 50px !important;
+        display: flex;
+        align-items: center;
+        svg{
+            flex: 1;
+
+        }
+        span{
+            flex: 1;
+            font-weight: bold;
+            color: #454560;
+            font-size: 28px;
+            border-left: solid thin #454560;
+            text-align: center;
+        }
+    }
+    .footer-block{
+        display: block;
+        background-color: #454560;
+        padding: 20px 50px;
+        border-radius: 100px;
+        color: #ffffff;
+        font-size: 28px;
+        text-align: center;
+    }
+    .footer-points{
+        margin: 100px 0;
+        .footer-point{
+            display: flex;
+            align-items: center;
+            margin: 25px;
+            span{
+                font-size: 40px;
+                font-weight: 500;
+                background-color: #56e7ce;
+                width: 100px;
+                padding: 16px 0;
+                text-align: center;
+                height: 100px;
+                color: #ffffff;
+                border-radius: 100%;
+                margin-right: 30px;
+            }
+            p{
+                margin: 0;
+                font-size: 25px;
+                font-weight: 500;
+                color: #454560;
+            }
         }
     }
 }
