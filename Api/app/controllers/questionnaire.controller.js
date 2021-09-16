@@ -87,6 +87,26 @@ exports.getSurvey = async (req, res, next) => {
   if (!survey) res.status(400).send({ error: true, message: 'Survey not found' });
   res.status(200).send({ survey });
 }
+exports.getAllSurvey = async (req, res) => {
+  try {
+    const { type } = req.query;
+    let condition = {};
+    Survey.find(condition)
+    .exec((err, survey) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send({ error: true, message: err });
+        return;
+      }
+      res.status(200).send({
+        survey,
+      });
+    });
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({ error: true, message: err });
+  }
+};
 
 exports.survey = (req, res, next) => {
   const { name, designation, companyName, businessSector, email, questionnaires } = req.body

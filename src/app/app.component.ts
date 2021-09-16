@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
   }
 
   isAccessTocket():boolean{
-    if(this.currentUser && this.currentUser.accessToken)
+    if(this.currentUser && this.currentUser.accessToken && this.router.url.indexOf('/admin') > -1)
     {
       return true;
     } else {

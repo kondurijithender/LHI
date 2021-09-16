@@ -56,6 +56,10 @@ module.exports = function (app) {
     "/api/survey",
     controller.getSurvey
   );
+  app.get(
+    "/api/survey-list",
+    controller.getAllSurvey
+  );
   app.post(
     "/api/survey",
     controller.survey

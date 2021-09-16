@@ -1,3 +1,4 @@
+import { SurveyComponent } from './_components/admin/survey/survey.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from "../app/_components/admin/dashboard/dashboard.component";
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'admin/configuration', component: ConfigurationComponent, canActivate: [AuthGuard]},
   { path: 'admin/add-industry', component: AddIndustryComponent, canActivate: [AuthGuard] },
   { path: 'admin/add-dimension', component: AddDimensionComponent, canActivate: [AuthGuard] },
-
+  { path: 'admin/users', component: SurveyComponent, canActivate: [AuthGuard] },
+  
   { path: '', component: FrontEndDashboardComponent},
   { path: 'questionnaires', component: FrontendQuestionnaireComponent },
   { path: 'results', component: ResultComponent },
