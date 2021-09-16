@@ -13,11 +13,11 @@
     </div>
     <div class="col-3"></div>
   </div>
-
-  <section class="table-section">
+  <section class="table-section" #QuestionsHead>
     <p>Please answer following questions</p>
+
     <div class="questionnarie-table">
-      <div class="question" *ngFor="let item of questionnairesList; let qNo = index">
+      <div class="question" *ngFor="let item of questionnairesList; let qNo = index" id="Block{{item.blockIndex}}" [hidden]="currentIndex != item.blockIndex">
         <div class="qs-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,13 +44,24 @@
       </div>
     </div>
     <div class="mb-3">
-      <button type="submit" (click)="onSubmit()" class="btn btn-primary">
-        <span
-          *ngIf="loading"
-          class="spinner-border spinner-border-sm mr-1"
-        ></span>
-        Submit
-      </button>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="changeList($event, QuestionsHead, 0)" [hidden]="currentIndex == 1" class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+          Back
+        </button>
+        <button type="button" (click)="changeList($event, QuestionsHead, 1)" [hidden]="currentIndex == 5" class="btn">
+          Next
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+          </svg>
+        </button>
+        <button type="button" [hidden]="currentIndex != 5" (click)="onSubmit()"  class="btn">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+        </button>
+      </div>
     </div>
   </section>
 </div>

@@ -39,7 +39,8 @@
         </div>
       </div>
       <div class="mb-3">
-        <select name="Business Sector" id="" class="form-control" formControlName="businessSector">
+        <select name="Business Sector" id="" class="form-control" placeholder="Business Sector" formControlName="businessSector">
+          <option value="" disabled selected>Select Business Sector</option>
           <option *ngFor="let item of dimensionsList; let i = index" [value]="item._id">{{item.name}}</option>
         </select>
         <div *ngIf="submitted && f.businessSector.errors" class="text-danger">

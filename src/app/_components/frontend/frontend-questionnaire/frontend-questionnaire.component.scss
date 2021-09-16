@@ -78,4 +78,20 @@
             text-align: center;
         }
     }
+    
+    .btn-group{
+        .btn{
+            padding: 10px 40px;
+            border-radius: 50px;
+            background-color: #454560;
+            color: #ffffff;
+            margin: 0 20px;
+            svg{
+                vertical-align: middle;
+                position: relative;
+                top: -1px;
+                padding: 0 5px;
+            }
+        }
+    }
 }

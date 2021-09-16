@@ -14,6 +14,9 @@ export class FrontendQuestionnaireComponent implements OnInit {
   questionnairesList: any;
   loading = false;
   submitted = false;
+  BlockIndexList: any;
+  currentIndex: any = 1;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -34,6 +37,14 @@ export class FrontendQuestionnaireComponent implements OnInit {
       this.questionnairesList = data.questionnaires;
       console.log(this.questionnairesList);
     });
+  }
+  changeList(event: any, el: HTMLElement, index: number)
+  {
+    if (index)
+      this.currentIndex++
+    else
+      this.currentIndex--
+    el.scrollIntoView()
   }
   onSubmit() {
     this.submitted = true;

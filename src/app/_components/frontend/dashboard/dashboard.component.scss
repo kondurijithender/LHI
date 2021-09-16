@@ -31,6 +31,12 @@
         min-height: 200px;
         box-shadow: 0px 8px 15px #00000029;
         border-radius: 50px;
+        
+        .text-danger{
+            text-align: left;
+            line-height: 2;
+            padding: 0 25px;
+        }
 
         input, select{
             width: 100%;
