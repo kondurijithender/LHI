@@ -47,6 +47,12 @@
                 &:nth-child(5){
                     background-color: #f9a992;
                 }
+                &.nagitive{
+                    background-color: #f9a992;
+                }
+                &.positive{
+                    background-color: #acda99;
+                }
                 p{
                     font-size: 22px;
                     font-weight: 500;
