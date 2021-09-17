@@ -25,20 +25,20 @@
                 <span>{{indiaIndex}}</span>
               </li>
               <li>
-                <p>{{surveyDetails.companyName}}</p>
-                <span>123</span>
+                <p>{{surveyDetails?.companyName}}</p>
+                <span>{{companyAvgScore}}</span>
               </li>
               <li>
-                <p>{{surveyDetails.businessSector[0].name}}</p>
-                <span>23</span>
+                <p>{{surveyDetails?.businessSector[0].name}}</p>
+                <span>{{avgScore(surveyDetails?.businessSector[0])}}</span>
               </li>
-              <li>
+              <li [class]="{'positive-value' : (indiaIndex - companyAvgScore) > 0, 'negative-value' : (indiaIndex - companyAvgScore) < 0}">
                 <p>Gap with Index</p>
-                <span>15</span>
+                <span>{{ indiaIndex - companyAvgScore }}</span>
               </li>
-              <li>
+              <li [class]="{'positive-value' : (companyAvgScore - avgScore(surveyDetails?.businessSector[0])) > 0, 'negative-value' : (companyAvgScore - avgScore(surveyDetails?.businessSector[0])) < 0}">
                 <p>Gap with Sector</p>
-                <span>34</span>
+                <span>{{ companyAvgScore - avgScore(surveyDetails?.businessSector[0])}}</span>
               </li>
             </ul>
           </div>

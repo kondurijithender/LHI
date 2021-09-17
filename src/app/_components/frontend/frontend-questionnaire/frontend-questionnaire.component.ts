@@ -29,6 +29,8 @@ export class FrontendQuestionnaireComponent implements OnInit {
       this.surveyDetails = JSON.parse(
         localStorage.getItem('surveyDetails') || '{}'
       );
+    } else {
+      this.router.navigate(['/']);
     }
     this.getQuestionnaires();
   }
@@ -49,6 +51,7 @@ export class FrontendQuestionnaireComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
+    console.log(this.questionnairesList);
     this.surveyDetails['questionnaires'] = this.questionnairesList;
     this.apiService
     .create('survey', this.surveyDetails)
@@ -65,7 +68,7 @@ export class FrontendQuestionnaireComponent implements OnInit {
   }
   selectedOption(index: any, option: any, value: any) {
     console.log(this.questionnairesList[index]);
-    this.questionnairesList[index]['options'] = option;
-    this.questionnairesList[index]['values'] = value;
+    this.questionnairesList[index]['selectedOption'] = option;
+    this.questionnairesList[index]['selectedvalue'] = value;
   }
 }

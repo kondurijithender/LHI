@@ -46,6 +46,7 @@ export class ResultComponent implements OnInit {
   industryList: any;
   indiaIndex: any = 0;
   finalDimensionList: any;
+  companyAvgScore: any = 0;
 
   constructor(
     private apiService: ApiService,
@@ -185,13 +186,12 @@ export class ResultComponent implements OnInit {
         this.surveyDetails = data.survey;
         let dimensionList = result.questionnaires.map((res: any) => {
           let obj: any = {};
-          obj['q_score'] = parseInt(res.values);
+          obj['q_score'] = parseInt(res.selectedvalue);
           obj['dimension'] = res.dimensionId[0].name;
           obj['_id'] = res.dimensionId[0]._id;
           obj['d_score'] = parseInt(res.dimensionId[0].score);
           return obj;
         });
-
         let dAvg = dimensionList.reduce((group: any, d: any) => {
           if (!group[d.dimension]) {
             group[d.dimension] = { ...d, count: 1 };
@@ -215,6 +215,7 @@ export class ResultComponent implements OnInit {
         const scoreValues = this.finalDimensionList.map(
           (res: any) => res.total
         );
+        this.companyAvgScore = Math.ceil(_.mean(scoreValues));
         const industryValues = Object.values(
           _.omit(
             this.industryList.find(
@@ -224,8 +225,8 @@ export class ResultComponent implements OnInit {
           )
         );
         console.log('dimensionValues', dimensionValues);
-        console.log('dimensionValues', dimensionValues);
-        console.log('dimensionValues', dimensionValues);
+        console.log('scoreValues', scoreValues);
+        console.log('industryValues', industryValues);
         this.dimensionScoreChartOptions['series'][1].name =
           this.surveyDetails.companyName;
 
@@ -233,8 +234,7 @@ export class ResultComponent implements OnInit {
           this.surveyDetails.businessSector[0].name;
         this.dimensionScoreChartOptions['xaxis']['categories'] =
           this.finalDimensionList.map((res: any) => res.dimension);
-        console.log(this.dimensionScoreChartOptions['series']);
-
+      
         this.radarChartOptions['series'][1].name =
           this.surveyDetails.companyName;
         this.radarChartOptions['series'][2].name =
@@ -272,5 +272,10 @@ export class ResultComponent implements OnInit {
       },
       (error) => {}
     );
+  }
+  avgScore(item: any){
+    let v = _.omit(item, ['_id', 'companies', 'name'])
+    let sumV = Object.values(v);
+    return Math.ceil(_.mean(sumV));
   }
 }
