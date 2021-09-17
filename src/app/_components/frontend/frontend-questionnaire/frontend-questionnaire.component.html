@@ -33,7 +33,7 @@
             />
           </svg>
         </div>
-        <p><b>{{qNo + 1}})</b> {{ item.questionnaire }}</p>
+        <p>{{ item.questionnaire }}</p>
         <ul *ngIf="item.options.length && item.values.length">
           <li *ngFor="let op of item.options; let i = index">
             <label for="{{qNo}}{{ item.values[i] }}">
