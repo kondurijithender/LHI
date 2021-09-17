@@ -14,8 +14,16 @@
     <div class="col-3"></div>
   </div>
   <section class="table-section" #QuestionsHead>
+    <div class="stepper-index">
+      <ul>
+        <li [ngClass]="{'active':currentIndex >= 1}">1</li>
+        <li [ngClass]="{'active':currentIndex >= 2}">2</li>
+        <li [ngClass]="{'active':currentIndex >= 3}">3</li>
+        <li [ngClass]="{'active':currentIndex >= 4}">4</li>
+        <li [ngClass]="{'active':currentIndex >= 5}">5</li>
+      </ul>
+    </div>
     <p>Please answer following questions</p>
-
     <div class="questionnarie-table">
       <div class="question" *ngFor="let item of questionnairesList; let qNo = index" id="Block{{item.blockIndex}}" [hidden]="currentIndex != item.blockIndex">
         <div class="qs-icon">
