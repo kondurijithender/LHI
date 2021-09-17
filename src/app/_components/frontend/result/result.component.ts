@@ -68,6 +68,15 @@ export class ResultComponent implements OnInit {
           data: [90, 10, 55, 10, 30, 70, 10, 15],
         },
       ],
+    //   series: [{
+    //     data: [{
+    //         x: 'Apple',
+    //         y: 54
+    //     }, {
+    //         x: 'Orange',
+    //         y: 66
+    //     }],
+    // }],
       chart: {
         height: 320,
         type: 'radar',
@@ -101,7 +110,17 @@ export class ResultComponent implements OnInit {
         },
       },
       xaxis: {
-        categories: [],
+        // type: 'category'
+        categories: [
+          'Learning Strategy & Business Planning',
+          'Impact & Measurement',
+          'L&D Policies & Processes',
+          'L&D Portfolio',
+          'Learner Experience',
+          'Learning Culture',
+          'Tools & Technologies',
+          'L&D Competence',
+        ],
       },
     };
     this.dimensionScoreChartOptions = {
@@ -145,7 +164,16 @@ export class ResultComponent implements OnInit {
         colors: ['#fff'],
       },
       xaxis: {
-        categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
+        categories: [
+          'Learning Strategy & Business Planning',
+          'Impact & Measurement',
+          'L&D Policies & Processes',
+          'L&D Portfolio',
+          'Learner Experience',
+          'Learning Culture',
+          'Tools & Technologies',
+          'L&D Competence',
+        ],
       },
     };
     this.dChartOptions = {
@@ -209,6 +237,12 @@ export class ResultComponent implements OnInit {
             d_score: item.d_score,
           };
         });
+        this.dimensionScoreChartOptions['xaxis']['categories'] =
+          this.finalDimensionList.map((res: any) => res.dimension);
+        this.radarChartOptions['xaxis']['categories'] =
+          this.finalDimensionList.map((res: any) => res.dimension);
+          console.log(this.radarChartOptions['xaxis']['categories']);
+        
         const dimensionValues = this.finalDimensionList.map(
           (res: any) => res.d_score
         );
@@ -227,20 +261,16 @@ export class ResultComponent implements OnInit {
         console.log('dimensionValues', dimensionValues);
         console.log('scoreValues', scoreValues);
         console.log('industryValues', industryValues);
+
         this.dimensionScoreChartOptions['series'][1].name =
           this.surveyDetails.companyName;
-
         this.dimensionScoreChartOptions['series'][2].name =
           this.surveyDetails.businessSector[0].name;
-        this.dimensionScoreChartOptions['xaxis']['categories'] =
-          this.finalDimensionList.map((res: any) => res.dimension);
-      
+
         this.radarChartOptions['series'][1].name =
           this.surveyDetails.companyName;
         this.radarChartOptions['series'][2].name =
           this.surveyDetails.businessSector[0].name;
-        this.radarChartOptions['xaxis']['categories'] =
-          this.finalDimensionList.map((res: any) => res.dimension);
       },
       (error) => {
         this.router.navigate(['/']);
@@ -273,8 +303,8 @@ export class ResultComponent implements OnInit {
       (error) => {}
     );
   }
-  avgScore(item: any){
-    let v = _.omit(item, ['_id', 'companies', 'name'])
+  avgScore(item: any) {
+    let v = _.omit(item, ['_id', 'companies', 'name']);
     let sumV = Object.values(v);
     return Math.ceil(_.mean(sumV));
   }
