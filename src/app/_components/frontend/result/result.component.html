@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="col-8">
-        <div class="score-dimentions chart-box">
+        <div class="score-dimentions chart-box" *ngIf="radarChartOptions">
           <h4 class="chart-box-head">LHI Score Accross all Dimentions</h4>
           <apx-chart
             [series]="radarChartOptions.series"
@@ -70,7 +70,7 @@
 <section class="dimentions-section">
   <div class="container">
     <div class="dimention-score-table">
-      <div class="score-dimentions chart-box">
+      <div class="score-dimentions chart-box" *ngIf="dimensionScoreChartOptions">
         <h4 class="chart-box-head">Dimension Score Table</h4>
         <apx-chart
           [series]="dimensionScoreChartOptions.series"

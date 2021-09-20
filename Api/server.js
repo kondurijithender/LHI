@@ -8,7 +8,7 @@ const app = express();
 const apiErrorHandler = require('./app/error/api-error-handler');
 var bcrypt = require("bcryptjs");
 var corsOptions = {
-  origin: "http://localhost:8088"
+  origin: "http://localhost"
 };
 
 // enable files upload
@@ -21,8 +21,8 @@ var dir = path.join(__dirname, 'public');
 
 app.use(express.static(dir));
 
-//app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+//app.use(cors());
 // app.options('*', cors());
 
 app.use((req, res, next) => {
@@ -93,7 +93,7 @@ app.listen(PORT, () => {
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
-    
+
       new Role({
         name: "admin"
       }).save(err => {
@@ -105,7 +105,7 @@ function initial() {
       });
     }
   });
-  
+
   User.estimatedDocumentCount((err, count) => {
     if (!err) {
       let newPassword = 'admin';
