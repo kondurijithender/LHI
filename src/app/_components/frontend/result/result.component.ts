@@ -179,7 +179,7 @@ export class ResultComponent implements OnInit {
     this.radarChartOptions = {
       series,
       chart: {
-        height: 320,
+        height: 500,
         type: 'radar',
       },
       dataLabels: {
@@ -187,7 +187,7 @@ export class ResultComponent implements OnInit {
       },
       plotOptions: {
         radar: {
-          size: 110,
+          size: 200,
           polygons: {
             strokeColor: '#e9e9e9',
             fill: {
@@ -221,7 +221,7 @@ export class ResultComponent implements OnInit {
       series,
       chart: {
         type: 'bar',
-        height: 750,
+        height: 1200,
       },
       plotOptions: {
         bar: {
@@ -233,9 +233,9 @@ export class ResultComponent implements OnInit {
       },
       dataLabels: {
         enabled: true,
-        offsetX: -6,
+        offsetX: -15,
         style: {
-          fontSize: '12px',
+          fontSize: '18px',
           colors: ['#fff'],
         },
       },

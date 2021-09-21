@@ -92,6 +92,19 @@
     margin-bottom: 30px;
   }
 }
+.scoring{
+  display: flex;
+  align-items: stretch;
+  .chart-box{
+    padding-bottom: 20px;
+    height: 100%;
+    padding: 50px;
+  }
+  .ovarall-scorring{
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .dimentions-section {
   background-color: #ecfcf9;
