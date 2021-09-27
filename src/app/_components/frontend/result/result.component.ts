@@ -15,6 +15,7 @@ import {
   ApexYAxis,
   ApexMarkers,
 } from 'ng-apexcharts';
+import { createHostListener } from '@angular/compiler/src/core';
 export type ChartOptions = {
   series: ApexAxisChartSeries | false;
   chart: ApexChart;
@@ -39,41 +40,22 @@ export class ResultComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public radarChartOptions: Partial<ChartOptions> | any;
   public dimensionScoreChartOptions: Partial<ChartOptions> | any;
-  public dChartOptions: Partial<ChartOptions> | any;
+  public companiesOptions: Partial<ChartOptions> | any;
   surveyDetails: any;
   id: string;
   dimensionsList: any;
   industryList: any;
+  companiesList: any;
   indiaIndex: any = 0;
   finalDimensionList: any;
   companyAvgScore: any = 0;
-
+  overalScoreOptions: Object;
+  leastFiveAnswered: any;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-    this.dChartOptions = {
-      series: [44, 55, 13, 43, 22],
-      chart: {
-        type: 'donut',
-      },
-      labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200,
-            },
-            legend: {
-              position: 'bottom',
-            },
-          },
-        },
-      ],
-    };
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: any) => {
@@ -97,10 +79,25 @@ export class ResultComponent implements OnInit {
     this.industryList = industry.industries.sort((a: any, b: any) =>
       a.name.localeCompare(b.name)
     );
+    const company = await this.apiService.readAll('company-list').toPromise();
+    this.companiesList = company.companies.sort((a: any, b: any) =>
+      a.name.localeCompare(b.name)
+    );
     this.apiService.readAllById('survey', this.id).subscribe(
       (data) => {
         let result = data.survey;
         this.surveyDetails = data.survey;
+
+        this.leastFiveAnswered = _.orderBy(result.questionnaires, [
+          'selectedvalue',
+        ]);
+        let list: any = [];
+        this.leastFiveAnswered.map((res: any, index: number) => {
+          if (index < 5) {
+            list.push(res);
+          }
+        });
+        this.leastFiveAnswered = list;
         let dimensionList = result.questionnaires.map((res: any) => {
           let obj: any = {};
           obj['q_score'] = parseInt(res.selectedvalue);
@@ -126,11 +123,6 @@ export class ResultComponent implements OnInit {
             d_score: item.d_score,
           };
         });
-        // this.dimensionScoreChartOptions['xaxis']['categories'] =
-        //   this.finalDimensionList.map((res: any) => res.dimension);
-        // this.radarChartOptions['xaxis']['categories'] =
-        //   this.finalDimensionList.map((res: any) => res.dimension);
-        // console.log(this.radarChartOptions['xaxis']['categories']);
 
         const dimensionValues = this.finalDimensionList.map(
           (res: any) => res.d_score
@@ -147,6 +139,45 @@ export class ResultComponent implements OnInit {
             ['companies', 'name', '_id']
           )
         );
+        const companyCat = this.companiesList.map((res: any) => res.name);
+        const companySeries = this.companiesList.map((res: any, i: any) => {
+          let series: any = {};
+          if (i < 5) {
+            series['name'] = res[`type_${i + 1}`]?.name;
+            series['data'] = [
+              res.type_1.score,
+              res.type_2.score,
+              res.type_3.score,
+              res.type_4.score,
+              res.type_5.score,
+            ];
+          }
+
+          return series;
+        });
+        console.log(companySeries);
+        // const companySeries = [
+        //   {
+        //     name: this.companiesList[0].type_1.name,
+        //     data: [44, 55, 41],
+        //   },
+        //   {
+        //     name: this.companiesList[0].type_2.name,
+        //     data: [44, 55, 41],
+        //   },
+        //   {
+        //     name: this.companiesList[0].type_3.name,
+        //     data: [44, 55, 41],
+        //   },
+        //   {
+        //     name: this.companiesList[0].type_4.name,
+        //     data: [44, 55, 41],
+        //   },
+        //   {
+        //     name: this.companiesList[0].type_5.name,
+        //     data: [44, 55, 41],
+        //   },
+        // ];
         const cat = this.finalDimensionList.map((res: any) => res.dimension);
         const series = [
           {
@@ -164,6 +195,8 @@ export class ResultComponent implements OnInit {
         ];
         this.radarChart(series, cat);
         this.dimensionScoreChart(series, cat);
+        this.overalScoreChart();
+        this.companyChart(companySeries, companyCat);
       },
       (error) => {
         this.router.navigate(['/']);
@@ -217,35 +250,169 @@ export class ResultComponent implements OnInit {
     };
   }
   dimensionScoreChart(series: any, categories: any) {
-    this.dimensionScoreChartOptions = {
+    console.log(series);
+    this.dimensionScoreChartOptions  = {
+      series: [44, 55, 67],
+      chart: {
+        height: 350,
+        type: "radialBar"
+      },
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            name: {
+              fontSize: "22px"
+            },
+            value: {
+              fontSize: "16px"
+            },
+            total: {
+              show: true,
+              label: "Total",
+              formatter: function(w: any) {
+                return "100";
+              }
+            }
+          }
+        }
+      },
+      labels: ["Apples", "Oranges", "Bananas"]
+    };
+    // this.dimensionScoreChartOptions = {
+    //   series,
+    //   chart: {
+    //     type: 'bar',
+    //     height: 1200,
+    //   },
+    //   plotOptions: {
+    //     bar: {
+    //       horizontal: true,
+    //       dataLabels: {
+    //         position: 'top',
+    //       },
+    //     },
+    //   },
+    //   dataLabels: {
+    //     enabled: true,
+    //     offsetX: -15,
+    //     style: {
+    //       fontSize: '18px',
+    //       colors: ['#fff'],
+    //     },
+    //   },
+    //   stroke: {
+    //     show: true,
+    //     width: 1,
+    //     colors: ['#fff'],
+    //   },
+    //   xaxis: {
+    //     categories,
+    //   },
+    // };
+  }
+  overalScoreChart() {
+    this.overalScoreOptions = {
+      chart: {
+        caption: 'Ovarall LHI Scoring',
+        gaugeFillMix: '{dark-30},{light-60},{dark-10}',
+        gaugeFillRatio: '15',
+        pivotRadius: '10',
+        lowerLimit: '0',
+        upperLimit: '100',
+        showValue: '1',
+        numberSuffix: '',
+        theme: 'fusion',
+        showToolTip: '1',
+      },
+      colorRange: {
+        color: [
+          {
+            minValue: '0',
+            maxValue: '50',
+            code: '#F2726F',
+            name: 'sample',
+          },
+          {
+            minValue: '50',
+            maxValue: '75',
+            code: '#FFC533',
+          },
+          {
+            minValue: '75',
+            maxValue: '100',
+            code: '#62B58F',
+          },
+        ],
+      },
+      dials: {
+        dial: [
+          {
+            value: this.indiaIndex,
+            showValue: '1',
+            valueX: '200',
+            valueY: '180',
+            bgAlpha: '10',
+            tooltext: 'INDIA INDEX : $value',
+            rearExtension: '15',
+          },
+          {
+            value: this.companyAvgScore,
+            showValue: '1',
+            valueX: '250',
+            valueY: '220',
+            tooltext: `${this.surveyDetails?.companyName} : $value`,
+            rearExtension: '15',
+          },
+          {
+            value: this.avgScore(this.surveyDetails?.businessSector[0]),
+            showValue: '1',
+            valueX: '250',
+            valueY: '220',
+            tooltext: `${this.surveyDetails?.businessSector[0].name} : $value`,
+            rearExtension: '15',
+          },
+        ],
+      },
+    };
+  }
+  companyChart(series: any, categories: any) {
+    this.companiesOptions = {
       series,
       chart: {
         type: 'bar',
-        height: 1200,
+        height: 350,
+        stacked: true,
+        stackType: '100%',
       },
       plotOptions: {
         bar: {
           horizontal: true,
-          dataLabels: {
-            position: 'top',
-          },
-        },
-      },
-      dataLabels: {
-        enabled: true,
-        offsetX: -15,
-        style: {
-          fontSize: '18px',
-          colors: ['#fff'],
         },
       },
       stroke: {
-        show: true,
         width: 1,
         colors: ['#fff'],
       },
+      title: {
+        text: '% Companies at various Stages of L&D Technology Adoption',
+      },
       xaxis: {
         categories,
+      },
+      tooltip: {
+        y: {
+          formatter: function (val: any) {
+            return val + 'K';
+          },
+        },
+      },
+      fill: {
+        opacity: 1,
+      },
+      legend: {
+        position: 'top',
+        horizontalAlign: 'left',
+        offsetX: 40,
       },
     };
   }

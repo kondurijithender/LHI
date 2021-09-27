@@ -60,6 +60,10 @@ module.exports = function (app) {
     "/api/survey-list",
     controller.getAllSurvey
   );
+  app.get(
+    "/api/company-list",
+    controller.getAllCompany
+  );
   app.post(
     "/api/survey",
     controller.survey

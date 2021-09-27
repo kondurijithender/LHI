@@ -1,6 +1,7 @@
 const db = require("../models");
 const Questionnaire = db.questionnaire;
 const Survey = db.survey;
+const Company = db.company;
 const { validationResult } = require('express-validator');
 var bcrypt = require("bcryptjs");
 
@@ -107,6 +108,25 @@ exports.getAllSurvey = async (req, res) => {
     res.status(500).send({ error: true, message: err });
   }
 };
+exports.getAllCompany = async (req, res) => {
+  try {
+    Company.find({})
+    .exec((err, companies) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send({ error: true, message: err });
+        return;
+      }
+      res.status(200).send({
+        companies,
+      });
+    });
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({ error: true, message: err });
+  }
+};
+
 
 exports.survey = (req, res, next) => {
   const { name, designation, companyName, businessSector, email, questionnaires } = req.body

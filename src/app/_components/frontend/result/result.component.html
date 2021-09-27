@@ -18,27 +18,52 @@
       <div class="col-4">
         <div class="ovarall-scorring chart-box">
           <h4 class="chart-box-head">Ovarall LHI Scoring</h4>
-          <div>
+          <div *ngIf="overalScoreOptions">
+            <!-- <fusioncharts
+              type="angulargauge"
+              width="450"
+              height="350"
+              dataFormat="json"
+              [dataSource]="overalScoreOptions"
+            ></fusioncharts> -->
             <ul class="ovarall-scorring-list">
-               <li>
+              <li>
                 <p>INDIA INDEX</p>
-                <span>{{indiaIndex}}</span>
+                <span>{{ indiaIndex }}</span>
               </li>
               <li>
-                <p>{{surveyDetails?.companyName}}</p>
-                <span>{{companyAvgScore}}</span>
+                <p>{{ surveyDetails?.companyName }}</p>
+                <span>{{ companyAvgScore }}</span>
               </li>
               <li>
-                <p>{{surveyDetails?.businessSector[0].name}}</p>
-                <span>{{avgScore(surveyDetails?.businessSector[0])}}</span>
+                <p>{{ surveyDetails?.businessSector[0].name }}</p>
+                <span>{{ avgScore(surveyDetails?.businessSector[0]) }}</span>
               </li>
-              <li [class]="{'positive-value' : (indiaIndex - companyAvgScore) > 0, 'negative-value' : (indiaIndex - companyAvgScore) < 0}">
+              <li
+                [class]="{
+                  'positive-value': indiaIndex - companyAvgScore > 0,
+                  'negative-value': indiaIndex - companyAvgScore < 0
+                }"
+              >
                 <p>Gap with Index</p>
                 <span>{{ indiaIndex - companyAvgScore }}</span>
               </li>
-              <li [class]="{'positive-value' : (companyAvgScore - avgScore(surveyDetails?.businessSector[0])) > 0, 'negative-value' : (companyAvgScore - avgScore(surveyDetails?.businessSector[0])) < 0}">
+              <li
+                [class]="{
+                  'positive-value':
+                    companyAvgScore -
+                      avgScore(surveyDetails?.businessSector[0]) >
+                    0,
+                  'negative-value':
+                    companyAvgScore -
+                      avgScore(surveyDetails?.businessSector[0]) <
+                    0
+                }"
+              >
                 <p>Gap with Sector</p>
-                <span>{{ companyAvgScore - avgScore(surveyDetails?.businessSector[0])}}</span>
+                <span>{{
+                  companyAvgScore - avgScore(surveyDetails?.businessSector[0])
+                }}</span>
               </li>
             </ul>
           </div>
@@ -70,8 +95,83 @@
 <section class="dimentions-section">
   <div class="container">
     <div class="dimention-score-table">
-      <div class="score-dimentions chart-box" *ngIf="dimensionScoreChartOptions">
+      <div
+        class="score-dimentions chart-box"
+        *ngIf="dimensionScoreChartOptions"
+      >
         <h4 class="chart-box-head">Dimension Score Table</h4>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
+        <apx-chart
+          [series]="dimensionScoreChartOptions.series"
+          [chart]="dimensionScoreChartOptions.chart"
+          [dataLabels]="dimensionScoreChartOptions.dataLabels"
+          [plotOptions]="dimensionScoreChartOptions.plotOptions"
+          [xaxis]="dimensionScoreChartOptions.xaxis"
+          [stroke]="dimensionScoreChartOptions.stroke"
+        ></apx-chart>
         <apx-chart
           [series]="dimensionScoreChartOptions.series"
           [chart]="dimensionScoreChartOptions.chart"
@@ -88,58 +188,20 @@
 <section class="stages-of-adoption-section">
   <div class="container">
     <div class="dimention-score-table">
-      <div class="score-dimentions chart-box">
-        <div class="row">
-          <div class="col-4">
-            <apx-chart
-              [series]="dChartOptions.series"
-              [chart]="dChartOptions.chart"
-              [labels]="dChartOptions.labels"
-              [responsive]="dChartOptions.responsive"
-            ></apx-chart>
-          </div>
-          <div class="col-4">
-            <apx-chart
-              [series]="dChartOptions.series"
-              [chart]="dChartOptions.chart"
-              [labels]="dChartOptions.labels"
-              [responsive]="dChartOptions.responsive"
-            ></apx-chart>
-          </div>
-          <div class="col-4">
-            <apx-chart
-              [series]="dChartOptions.series"
-              [chart]="dChartOptions.chart"
-              [labels]="dChartOptions.labels"
-              [responsive]="dChartOptions.responsive"
-            ></apx-chart>
-          </div>
-          <div class="clearfix"></div>
-          <div class="col-4">
-            <apx-chart
-              [series]="dChartOptions.series"
-              [chart]="dChartOptions.chart"
-              [labels]="dChartOptions.labels"
-              [responsive]="dChartOptions.responsive"
-            ></apx-chart>
-          </div>
-          <div class="col-4">
-            <apx-chart
-              [series]="dChartOptions.series"
-              [chart]="dChartOptions.chart"
-              [labels]="dChartOptions.labels"
-              [responsive]="dChartOptions.responsive"
-            ></apx-chart>
-          </div>
-          <div class="col-4">
-            <apx-chart
-              [series]="dChartOptions.series"
-              [chart]="dChartOptions.chart"
-              [labels]="dChartOptions.labels"
-              [responsive]="dChartOptions.responsive"
-            ></apx-chart>
-          </div>
-        </div>
+      <div class="score-dimentions chart-box" *ngIf="companiesOptions">
+        <apx-chart
+          [series]="companiesOptions.series"
+          [chart]="companiesOptions.chart"
+          [dataLabels]="companiesOptions.dataLabels"
+          [plotOptions]="companiesOptions.plotOptions"
+          [xaxis]="companiesOptions.xaxis"
+          [stroke]="companiesOptions.stroke"
+          [fill]="companiesOptions.fill"
+          [yaxis]="companiesOptions.yaxis"
+          [title]="companiesOptions.title"
+          [tooltip]="companiesOptions.tooltip"
+          [legend]="companiesOptions.legend"
+        ></apx-chart>
       </div>
     </div>
   </div>
@@ -153,25 +215,12 @@
           Critical focus areas for your Business to transform L&D
         </h4>
         <div class="critical-issues-list">
-          <div class="list-item">
-            <span class="list-head"> Loram Ipsum </span>
-            <div class="list-body">Loram Ipsum</div>
-          </div>
-          <div class="list-item">
-            <span class="list-head"> Loram Ipsum </span>
-            <div class="list-body">Loram Ipsum</div>
-          </div>
-          <div class="list-item">
-            <span class="list-head"> Loram Ipsum </span>
-            <div class="list-body">Loram Ipsum</div>
-          </div>
-          <div class="list-item">
-            <span class="list-head"> Loram Ipsum </span>
-            <div class="list-body">Loram Ipsum</div>
-          </div>
-          <div class="list-item">
-            <span class="list-head"> Loram Ipsum </span>
-            <div class="list-body">Loram Ipsum</div>
+          <div
+            class="list-item"
+            *ngFor="let item of leastFiveAnswered; let i = index"
+          >
+            <span class="list-head"> {{ item.dimensionId[0].name }} </span>
+            <div class="list-body">{{ item.questionnaire }}</div>
           </div>
         </div>
       </div>

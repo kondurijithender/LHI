@@ -1,0 +1,140 @@
+[
+  {
+    "name": "Learning in the Flow of Work",
+    "type_1": {
+      "name": "Already Under Implementation",
+      "score": 37
+    },
+    "type_2": {
+      "name": "Planned for Implementaion Within the Next Year",
+      "score": 20
+    },
+    "type_3": {
+      "name": "Planned for Implementaion Within the Next Two Years",
+      "score": 15
+    },
+    "type_4": {
+      "name": "Might Get Implemented, But Unsure of Timeline",
+      "score": 22
+    },
+    "type_5": {
+      "name": "Haven't Thought About It",
+      "score": 6
+    }
+  },
+  {
+    "name": "Personalized Learning",
+    "type_1": {
+      "name": "Already Under Implementation",
+      "score": 30
+    },
+    "type_2": {
+      "name": "Planned for Implementaion Within the Next Year",
+      "score": 28
+    },
+    "type_3": {
+      "name": "Planned for Implementaion Within the Next Two Years",
+      "score": 19
+    },
+    "type_4": {
+      "name": "Might Get Implemented, But Unsure of Timeline",
+      "score": 18
+    },
+    "type_5": {
+      "name": "Haven't Thought About It",
+      "score": 5
+    }
+  },
+  {
+    "name": "Social Learning",
+    "type_1": {
+      "name": "Already Under Implementation",
+      "score": 33
+    },
+    "type_2": {
+      "name": "Planned for Implementaion Within the Next Year",
+      "score": 29
+    },
+    "type_3": {
+      "name": "Planned for Implementaion Within the Next Two Years",
+      "score": 15
+    },
+    "type_4": {
+      "name": "Might Get Implemented, But Unsure of Timeline",
+      "score": 15
+    },
+    "type_5": {
+      "name": "Haven't Thought About It",
+      "score": 8
+    }
+  },
+  {
+    "name": "Use of Gamification",
+    "type_1": {
+      "name": "Already Under Implementation",
+      "score": 34
+    },
+    "type_2": {
+      "name": "Planned for Implementaion Within the Next Year",
+      "score": 23
+    },
+    "type_3": {
+      "name": "Planned for Implementaion Within the Next Two Years",
+      "score": 13
+    },
+    "type_4": {
+      "name": "Might Get Implemented, But Unsure of Timeline",
+      "score": 19
+    },
+    "type_5": {
+      "name": "Haven't Thought About It",
+      "score": 11
+    }
+  },
+  {
+    "name": "User of AI",
+    "type_1": {
+      "name": "Already Under Implementation",
+      "score": 22
+    },
+    "type_2": {
+      "name": "Planned for Implementaion Within the Next Year",
+      "score": 17
+    },
+    "type_3": {
+      "name": "Planned for Implementaion Within the Next Two Years",
+      "score": 22
+    },
+    "type_4": {
+      "name": "Might Get Implemented, But Unsure of Timeline",
+      "score": 23
+    },
+    "type_5": {
+      "name": "Haven't Thought About It",
+      "score": 16
+    }
+  },
+  {
+    "name": "Mobile Learning",
+    "type_1": {
+      "name": "Already Under Implementation",
+      "score": 64
+    },
+    "type_2": {
+      "name": "Planned for Implementaion Within the Next Year",
+      "score": 15
+    },
+    "type_3": {
+      "name": "Planned for Implementaion Within the Next Two Years",
+      "score": 9
+    },
+    "type_4": {
+      "name": "Might Get Implemented, But Unsure of Timeline",
+      "score": 9
+    },
+    "type_5": {
+      "name": "Haven't Thought About It",
+      "score": 3
+    }
+  }
+]

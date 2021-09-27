@@ -34,6 +34,18 @@ import { AddDimensionComponent } from './_components/admin/configuration/add_dim
 import { FrontEndDashboardComponent } from './_components/frontend/dashboard/dashboard.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
+import { FusionChartsModule } from 'angular-fusioncharts';
+// Load FusionCharts
+import * as FusionCharts from 'fusioncharts';
+
+// Load Widgets
+import * as Widgets from 'fusioncharts/fusioncharts.widgets';
+
+// Load FusionTheme Theme
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
+
+// Add dependencies to FusionChartsModule
+FusionChartsModule.fcRoot(FusionCharts, Widgets, FusionTheme);
 
 @NgModule({
   declarations: [
@@ -62,6 +74,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     AppRoutingModule,
     HttpClientModule,
     NgApexchartsModule,
+    FusionChartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
