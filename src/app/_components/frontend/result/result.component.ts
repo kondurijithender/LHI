@@ -218,22 +218,23 @@ export class ResultComponent implements OnInit {
       dataLabels: {
         enabled: true,
       },
+      fill: {
+        opacity: 0,
+      },
       plotOptions: {
         radar: {
           size: 200,
           polygons: {
-            strokeColor: '#e9e9e9',
+            strokeColor: '#a071fb',
             fill: {
               colors: ['#f8f8f8', '#fff'],
             },
           },
         },
       },
-      colors: ['#a071fb'],
+      colors: ["#a071fb","#efcdaa","#54e9cc"],
       markers: {
-        size: 4,
-        colors: ['#fff'],
-        strokeColors: ['#FF4560'],
+        size: 2,
         strokeWidth: 2,
       },
       tooltip: {
@@ -242,6 +243,12 @@ export class ResultComponent implements OnInit {
             return val;
           },
         },
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["#a071fb","#efcdaa","#54e9cc"],
+        dashArray: 0
       },
       xaxis: {
         // type: 'category'
@@ -369,13 +376,6 @@ export class ResultComponent implements OnInit {
           horizontal: true,
         },
       },
-      stroke: {
-        width: 1,
-        colors: ['#fff'],
-      },
-      title: {
-        text: 'Companies at various Stages of L&D Technology Adoption',
-      },
       xaxis: {
         categories,
       },
@@ -388,11 +388,12 @@ export class ResultComponent implements OnInit {
       },
       fill: {
         opacity: 1,
+        colors: ['#b685db', '#cb94cc', '#e288ac', '#eba09e', '#f28578'],
       },
       legend: {
         position: 'top',
         horizontalAlign: 'left',
-        offsetX: 40,
+        offsetX: 0,
       },
     };
   }
