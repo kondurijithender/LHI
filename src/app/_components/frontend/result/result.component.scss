@@ -108,6 +108,16 @@
 
 .dimentions-section {
   background-color: #ecfcf9;
+  .chart-box{
+    padding: 15px;
+    margin: 25px 0;
+    .chart-box-head{
+      font-size: 17px !important;
+      text-align: center;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+  }
 }
 
 .stages-of-adoption-section {
@@ -162,7 +172,7 @@
         padding: 20px 30px;
         align-items: center;
         font-size: 18px;
-        font-weight: 600;
+        font-weight: 500;
       }
     }
   }

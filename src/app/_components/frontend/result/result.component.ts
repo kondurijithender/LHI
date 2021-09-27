@@ -324,26 +324,6 @@ export class ResultComponent implements OnInit {
         theme: 'fusion',
         showToolTip: '1',
       },
-      colorRange: {
-        color: [
-          {
-            minValue: '0',
-            maxValue: '50',
-            code: '#F2726F',
-            name: 'sample',
-          },
-          {
-            minValue: '50',
-            maxValue: '75',
-            code: '#FFC533',
-          },
-          {
-            minValue: '75',
-            maxValue: '100',
-            code: '#62B58F',
-          },
-        ],
-      },
       dials: {
         dial: [
           {
@@ -380,7 +360,7 @@ export class ResultComponent implements OnInit {
       series,
       chart: {
         type: 'bar',
-        height: 350,
+        height: 600,
         stacked: true,
         stackType: '100%',
       },
@@ -394,7 +374,7 @@ export class ResultComponent implements OnInit {
         colors: ['#fff'],
       },
       title: {
-        text: '% Companies at various Stages of L&D Technology Adoption',
+        text: 'Companies at various Stages of L&D Technology Adoption',
       },
       xaxis: {
         categories,
