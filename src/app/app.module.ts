@@ -34,6 +34,8 @@ import { AddDimensionComponent } from './_components/admin/configuration/add_dim
 import { FrontEndDashboardComponent } from './_components/frontend/dashboard/dashboard.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
+import { GaugeChartModule } from 'angular-gauge-chart'
+
 import { FusionChartsModule } from 'angular-fusioncharts';
 // Load FusionCharts
 import * as FusionCharts from 'fusioncharts';
@@ -87,7 +89,8 @@ FusionChartsModule.fcRoot(FusionCharts, Widgets, FusionTheme);
       preventDuplicates: true,
     }),
     TextareaAutosizeModule,
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    GaugeChartModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

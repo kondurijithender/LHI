@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../../_service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
+
 import {
   ApexAxisChartSeries,
   ApexTitleSubtitle,
@@ -15,7 +16,6 @@ import {
   ApexYAxis,
   ApexMarkers,
 } from 'ng-apexcharts';
-import { createHostListener } from '@angular/compiler/src/core';
 export type ChartOptions = {
   series: ApexAxisChartSeries | false;
   chart: ApexChart;
@@ -41,6 +41,21 @@ export class ResultComponent implements OnInit {
   public radarChartOptions: Partial<ChartOptions> | any;
   public dimensionScoreChartOptions: Partial<ChartOptions> | any;
   public companiesOptions: Partial<ChartOptions> | any;
+
+  public canvasWidth = 450
+  public needleValue = 65
+  public centralLabel = ''
+  
+  public bottomLabel = '65'
+  public options = {
+      hasNeedle: true,
+      needleColor: '#9e71f9',
+      needleUpdateSpeed: 1000,
+      arcColors: ['#fd5553', '#efd614','#3ccc5b'],
+      arcDelimiters: [33, 33],
+      rangeLabel: ['0', '100']
+  }
+
   surveyDetails: any;
   id: string;
   dimensionsList: any;
@@ -212,7 +227,7 @@ export class ResultComponent implements OnInit {
     this.radarChartOptions = {
       series,
       chart: {
-        height: 500,
+        height: 700,
         type: 'radar',
       },
       dataLabels: {
@@ -223,7 +238,7 @@ export class ResultComponent implements OnInit {
       },
       plotOptions: {
         radar: {
-          size: 200,
+          size: 270,
           polygons: {
             strokeColor: '#a071fb',
             fill: {
@@ -341,23 +356,7 @@ export class ResultComponent implements OnInit {
             bgAlpha: '10',
             tooltext: 'INDIA INDEX : $value',
             rearExtension: '15',
-          },
-          {
-            value: this.companyAvgScore,
-            showValue: '1',
-            valueX: '250',
-            valueY: '220',
-            tooltext: `${this.surveyDetails?.companyName} : $value`,
-            rearExtension: '15',
-          },
-          {
-            value: this.avgScore(this.surveyDetails?.businessSector[0]),
-            showValue: '1',
-            valueX: '250',
-            valueY: '220',
-            tooltext: `${this.surveyDetails?.businessSector[0].name} : $value`,
-            rearExtension: '15',
-          },
+          }
         ],
       },
     };

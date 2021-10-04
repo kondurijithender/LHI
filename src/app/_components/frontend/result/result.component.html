@@ -14,79 +14,66 @@
     <div class="col-3"></div>
   </div>
   <section class="results-section">
-    <div class="scoring row">
+    <div class="row">
       <div class="col-4">
         <div class="ovarall-scorring chart-box">
-          <h4 class="chart-box-head">Ovarall LHI Scoring</h4>
+          <h4 class="chart-box-head">India Index</h4>
           <div *ngIf="overalScoreOptions">
-            <!-- <fusioncharts
-              type="angulargauge"
-              width="450"
-              height="350"
-              dataFormat="json"
-              [dataSource]="overalScoreOptions"
-            ></fusioncharts> -->
-            <ul class="ovarall-scorring-list">
-              <li>
-                <p>INDIA INDEX</p>
-                <span>{{ indiaIndex }}</span>
-              </li>
-              <li>
-                <p>{{ surveyDetails?.companyName }}</p>
-                <span>{{ companyAvgScore }}</span>
-              </li>
-              <li>
-                <p>{{ surveyDetails?.businessSector[0].name }}</p>
-                <span>{{ avgScore(surveyDetails?.businessSector[0]) }}</span>
-              </li>
-              <li
-                [class]="{
-                  'positive-value': indiaIndex - companyAvgScore > 0,
-                  'negative-value': indiaIndex - companyAvgScore < 0
-                }"
-              >
-                <p>Gap with Index</p>
-                <span>{{ indiaIndex - companyAvgScore }}</span>
-              </li>
-              <li
-                [class]="{
-                  'positive-value':
-                    companyAvgScore -
-                      avgScore(surveyDetails?.businessSector[0]) >
-                    0,
-                  'negative-value':
-                    companyAvgScore -
-                      avgScore(surveyDetails?.businessSector[0]) <
-                    0
-                }"
-              >
-                <p>Gap with Sector</p>
-                <span>{{
-                  companyAvgScore - avgScore(surveyDetails?.businessSector[0])
-                }}</span>
-              </li>
-            </ul>
+            <rg-gauge-chart
+            [canvasWidth]="canvasWidth"
+            [needleValue]="needleValue"
+            [centralLabel]="centralLabel"
+            [options]="options"
+            [bottomLabel]="bottomLabel"></rg-gauge-chart>
           </div>
         </div>
       </div>
-      <div class="col-8">
-        <div class="score-dimentions chart-box" *ngIf="radarChartOptions">
-          <h4 class="chart-box-head">LHI Score Accross all Dimentions</h4>
-          <apx-chart
-            [series]="radarChartOptions.series"
-            [chart]="radarChartOptions.chart"
-            [xaxis]="radarChartOptions.xaxis"
-            [stroke]="radarChartOptions.stroke"
-            [colors]="radarChartOptions.colors"
-            [dataLabels]="radarChartOptions.dataLabels"
-            [tooltip]="radarChartOptions.tooltip"
-            [plotOptions]="radarChartOptions.plotOptions"
-            [markers]="radarChartOptions.markers"
-            [yaxis]="radarChartOptions.yaxis"
-            [fill]="radarChartOptions.fill"
-            [title]="radarChartOptions.title"
-          ></apx-chart>
+      <div class="col-4">
+        <div class="ovarall-scorring chart-box">
+          <h4 class="chart-box-head">Company Rating</h4>
+          <div *ngIf="overalScoreOptions">
+            <rg-gauge-chart
+            [canvasWidth]="canvasWidth"
+            [needleValue]="needleValue"
+            [centralLabel]="centralLabel"
+            [options]="options"
+            [bottomLabel]="bottomLabel"></rg-gauge-chart>
+          </div>
         </div>
+      </div>
+      <div class="col-4">
+        <div class="ovarall-scorring chart-box">
+          <h4 class="chart-box-head">Sector Rating</h4>
+          <div *ngIf="overalScoreOptions">
+            <rg-gauge-chart
+            [canvasWidth]="canvasWidth"
+            [needleValue]="needleValue"
+            [centralLabel]="centralLabel"
+            [options]="options"
+            [bottomLabel]="bottomLabel"></rg-gauge-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <br><br>
+    <div class="scoring">
+      <div class="score-dimentions chart-box" *ngIf="radarChartOptions">
+        <h4 class="chart-box-head">LHI Score Accross all Dimentions</h4>
+        <apx-chart
+          [series]="radarChartOptions.series"
+          [chart]="radarChartOptions.chart"
+          [xaxis]="radarChartOptions.xaxis"
+          [stroke]="radarChartOptions.stroke"
+          [colors]="radarChartOptions.colors"
+          [dataLabels]="radarChartOptions.dataLabels"
+          [tooltip]="radarChartOptions.tooltip"
+          [plotOptions]="radarChartOptions.plotOptions"
+          [markers]="radarChartOptions.markers"
+          [yaxis]="radarChartOptions.yaxis"
+          [fill]="radarChartOptions.fill"
+          [title]="radarChartOptions.title"
+        ></apx-chart>
       </div>
     </div>
   </section>
