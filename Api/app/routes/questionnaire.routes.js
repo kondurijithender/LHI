@@ -68,4 +68,8 @@ module.exports = function (app) {
     "/api/survey",
     controller.survey
   );
+  app.get(
+    "/api/download-questionary",
+    controller.downloadQuestionary
+  );
 };
