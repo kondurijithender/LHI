@@ -14,10 +14,10 @@ var corsOptions = {
 // enable files upload
 app.use(fileUpload({
   useTempFiles: true,
-  tempFileDir: path.join(__dirname, 'public/uploads'),
+  tempFileDir: path.join(__dirname, 'uploads'),
 }));
 
-var dir = path.join(__dirname, 'public');
+var dir = path.join(__dirname, 'uploads');
 
 app.use(express.static(dir));
 

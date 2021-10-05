@@ -152,7 +152,7 @@ exports.survey = (req, res, next) => {
   });
 
 };
-exports.downloadQuestionary = async (req, res, next) => {
+exports.downloadUsers = async (req, res, next) => {
   let data = await Survey.find({}).populate("businessSector");
   let finalResult = await companyAvgScore(data);
   let workbook = new Excel.Workbook();
@@ -186,6 +186,12 @@ exports.downloadQuestionary = async (req, res, next) => {
   })
 
   workbook.xlsx.writeFile('uploads/users.xlsx')
+  res.setHeader('Content-Disposition', 'attachment; filename= + Application_Security_Design.xlsx');
+  res.setHeader('Content-Type', 'application/vnd.ms-excel');
+
+  let tool5filepath = '/' + decodeURIComponent('uploads/users.xlsx');
+  console.log("Tool5 File Path after decoding: ", tool5filepath);
+  res.download('uploads/users.xlsx');
 
 }
 async function companyAvgScore(data) {
