@@ -169,7 +169,7 @@ exports.downloadQuestionary = async (req, res, next) => {
   // Have to take this approach because ExcelJS doesn't have an autofit property.
   worksheet.columns.forEach(column => {
     column.width = column.header.length < 12 ? 12 : parseInt(column.header.length) + 5
-    if(column.header === 'Email') column.width = parseInt(column.header.length) + 20
+    if (column.header === 'Email') column.width = parseInt(column.header.length) + 20
   })
   worksheet.getRow(1).font = { bold: true }
   // Dump all the data into Excel
