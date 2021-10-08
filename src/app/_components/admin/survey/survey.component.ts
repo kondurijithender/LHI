@@ -11,6 +11,7 @@ import { AlertService } from 'src/app/_service/alert.service';
 export class SurveyComponent implements OnInit {
   surveyList: any[] = [];
   serverUploads = environment.serverUploads;
+  downloadInProgress = false;
 
   constructor(private alertService: AlertService, private _api: ApiService) {}
 
@@ -23,16 +24,20 @@ export class SurveyComponent implements OnInit {
     });
   }
   download() {
+    this.downloadInProgress = true;
     this._api.readAll('download-users').subscribe(
       (data) => {
-        const link = document.createElement('a');
-        if (link.download !== undefined) {
-          link.setAttribute('href', `${this.serverUploads}/users.xlsx`);
-          link.setAttribute('download', 'users.xlxs');
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
+        setTimeout(() => {
+          const link = document.createElement('a');
+          if (link.download !== undefined) {
+            link.setAttribute('href', `${this.serverUploads}/users.xlsx`);
+            link.setAttribute('download', 'users.xlxs');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            this.downloadInProgress = false;
+          }
+        }, 1500);
       },
       (err) => {
         console.log(err);

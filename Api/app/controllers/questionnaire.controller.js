@@ -6,6 +6,20 @@ const { validationResult } = require('express-validator');
 var bcrypt = require("bcryptjs");
 const Excel = require('exceljs')
 const _ = require("lodash");
+const nodemailer = require('nodemailer');
+const path = require('path');
+var public = path.join(__dirname, 'public');
+const config = require("../config/auth.config");
+
+// create transporter object with smtp server details
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  auth: {
+      user: 'jithenderkonduri@gmail.com',
+      pass: 'dkkqytnhrqjgtumb'
+  }
+});
 
 exports.create = (req, res, next) => {
   const { questionnaire, dimensionId, blockIndex, options, values } = req.body
@@ -130,7 +144,7 @@ exports.getAllCompany = async (req, res) => {
 };
 
 
-exports.survey = (req, res, next) => {
+exports.survey = async (req, res, next) => {
   const { name, designation, companyName, businessSector, email, questionnaires } = req.body
   // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req)
@@ -145,9 +159,9 @@ exports.survey = (req, res, next) => {
     email,
     questionnaires,
   });
-
-  s.save((err, user) => {
+  s.save(async (err, user) => {
     if (err) res.status(500).send({ error: true, message: err });
+   // await sendMail(email);
     res.send({ message: s._id });
   });
 
@@ -163,13 +177,15 @@ exports.downloadUsers = async (req, res, next) => {
     { header: 'Company Name', key: 'companyName' },
     { header: 'Business Sector', key: 'businessSector' },
     { header: 'Email', key: 'email' },
-    { header: 'Score', key: 'score' }
+    { header: 'Score', key: 'score' },
+    { header: 'Link', key: 'link' }
   ];
   // force the columns to be at least as long as their header row.
   // Have to take this approach because ExcelJS doesn't have an autofit property.
   worksheet.columns.forEach(column => {
     column.width = column.header.length < 12 ? 12 : parseInt(column.header.length) + 5
     if (column.header === 'Email') column.width = parseInt(column.header.length) + 20
+    if (column.header === 'Link') column.width = parseInt(column.header.length) + 80
   })
   worksheet.getRow(1).font = { bold: true }
   // Dump all the data into Excel
@@ -190,9 +206,27 @@ exports.downloadUsers = async (req, res, next) => {
   res.setHeader('Content-Type', 'application/vnd.ms-excel');
 
   let tool5filepath = '/' + decodeURIComponent('uploads/users.xlsx');
-  console.log("Tool5 File Path after decoding: ", tool5filepath);
   res.download('uploads/users.xlsx');
 
+}
+async function sendMail(to) {
+  transporter.sendMail({
+    to,
+    subject: 'An Attached File',
+    text: 'Check out this attached pdf file',
+    attachments: [{
+      filename: 'sample.pdf',
+      path: path.join(__dirname, '../../uploads/sample.pdf'),
+      contentType: 'application/pdf'
+    }],
+    function(err, info) {
+      if (err) {
+        res.status(500).send({ error: true, message: err });
+      } else {
+        console.log(info);
+      }
+    }
+  });
 }
 async function companyAvgScore(data) {
   let final = [];
@@ -233,9 +267,9 @@ async function companyAvgScore(data) {
       (res) => res.total
     );
     let companyAvgScore = Math.ceil(_.mean(scoreValues));
-    console.log(element.businessSector);
     let obj = {
       score: companyAvgScore,
+      link: `${config.frontEndUrl}results?id=${element._id}`,
       name: element.name,
       designation: element.designation,
       companyName: element.companyName,
@@ -246,5 +280,6 @@ async function companyAvgScore(data) {
   }
   return final;
 }
+
 
 
