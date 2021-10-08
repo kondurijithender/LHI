@@ -43,7 +43,7 @@
       </div>
       <div class="col-4">
         <div class="ovarall-scorring chart-box">
-          <h4 class="chart-box-head">{{this.surveyDetails.businessSector[0].name}}</h4>
+          <h4 class="chart-box-head">{{this.surveyDetails?.businessSector[0].name}}</h4>
           <div *ngIf="overalScoreOptions">
             <rg-gauge-chart
             [canvasWidth]="canvasWidth"
@@ -85,32 +85,31 @@
     <div class="dimention-score-table">
       <div
         class="score-dimentions"
-        *ngIf="dimensionScoreChartOptions"
+        *ngIf="dimensionScoreChartOptions_1"
       >
         <div class="row">
           <div class="col-3">
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">Learning Strategy & Business Planning</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
-              ></apx-chart>
+                [series]="dimensionScoreChartOptions_1.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+               ></apx-chart>
             </div>
           </div>
           <div class="col-3">
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">Impact & Measurement</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_2.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>
@@ -118,12 +117,12 @@
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">L&D Policies & Processes</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_3.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>
@@ -131,12 +130,12 @@
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">L&D Portfolio</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_4.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>
@@ -144,12 +143,12 @@
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">Learner Experience</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_5.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>
@@ -157,12 +156,12 @@
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">Learning Culture</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_6.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>
@@ -170,12 +169,12 @@
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">Tools & Technologies</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_7.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>
@@ -183,12 +182,12 @@
             <div class="score-dimentions chart-box">
               <h4 class="chart-box-head">L&D Competence</h4>
               <apx-chart
-                [series]="dimensionScoreChartOptions.series"
-                [chart]="dimensionScoreChartOptions.chart"
-                [dataLabels]="dimensionScoreChartOptions.dataLabels"
-                [plotOptions]="dimensionScoreChartOptions.plotOptions"
-                [xaxis]="dimensionScoreChartOptions.xaxis"
-                [stroke]="dimensionScoreChartOptions.stroke"
+                [series]="dimensionScoreChartOptions_8.series"
+                [chart]="dimensionScoreChartOptions_1.chart"
+                [dataLabels]="dimensionScoreChartOptions_1.dataLabels"
+                [plotOptions]="dimensionScoreChartOptions_1.plotOptions"
+                [labels]="dimensionScoreChartOptions_1.labels"
+
               ></apx-chart>
             </div>
           </div>

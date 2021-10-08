@@ -39,22 +39,30 @@ export type ChartOptions = {
 export class ResultComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public radarChartOptions: Partial<ChartOptions> | any;
-  public dimensionScoreChartOptions: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_1: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_2: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_3: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_4: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_5: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_6: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_7: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_8: Partial<ChartOptions> | any;
+  public dimensionScoreChartOptions_9: Partial<ChartOptions> | any;
   public companiesOptions: Partial<ChartOptions> | any;
 
-  public canvasWidth = 450
-  public needleValue = 65
-  public centralLabel = ''
+  public canvasWidth = 450;
+  public needleValue = 65;
+  public centralLabel = '';
 
-  public bottomLabel = '65'
+  public bottomLabel = '65';
   public options = {
-      hasNeedle: true,
-      needleColor: '#9e71f9',
-      needleUpdateSpeed: 1000,
-      arcColors: ['#fd5553', '#efd614','#3ccc5b'],
-      arcDelimiters: [33, 33],
-      rangeLabel: ['0', '100']
-  }
+    hasNeedle: true,
+    needleColor: '#9e71f9',
+    needleUpdateSpeed: 1000,
+    arcColors: ['#fd5553', '#efd614', '#3ccc5b'],
+    arcDelimiters: [33, 33],
+    rangeLabel: ['0', '100'],
+  };
 
   surveyDetails: any;
   id: string;
@@ -139,7 +147,7 @@ export class ResultComponent implements OnInit {
             d_score: item.d_score,
           };
         });
-
+        console.log(this.finalDimensionList);
         const dimensionValues = this.finalDimensionList.map(
           (res: any) => res.d_score
         );
@@ -171,30 +179,9 @@ export class ResultComponent implements OnInit {
 
           return series;
         });
-        this.businessSector = this.avgScore(this.surveyDetails?.businessSector[0]);
-        console.log(companySeries);
-        // const companySeries = [
-        //   {
-        //     name: this.companiesList[0].type_1.name,
-        //     data: [44, 55, 41],
-        //   },
-        //   {
-        //     name: this.companiesList[0].type_2.name,
-        //     data: [44, 55, 41],
-        //   },
-        //   {
-        //     name: this.companiesList[0].type_3.name,
-        //     data: [44, 55, 41],
-        //   },
-        //   {
-        //     name: this.companiesList[0].type_4.name,
-        //     data: [44, 55, 41],
-        //   },
-        //   {
-        //     name: this.companiesList[0].type_5.name,
-        //     data: [44, 55, 41],
-        //   },
-        // ];
+        this.businessSector = this.avgScore(
+          this.surveyDetails?.businessSector[0]
+        );
         const cat = this.finalDimensionList.map((res: any) => res.dimension);
         const series = [
           {
@@ -211,7 +198,7 @@ export class ResultComponent implements OnInit {
           },
         ];
         this.radarChart(series, cat);
-        this.dimensionScoreChart(series, cat);
+        this.dimensionScoreChart(series);
         this.overalScoreChart();
         this.companyChart(companySeries, companyCat);
       },
@@ -249,7 +236,7 @@ export class ResultComponent implements OnInit {
           },
         },
       },
-      colors: ["#a071fb","#efcdaa","#54e9cc"],
+      colors: ['#a071fb', '#efcdaa', '#54e9cc'],
       markers: {
         size: 2,
         strokeWidth: 2,
@@ -264,8 +251,8 @@ export class ResultComponent implements OnInit {
       stroke: {
         show: true,
         width: 2,
-        colors: ["#a071fb","#efcdaa","#54e9cc"],
-        dashArray: 0
+        colors: ['#a071fb', '#efcdaa', '#54e9cc'],
+        dashArray: 0,
       },
       xaxis: {
         // type: 'category'
@@ -273,67 +260,124 @@ export class ResultComponent implements OnInit {
       },
     };
   }
-  dimensionScoreChart(series: any, categories: any) {
-    console.log(series);
-    this.dimensionScoreChartOptions  = {
-      series: [44, 55, 67],
+  dimensionScoreChart(series: any) {
+    let options = {
+      series: [0, 1, 2],
       chart: {
         height: 350,
-        type: "radialBar"
+        type: 'radialBar',
       },
       plotOptions: {
         radialBar: {
           dataLabels: {
             name: {
-              fontSize: "22px"
+              fontSize: '22px',
             },
             value: {
-              fontSize: "16px"
+              fontSize: '16px',
             },
             total: {
               show: true,
-              label: "Total",
-              formatter: function(w: any) {
-                return "100";
-              }
-            }
-          }
-        }
+              label: 'Total',
+              formatter: function (w: any) {
+                return '100';
+              },
+            },
+          },
+        },
       },
-      labels: ["Apples", "Oranges", "Bananas"]
+      labels: [
+        'India',
+        this.surveyDetails.companyName,
+        this.surveyDetails.businessSector[0].name,
+      ],
     };
-    // this.dimensionScoreChartOptions = {
-    //   series,
-    //   chart: {
-    //     type: 'bar',
-    //     height: 1200,
-    //   },
-    //   plotOptions: {
-    //     bar: {
-    //       horizontal: true,
-    //       dataLabels: {
-    //         position: 'top',
-    //       },
-    //     },
-    //   },
-    //   dataLabels: {
-    //     enabled: true,
-    //     offsetX: -15,
-    //     style: {
-    //       fontSize: '18px',
-    //       colors: ['#fff'],
-    //     },
-    //   },
-    //   stroke: {
-    //     show: true,
-    //     width: 1,
-    //     colors: ['#fff'],
-    //   },
-    //   xaxis: {
-    //     categories,
-    //   },
-    // };
+    let o = options.series;
+    this.finalDimensionList.map((res: any, index: number) => {
+      if (index === 0) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_1 = o;
+      }
+      if (index === 1) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_2 = o;
+      }
+      if (index === 2) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_3 = o;
+      }
+      if (index === 3) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_4 = o;
+      }
+      if (index === 4) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_5 = o;
+      }
+      if (index === 5) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_6 = o;
+      }
+      if (index === 6) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_7 = o;
+      }
+      if (index === 7) {
+        let o = options;
+        o.series = [
+          series[0].data[index],
+          series[1].data[index],
+          series[2].data[index],
+        ];
+        this.dimensionScoreChartOptions_8 = o;
+      }
+    });
+    // this.dimensionScoreChartOptions_1  = options;
+    // this.dimensionScoreChartOptions_2  = options;
+    // this.dimensionScoreChartOptions_3  = options;
+    // this.dimensionScoreChartOptions_4  = options;
+    // this.dimensionScoreChartOptions_5  = options;
+    // this.dimensionScoreChartOptions_6  = options;
+    // this.dimensionScoreChartOptions_7  = options;
+    // this.dimensionScoreChartOptions_8  = options;
+    // this.dimensionScoreChartOptions_9  = options;
   }
+
   overalScoreChart() {
     this.overalScoreOptions = {
       chart: {
@@ -358,7 +402,7 @@ export class ResultComponent implements OnInit {
             bgAlpha: '10',
             tooltext: 'INDIA INDEX : $value',
             rearExtension: '15',
-          }
+          },
         ],
       },
     };
