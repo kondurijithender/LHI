@@ -44,7 +44,8 @@ import * as FusionCharts from 'fusioncharts';
 import * as Widgets from 'fusioncharts/fusioncharts.widgets';
 
 // Load FusionTheme Theme
-import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import { PrintScreenComponent } from './_components/frontend/print-screen/print-screen.component'
 
 // Add dependencies to FusionChartsModule
 FusionChartsModule.fcRoot(FusionCharts, Widgets, FusionTheme);
@@ -67,7 +68,8 @@ FusionChartsModule.fcRoot(FusionCharts, Widgets, FusionTheme);
     FrontendHeaderComponent,
     FrontendFooterComponent,
     FrontendQuestionnaireComponent,
-    ResultComponent
+    ResultComponent,
+    PrintScreenComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 
 import {
-  ApexAxisChartSeries,
+  ApexNonAxisChartSeries,
   ApexTitleSubtitle,
   ApexChart,
   ApexXAxis,
@@ -17,7 +17,7 @@ import {
   ApexMarkers,
 } from 'ng-apexcharts';
 export type ChartOptions = {
-  series: ApexAxisChartSeries | false;
+  series: ApexNonAxisChartSeries | false;
   chart: ApexChart;
   title: ApexTitleSubtitle;
   stroke: ApexStroke;
@@ -59,8 +59,8 @@ export class ResultComponent implements OnInit {
     hasNeedle: true,
     needleColor: '#9e71f9',
     needleUpdateSpeed: 1000,
-    arcColors: ['#fd5553', '#efd614', '#3ccc5b'],
-    arcDelimiters: [33, 33],
+    arcColors: ['#fd5553', '#efd614', '#3ccc5b', '#efd614', '#fd5553'],
+    arcDelimiters: [20, 20, 20, 20, 20],
     rangeLabel: ['0', '100'],
   };
 
@@ -238,7 +238,7 @@ export class ResultComponent implements OnInit {
       },
       colors: ['#a071fb', '#efcdaa', '#54e9cc'],
       markers: {
-        size: 2,
+        size: 5,
         strokeWidth: 2,
       },
       tooltip: {
@@ -269,28 +269,45 @@ export class ResultComponent implements OnInit {
       },
       plotOptions: {
         radialBar: {
+          offsetY: 0,
+          startAngle: 0,
+          endAngle: 270,
+          hollow: {
+            margin: 15,
+            size: "40%",
+            background: "transparent",
+            image: undefined
+          },
           dataLabels: {
             name: {
-              fontSize: '22px',
+              show: false
             },
             value: {
-              fontSize: '16px',
-            },
-            total: {
-              show: true,
-              label: 'Total',
-              formatter: function (w: any) {
-                return '100';
-              },
-            },
-          },
-        },
+              show: false
+            }
+          }
+        }
       },
+      colors: ["#1ab7ea", "#0084ff", "#39539E"],
       labels: [
         'India',
         this.surveyDetails.companyName,
         this.surveyDetails.businessSector[0].name,
       ],
+      legend: {
+        show: true,
+        floating: true,
+        fontSize: "16px",
+        position: "left",
+        offsetX: 50,
+        offsetY: 10,
+        labels: {
+          useSeriesColors: true
+        },
+        itemMargin: {
+          horizontal: 3
+        }
+      },
     };
     let o = options.series;
     this.finalDimensionList.map((res: any, index: number) => {

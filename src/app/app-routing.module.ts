@@ -12,6 +12,7 @@ import { FrontendQuestionnaireComponent } from './_components/frontend/frontend-
 import { ResultComponent } from './_components/frontend/result/result.component';
 import { AddIndustryComponent } from './_components/admin/configuration/add_industry/add.component';
 import { AddDimensionComponent } from './_components/admin/configuration/add_dimension/add.component';
+import { PrintScreenComponent } from './_components/frontend/print-screen/print-screen.component';
 
 const routes: Routes = [
   { path: 'admin', component: LoginComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: '', component: FrontEndDashboardComponent},
   { path: 'questionnaires', component: FrontendQuestionnaireComponent },
   { path: 'results', component: ResultComponent },
+  { path: 'print', component: PrintScreenComponent },
 
 ];
 
