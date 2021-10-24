@@ -294,6 +294,14 @@ app-login{
     }
 }
 
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 .main-section{
     float: left;
     width: 100%;

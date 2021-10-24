@@ -59,8 +59,8 @@ export class ResultComponent implements OnInit {
     hasNeedle: true,
     needleColor: '#9e71f9',
     needleUpdateSpeed: 1000,
-    arcColors: ['#fd5553', '#efd614', '#3ccc5b', '#efd614', '#fd5553'],
-    arcDelimiters: [20, 20, 20, 20, 20],
+    arcColors: ['#fd5553', '#efd614', '#3ccc5b'],
+    arcDelimiters: [20,50],
     rangeLabel: ['0', '100'],
   };
 
@@ -111,7 +111,7 @@ export class ResultComponent implements OnInit {
       (data) => {
         let result = data.survey;
         this.surveyDetails = data.survey;
-
+        console.log("this.surveyDetails", this.surveyDetails);
         this.leastFiveAnswered = _.orderBy(result.questionnaires, [
           'selectedvalue',
         ]);
