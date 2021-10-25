@@ -113,6 +113,9 @@
             max-height: 50px;
         }
     }
+    .pulse{
+        width: 80%;
+    }
 }
 
 .page2{
@@ -206,5 +209,39 @@
         bottom: 0px;
         left: 0;
         width: 100%;
+    }
+}
+
+.page5{
+    .pulse-big{
+        width: 80%;
+        top: 50px;
+        position: absolute;
+    }
+    .Page5BG{
+        position: absolute;
+        right: -50%;
+        top: 0;       
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .final-page{
+        padding: 50px;
+        h4{
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 14px;
+        }
+    }
+    footer{
+        background: rgb(68,133,197);
+        background: linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);
+        width: 100%;
+        padding: 20px 50px;
+        display: block;
+        color: #ffffff;
     }
 }
