@@ -143,6 +143,11 @@
         right: 50px;
         font-size: 14px;
     }
+    .Page5BG{
+        position: absolute;
+        right: -60%;
+        top: 0;       
+    }
 }
 
 .page3{
@@ -204,11 +209,49 @@
 }
 
 .page4{
+    padding: 50px;
     .pulse{
         position: absolute;
         bottom: 0px;
         left: 0;
         width: 100%;
+    }
+    .individual-learning{
+        font-weight: 700;
+        font-size: 18px;
+        strong{
+            display: block;
+            font-size: 38px;
+            line-height: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            background: -webkit-linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+    .rating{
+        display: block;
+        width: 100%;
+        margin: 50px 0;
+        // display: flex;
+        display: none;
+        justify-content: space-between;
+        div{
+            max-width: 48%;
+            padding: 20px;
+            &.first{
+                background: rgb(68,133,197);
+                background: linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);                
+            }
+            &.secound{
+                border-image-slice: 1;
+                border-width: 5px;
+                border: solid 3px;
+                border-image-source: linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);                
+            }
+        }
     }
 }
 
@@ -220,7 +263,7 @@
     }
     .Page5BG{
         position: absolute;
-        right: -50%;
+        right: -60%;
         top: 0;       
     }
     display: flex;

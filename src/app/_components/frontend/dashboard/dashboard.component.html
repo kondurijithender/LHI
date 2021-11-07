@@ -66,6 +66,17 @@
         </div>
       </div>
       <div class="mb-3">
+        <select name="Country" id="" class="form-control" placeholder="Select Country" formControlName="country">
+          <option value="" disabled selected>Select Your Country</option>
+          <option *ngFor="let item of countryList; let i = index" [value]="item">{{item}}</option>
+        </select>
+        <div *ngIf="submitted && f.country.errors" class="text-danger">
+          <div *ngIf="f.country.errors.required">
+            Business Sector is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
         <button type="submit" [disabled]="loading" class="btn btn-primary">
           <span
             *ngIf="loading"
