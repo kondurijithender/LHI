@@ -86,7 +86,7 @@
     <div class="dimention-score-table">
       <div
         class="score-dimentions"
-        *ngIf="dimensionScoreChartOptions_1"
+        *ngIf="dimensionScoreChartOptions_1 && ['India', 'Middle East', 'Africa'].includes(surveyDetails.country)"
       >
         <div class="row">
           <div class="col-3">
@@ -202,7 +202,7 @@
 <section class="stages-of-adoption-section">
   <div class="container">
     <div class="dimention-score-table">
-      <div class="score-dimentions chart-box" *ngIf="companiesOptions">
+      <div class="score-dimentions chart-box" *ngIf="companiesOptions && ['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
         <h4 class="chart-box-head">
           Companies at various Stages of L&D Technology Adoption
         </h4>
