@@ -7,6 +7,7 @@ const Survey = mongoose.model(
     designation: String,
     companyName: String,
     email: String,
+    country: String,
     businessSector:  [
       {
         type: mongoose.Schema.Types.ObjectId,

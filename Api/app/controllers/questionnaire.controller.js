@@ -145,7 +145,7 @@ exports.getAllCompany = async (req, res) => {
 
 
 exports.survey = async (req, res, next) => {
-  const { name, designation, companyName, businessSector, email, questionnaires } = req.body
+  const { name, designation, companyName, businessSector, email, questionnaires, country } = req.body
   // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
@@ -157,6 +157,7 @@ exports.survey = async (req, res, next) => {
     companyName,
     businessSector,
     email,
+    country,
     questionnaires,
   });
   s.save(async (err, user) => {

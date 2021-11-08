@@ -15,7 +15,7 @@
   </div>
   <section class="results-section">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4" *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
         <div class="ovarall-scorring chart-box">
           <h4 class="chart-box-head">India Index</h4>
           <div *ngIf="overalScoreOptions">
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-4"  *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
         <div class="ovarall-scorring chart-box">
           <h4 class="chart-box-head" *ngIf="this.surveyDetails">{{this.surveyDetails.companyName}}</h4>
           <h4 class="chart-box-head" *ngIf="!this.surveyDetails">Company Name</h4>
@@ -58,7 +58,7 @@
     </div>
     <div class="clearfix"></div>
     <br><br>
-    <div class="scoring">
+    <div class="scoring" *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
       <div class="score-dimentions chart-box" *ngIf="radarChartOptions">
         <h4 class="chart-box-head">LHI Score Accross all Dimentions</h4>
         <apx-chart

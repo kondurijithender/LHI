@@ -268,7 +268,7 @@ export class FrontEndDashboardComponent implements OnInit {
     "Zimbabwe",
     "Åland Islands"
   ];
-  
+
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
