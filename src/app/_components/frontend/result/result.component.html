@@ -60,7 +60,7 @@
     <br>
     <div class="row"  *ngIf="!['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
       <div class="col-4">
-        <div class="ovarall-scorring chart-box">
+        <div class="ovarall-scorring chart-box outside-india-box">
           <h4 class="chart-box-head" *ngIf="this.surveyDetails">{{this.surveyDetails.companyName}}</h4>
           <h4 class="chart-box-head" *ngIf="!this.surveyDetails">Company Name</h4>
           <div *ngIf="overalScoreOptions">
