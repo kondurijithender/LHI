@@ -28,4 +28,16 @@
             }
         }
     }
+    .country-table{
+        td{
+            vertical-align: middle;
+            text-align: center;
+        }
+        input{
+            opacity: 1 !important;
+            position: relative !important;
+            z-index: 1 !important;
+            text-align: center;
+        }
+    }
 }
