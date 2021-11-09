@@ -183,20 +183,31 @@ export class ResultComponent implements OnInit {
           this.surveyDetails?.businessSector[0]
         );
         const cat = this.finalDimensionList.map((res: any) => res.dimension);
-        const series = [
-          {
-            name: 'India',
-            data: dimensionValues,
-          },
-          {
-            name: this.surveyDetails.companyName,
-            data: scoreValues,
-          },
-          {
-            name: this.surveyDetails.businessSector[0].name,
-            data: industryValues,
-          },
-        ];
+        var series = [{}];
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          series = [
+            {
+              name: 'India',
+              data: dimensionValues,
+            },
+            {
+              name: this.surveyDetails.companyName,
+              data: scoreValues,
+            },
+            {
+              name: this.surveyDetails.businessSector[0].name,
+              data: industryValues,
+            },
+          ];
+        }else{
+          series = [
+            {
+              name: this.surveyDetails.companyName,
+              data: scoreValues,
+            }
+          ];
+        }
         this.radarChart(series, cat);
         this.dimensionScoreChart(series);
         this.overalScoreChart();
@@ -313,74 +324,146 @@ export class ResultComponent implements OnInit {
     this.finalDimensionList.map((res: any, index: number) => {
       if (index === 0) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_1 = o;
       }
       if (index === 1) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+        
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_2 = o;
       }
       if (index === 2) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+        
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_3 = o;
       }
       if (index === 3) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+                
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_4 = o;
       }
       if (index === 4) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+                
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_5 = o;
       }
       if (index === 5) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+                
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_6 = o;
       }
       if (index === 6) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+                
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_7 = o;
       }
       if (index === 7) {
         let o = options;
-        o.series = [
-          series[0].data[index],
-          series[1].data[index],
-          series[2].data[index],
-        ];
+                
+        if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
+        {
+          o.series = [
+            series[0].data[index],
+            series[1].data[index],
+            series[2].data[index],
+          ];
+        }else{
+          o.series = [
+            series[0].data[index]
+          ];
+        }
+
         this.dimensionScoreChartOptions_8 = o;
       }
     });

@@ -14,8 +14,8 @@
     <div class="col-3"></div>
   </div>
   <section class="results-section">
-    <div class="row">
-      <div class="col-4" *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
+    <div class="row"  *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
+      <div class="col-4">
         <div class="ovarall-scorring chart-box">
           <h4 class="chart-box-head">India Index</h4>
           <div *ngIf="overalScoreOptions">
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4"  *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
+      <div class="col-4">
         <div class="ovarall-scorring chart-box">
           <h4 class="chart-box-head" *ngIf="this.surveyDetails">{{this.surveyDetails.companyName}}</h4>
           <h4 class="chart-box-head" *ngIf="!this.surveyDetails">Company Name</h4>
@@ -57,8 +57,44 @@
       </div>
     </div>
     <div class="clearfix"></div>
-    <br><br>
-    <div class="scoring" *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
+    <br>
+    <div class="row"  *ngIf="!['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
+      <div class="col-4">
+        <div class="ovarall-scorring chart-box">
+          <h4 class="chart-box-head" *ngIf="this.surveyDetails">{{this.surveyDetails.companyName}}</h4>
+          <h4 class="chart-box-head" *ngIf="!this.surveyDetails">Company Name</h4>
+          <div *ngIf="overalScoreOptions">
+            <rg-gauge-chart
+            [canvasWidth]="canvasWidth"
+            [needleValue]="companyAvgScore"
+            [centralLabel]="centralLabel"
+            [options]="options"
+            [bottomLabel]="companyAvgScore"></rg-gauge-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="ovarall-scorring chart-box">
+          <h4 class="chart-box-head">LHI Score Accross all Dimentions</h4>
+          <apx-chart
+          [series]="radarChartOptions.series"
+          [chart]="radarChartOptions.chart"
+          [xaxis]="radarChartOptions.xaxis"
+          [stroke]="radarChartOptions.stroke"
+          [colors]="radarChartOptions.colors"
+          [dataLabels]="radarChartOptions.dataLabels"
+          [tooltip]="radarChartOptions.tooltip"
+          [plotOptions]="radarChartOptions.plotOptions"
+          [markers]="radarChartOptions.markers"
+          [yaxis]="radarChartOptions.yaxis"
+          [fill]="radarChartOptions.fill"
+          [title]="radarChartOptions.title"
+        ></apx-chart>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="scoring" *ngIf="['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
       <div class="score-dimentions chart-box" *ngIf="radarChartOptions">
         <h4 class="chart-box-head">LHI Score Accross all Dimentions</h4>
         <apx-chart
@@ -86,7 +122,7 @@
     <div class="dimention-score-table">
       <div
         class="score-dimentions"
-        *ngIf="dimensionScoreChartOptions_1 && ['India', 'Middle East', 'Africa'].includes(surveyDetails.country)"
+        *ngIf="dimensionScoreChartOptions_1"
       >
         <div class="row">
           <div class="col-3">
@@ -199,10 +235,10 @@
   </div>
 </section>
 
-<section class="stages-of-adoption-section">
+<section class="stages-of-adoption-section" *ngIf="companiesOptions && ['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
   <div class="container">
     <div class="dimention-score-table">
-      <div class="score-dimentions chart-box" *ngIf="companiesOptions && ['India', 'Middle East', 'Africa'].includes(surveyDetails.country)">
+      <div class="score-dimentions chart-box">
         <h4 class="chart-box-head">
           Companies at various Stages of L&D Technology Adoption
         </h4>

@@ -37,6 +37,20 @@
           </div>
 
           <div class="mb-3">
+            <label for="SubDimension" class="form-label">Sub - Dimension</label>
+            <select name="SubDimension" class="form-control" id="SubDimension">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <div *ngIf="submitted && f.dimensionId.errors"  class="text-danger">
+              <div *ngIf="f.dimensionId.errors.required">Sub Dimension is required</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
             <label for="Dimension" class="form-label">Section</label>
             <select name="Block Index	" class="form-control" id="Block Index" formControlName="blockIndex">
               <option value="1">Section 1</option>
