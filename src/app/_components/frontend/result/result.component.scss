@@ -99,6 +99,36 @@
     justify-content: center;
   }
 }
+
+.radar-charts
+{
+  background-color: #454560 !important;
+  .chart-box-head{
+    color: #ffffff !important;
+  }
+}
+
+.sharelink
+{
+  background-color: #ffffff;
+  margin: 60px 0 0;
+  box-shadow: 0px 10px 15px #00000029;
+  padding: 30px;
+  border-radius: 100px;
+  display: inline-block;
+  &>div{
+    display: flex;
+    align-items: center;
+  }
+  h4{
+    margin: 0;
+  }
+  svg{
+    width: 40px;
+    margin: 0 20px;
+  }
+}
+
 .scoring{
   display: flex;
   align-items: stretch;

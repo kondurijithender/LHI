@@ -227,30 +227,29 @@ export class ResultComponent implements OnInit {
     this.radarChartOptions = {
       series,
       chart: {
-        height: 700,
+        height: 650,
         type: 'radar',
       },
-      dataLabels: {
-        enabled: true,
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['#a071fb', '#efcdaa', '#54e9cc']
       },
       fill: {
         opacity: 0,
+        colors: ['#a071fb', '#efcdaa', '#54e9cc'],
       },
       plotOptions: {
         radar: {
           size: 270,
           polygons: {
-            strokeColor: '#a071fb',
-            fill: {
-              colors: ['#f8f8f8', '#fff'],
-            },
-          },
+            width: 1
+          }
         },
       },
-      colors: ['#a071fb', '#efcdaa', '#54e9cc'],
       markers: {
-        size: 5,
-        strokeWidth: 2,
+        size: 4,
+        strokeWidth: 1
       },
       tooltip: {
         y: {
@@ -259,15 +258,17 @@ export class ResultComponent implements OnInit {
           },
         },
       },
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['#a071fb', '#efcdaa', '#54e9cc'],
-        dashArray: 0,
-      },
       xaxis: {
         // type: 'category'
         categories,
+        labels: {
+          show: true,
+          style: {
+            colors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+            fontSize: "16px",
+            fontFamily: 'Arial'
+          }
+        }
       },
     };
   }
