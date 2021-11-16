@@ -309,16 +309,21 @@ export class ResultComponent implements OnInit {
       legend: {
         show: true,
         floating: true,
-        fontSize: "16px",
-        position: "left",
-        offsetX: 50,
-        offsetY: 10,
+        fontSize: '18px',
+        position: 'left',
+        offsetX: 10,
+        offsetY: 5,
         labels: {
-          useSeriesColors: true
+          useSeriesColors: true,
+        },
+        formatter: function (seriesName: any, opts: any) {
+          return (
+            seriesName + ': ' + opts.w.globals.series[opts.seriesIndex]
+          );
         },
         itemMargin: {
-          horizontal: 3
-        }
+          horizontal: 3,
+        },
       },
     };
     let o = options.series;
@@ -343,7 +348,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 1) {
         let o = options;
-        
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
@@ -361,7 +366,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 2) {
         let o = options;
-        
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
@@ -379,7 +384,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 3) {
         let o = options;
-                
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
@@ -397,7 +402,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 4) {
         let o = options;
-                
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
@@ -415,7 +420,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 5) {
         let o = options;
-                
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
@@ -433,7 +438,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 6) {
         let o = options;
-                
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
@@ -451,7 +456,7 @@ export class ResultComponent implements OnInit {
       }
       if (index === 7) {
         let o = options;
-                
+
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
           o.series = [
