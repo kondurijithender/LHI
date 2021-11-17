@@ -333,12 +333,20 @@ export class ResultComponent implements OnInit {
 
         if(['India', 'Middle East', 'Africa'].includes(this.surveyDetails?.country))
         {
+          options.labels = [
+            'India',
+            this.surveyDetails.companyName,
+            this.surveyDetails.businessSector[0].name,
+          ];
           o.series = [
             series[0].data[index],
             series[1].data[index],
             series[2].data[index],
           ];
         }else{
+          options.labels = [
+            this.surveyDetails.companyName
+          ],
           o.series = [
             series[0].data[index]
           ];
