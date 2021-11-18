@@ -74,6 +74,7 @@ export class ResultComponent implements OnInit {
   companyAvgScore: any = 0;
   overalScoreOptions: Object;
   leastFiveAnswered: any;
+  companyScores: any;
   businessSector: any = 0;
   constructor(
     private apiService: ApiService,
@@ -115,6 +116,7 @@ export class ResultComponent implements OnInit {
         this.leastFiveAnswered = _.orderBy(result.questionnaires, [
           'selectedvalue',
         ]);
+        this.companyScores = result.questionnaires.filter((res: any) => res.blockIndex === 5);
         let list: any = [];
         this.leastFiveAnswered.map((res: any, index: number) => {
           if (index < 5) {

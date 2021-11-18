@@ -278,11 +278,11 @@
           </div>
           <div class="company-score">
             <div class="score-blocks">
-              <div class="scorecard score1"></div>
-              <div class="scorecard score2"></div>
-              <div class="scorecard score3"></div>
-              <div class="scorecard score4"></div>
-              <div class="scorecard score5"></div>
+              <div class="scorecard" [ngClass]="{score1: this.companyScores[0].selectedvalue == 1, score2: this.companyScores[0].selectedvalue == 2, score3: this.companyScores[0].selectedvalue == 3, score4: this.companyScores[0].selectedvalue == 4, score5: this.companyScores[0].selectedvalue == 5 }"></div>
+              <div class="scorecard" [ngClass]="{score1: this.companyScores[1].selectedvalue == 1, score2: this.companyScores[1].selectedvalue == 2, score3: this.companyScores[1].selectedvalue == 3, score4: this.companyScores[1].selectedvalue == 4, score5: this.companyScores[1].selectedvalue == 5 }"></div>
+              <div class="scorecard" [ngClass]="{score1: this.companyScores[2].selectedvalue == 1, score2: this.companyScores[2].selectedvalue == 2, score3: this.companyScores[2].selectedvalue == 3, score4: this.companyScores[2].selectedvalue == 4, score5: this.companyScores[2].selectedvalue == 5 }"></div>
+              <div class="scorecard" [ngClass]="{score1: this.companyScores[3].selectedvalue == 1, score2: this.companyScores[3].selectedvalue == 2, score3: this.companyScores[3].selectedvalue == 3, score4: this.companyScores[3].selectedvalue == 4, score5: this.companyScores[3].selectedvalue == 5 }"></div>
+              <div class="scorecard" [ngClass]="{score1: this.companyScores[4].selectedvalue == 1, score2: this.companyScores[4].selectedvalue == 2, score3: this.companyScores[4].selectedvalue == 3, score4: this.companyScores[4].selectedvalue == 4, score5: this.companyScores[4].selectedvalue == 5 }"></div>
             </div>
           </div>
         </div>
