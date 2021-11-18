@@ -90,6 +90,39 @@ export class ResultComponent implements OnInit {
       }
     });
   }
+
+  CurrentStatus(state: any) : string {
+    let retunvalue = "None";
+    switch(state){
+      case "1": {
+        retunvalue = "Already Under Implementation"
+        break;
+      }
+      case "2": {
+        retunvalue = "Planned for Implementaion Within the Next Year"
+        break;
+      }
+      case "3": {
+        retunvalue = "Planned for Implementaion Within the Next Two Years"
+        break;
+      }
+      case "4": {
+        retunvalue = "Might Get Implemented, But Unsure of Timeline"
+        break;
+      }
+      case "5": {
+        retunvalue = "Haven't Thought About It"
+        break;
+      }
+      default : {
+        retunvalue = "None"
+        break;
+      }
+    }
+    console.log(retunvalue)
+    return retunvalue;
+  }
+
   async loadSurvey() {
     const d = await this.apiService.readAll('dimension').toPromise();
     this.dimensionsList = d.dimensions.sort((a: any, b: any) =>
@@ -248,6 +281,21 @@ export class ResultComponent implements OnInit {
             width: 1
           }
         },
+      },
+      dataLabels: {
+        enabled: true,
+        background: {
+          enabled: true,
+          borderRadius:2,
+        }
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+            fontSize: '14px',
+          },
+        }
       },
       markers: {
         size: 4,

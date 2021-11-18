@@ -254,7 +254,7 @@
   </div>
 </section>
 
-<section class="stages-of-adoption-section" *ngIf="companiesOptions && ['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
+<section class="stages-of-adoption-section">
   <div class="container">
     <div class="dimention-score-table">
       <div class="score-dimentions chart-box">
@@ -262,7 +262,7 @@
           Companies at various Stages of L&D Technology Adoption
         </h4>
         <br>
-        <div class="chart-and-company-scrore">
+        <div class="chart-and-company-scrore" *ngIf="companiesOptions && ['India', 'Middle East', 'Africa'].includes(surveyDetails?.country)">
           <div class="adoption-chart">
             <apx-chart
               [series]="companiesOptions.series"
@@ -277,12 +277,44 @@
             ></apx-chart>
           </div>
           <div class="company-score">
+            <p>Your Company</p>
+            
             <div class="score-blocks">
-              <div class="scorecard" [ngClass]="{score1: this.companyScores[0].selectedvalue == 1, score2: this.companyScores[0].selectedvalue == 2, score3: this.companyScores[0].selectedvalue == 3, score4: this.companyScores[0].selectedvalue == 4, score5: this.companyScores[0].selectedvalue == 5 }"></div>
-              <div class="scorecard" [ngClass]="{score1: this.companyScores[1].selectedvalue == 1, score2: this.companyScores[1].selectedvalue == 2, score3: this.companyScores[1].selectedvalue == 3, score4: this.companyScores[1].selectedvalue == 4, score5: this.companyScores[1].selectedvalue == 5 }"></div>
-              <div class="scorecard" [ngClass]="{score1: this.companyScores[2].selectedvalue == 1, score2: this.companyScores[2].selectedvalue == 2, score3: this.companyScores[2].selectedvalue == 3, score4: this.companyScores[2].selectedvalue == 4, score5: this.companyScores[2].selectedvalue == 5 }"></div>
-              <div class="scorecard" [ngClass]="{score1: this.companyScores[3].selectedvalue == 1, score2: this.companyScores[3].selectedvalue == 2, score3: this.companyScores[3].selectedvalue == 3, score4: this.companyScores[3].selectedvalue == 4, score5: this.companyScores[3].selectedvalue == 5 }"></div>
-              <div class="scorecard" [ngClass]="{score1: this.companyScores[4].selectedvalue == 1, score2: this.companyScores[4].selectedvalue == 2, score3: this.companyScores[4].selectedvalue == 3, score4: this.companyScores[4].selectedvalue == 4, score5: this.companyScores[4].selectedvalue == 5 }"></div>
+              <div class="scorecard" [ngClass]="'score' + this.companyScores[0].selectedvalue">
+                  {{CurrentStatus(this.companyScores[0].selectedvalue)}}
+              </div>
+              <div class="scorecard" [ngClass]="'score' + this.companyScores[1].selectedvalue">
+                  {{CurrentStatus(this.companyScores[1].selectedvalue)}}
+              </div>
+              <div class="scorecard" [ngClass]="'score' + this.companyScores[2].selectedvalue">
+                  {{CurrentStatus(this.companyScores[2].selectedvalue)}}
+              </div>
+              <div class="scorecard" [ngClass]="'score' + this.companyScores[3].selectedvalue">
+                  {{CurrentStatus(this.companyScores[3].selectedvalue)}}
+              </div>
+              <div class="scorecard" [ngClass]="'score' + this.companyScores[4].selectedvalue">
+                  {{CurrentStatus(this.companyScores[4].selectedvalue)}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="company-score-otherCountry" *ngIf="!(companiesOptions && ['India', 'Middle East', 'Africa'].includes(surveyDetails?.country))">
+          <div class="score-blocks">
+            <div class="scorecard" [ngClass]="'score' + this.companyScores[0].selectedvalue">
+                <p><strong> Learning in the Flow of Work </strong>  {{CurrentStatus(this.companyScores[0].selectedvalue)}}</p>
+            </div>
+            <div class="scorecard" [ngClass]="'score' + this.companyScores[1].selectedvalue">
+                <p><strong> Personalized Learning </strong> {{CurrentStatus(this.companyScores[1].selectedvalue)}}</p>
+            </div>
+            <div class="scorecard" [ngClass]="'score' + this.companyScores[2].selectedvalue">
+                <p><strong> Social Learning </strong> {{CurrentStatus(this.companyScores[2].selectedvalue)}}</p>
+            </div>
+            <div class="scorecard" [ngClass]="'score' + this.companyScores[3].selectedvalue">
+                <p><strong> Use of Gamification </strong> {{CurrentStatus(this.companyScores[3].selectedvalue)}}</p>
+            </div>
+            <div class="scorecard" [ngClass]="'score' + this.companyScores[4].selectedvalue">
+                <p><strong> User of AI </strong> {{CurrentStatus(this.companyScores[4].selectedvalue)}}</p>
             </div>
           </div>
         </div>

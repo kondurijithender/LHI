@@ -113,10 +113,17 @@
     display: flex;
     .adoption-chart{
       width: 100%;
+      .apexcharts-toolbar{
+        display: none !important;
+      }
     }
     .company-score{
       width: 150px;
       position: relative;
+      p{
+        font-weight: bold;
+        text-align: center;
+      }
       .score-blocks{
         height: 83.5%;
         position: absolute;
@@ -131,14 +138,60 @@
         flex-wrap: nowrap;
         .scorecard {
           width: 80%;
+          display: flex;
+          align-items: center;
+          line-height: 1.4;
           height: 13.2%;
-          background: #ffffff;
+          text-align: center;
+          color: #ffffff;
+          font-weight: 500;
+          font-size: 12px;
+          padding: 5px;
           &.score1{background-color: #b685db}
           &.score2{background-color: #cb94cc}
           &.score3{background-color: #e288ac}
           &.score4{background-color: #eba09e}
           &.score5{background-color: #f28578}
+          p{
+            display: none;
+          }
         }
+      }
+    }
+  }
+  .company-score-otherCountry{
+    width: 100%;
+    position: relative;
+    p{
+      font-weight: bold;
+      text-align: center;
+    }
+    .score-blocks{
+      width: 100%;
+      .scorecard {
+        align-items: center;
+        margin: 10px 0;
+        line-height: 1.4;
+        text-align: center;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 16px;
+        display: flex;
+        align-content: center;
+        padding: 5px;
+        p{
+          padding: 20px;
+          font-weight: 500;
+          margin: 0;
+          strong{
+            margin-right: 15px;
+          }
+        }
+        &.score1{background-color: #b685db}
+        &.score2{background-color: #cb94cc}
+        &.score3{background-color: #e288ac}
+        &.score4{background-color: #eba09e}
+        &.score5{background-color: #f28578}
       }
     }
   }
