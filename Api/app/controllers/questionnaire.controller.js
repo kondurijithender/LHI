@@ -2,6 +2,7 @@ const db = require("../models");
 const Questionnaire = db.questionnaire;
 const Survey = db.survey;
 const Company = db.company;
+const Permissions = db.permissions;
 const { validationResult } = require('express-validator');
 var bcrypt = require("bcryptjs");
 const Excel = require('exceljs')
@@ -16,8 +17,8 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
   auth: {
-      user: 'jithenderkonduri@gmail.com',
-      pass: 'dkkqytnhrqjgtumb'
+    user: 'jithenderkonduri@gmail.com',
+    pass: 'dkkqytnhrqjgtumb'
   }
 });
 
@@ -162,11 +163,58 @@ exports.survey = async (req, res, next) => {
   });
   s.save(async (err, user) => {
     if (err) res.status(500).send({ error: true, message: err });
-   // await sendMail(email);
+    // await sendMail(email);
     res.send({ message: s._id });
   });
 
 };
+exports.permissions = async (req, res, next) => {
+  try {
+    Permissions.find({})
+      .sort({screen: 1})
+      .exec((err, permissions) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send({ error: true, message: err });
+          return;
+        }
+
+        res.status(200).send({
+          permissions,
+        });
+      });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ error: true, message: err });
+  }
+}
+exports.updatePermission = async (req, res, next) => {
+  const { value, selected, screen } = req.body;
+
+  const permissions = await Permissions.find({ screen });
+  // validate
+  if (!permissions.length) res.status(400).send({ error: true, message: 'Permissions not found' });
+  else {
+    console.log(permissions);
+    const p = await Permissions.findById(permissions[0]._id);
+    // validate
+    if (!p) res.status(400).send({ error: true, message: 'Permissions not found' });
+    if (selected) {
+      p.location.push(value);
+      p.location = [...new Set(p.location)]
+    } else {
+      p.location = p.location.filter(function (item) {
+        return item !== value
+      })
+
+    }
+    p.save((err, permissions) => {
+      if (err) res.status(500).send({ error: true, message: err });
+      res.send({ message: "Permissions was updated successfully!" });
+    });
+  }
+}
+
 exports.downloadUsers = async (req, res, next) => {
   let data = await Survey.find({}).populate("businessSector");
   let finalResult = await companyAvgScore(data);

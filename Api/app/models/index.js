@@ -12,5 +12,6 @@ db.survey = require("./survey.model");
 db.industry = require("./industry.model");
 db.dimension = require("./dimension.model");
 db.company = require("./company.model");
+db.permissions = require("./permissions.model");
 
 module.exports = db;

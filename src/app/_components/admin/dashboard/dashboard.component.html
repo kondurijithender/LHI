@@ -10,93 +10,86 @@
                 <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col">Market LHI Speedometer </th>
-                    <th scope="col">Industry LHI Speedometer </th>
-                    <th scope="col">Company LHI Speedometer </th>
-                    <th scope="col">Overall Web/Radar Chart </th>
-                    <th scope="col">Dimension-wise Charts </th>
-                    <th scope="col">Tech Trends Bar Charts </th>
-                    <th scope="col">Critical Focus Areas </th>
-                    <th scope="col">About EdCast Card </th>
+                    <th scope="col" *ngFor="let item of permissions; let i">{{item.name}}</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="permissions">
                     <tr>
                         <th>USA</th>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card1"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card2"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card3"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card4"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card5"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card6"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card7"></td>
-                        <td><input type="checkbox" value="USA" class="custom-control-input" id="USA-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="USA" [checked]="permissions[0]['location'].includes('USA')" class="custom-control-input" id="USA-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="USA" [checked]="permissions[1]['location'].includes('USA')" class="custom-control-input" id="USA-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="USA" [checked]="permissions[2]['location'].includes('USA')" class="custom-control-input" id="USA-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="USA" [checked]="permissions[3]['location'].includes('USA')"  class="custom-control-input" id="USA-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="USA" [checked]="permissions[4]['location'].includes('USA')" class="custom-control-input" id="USA-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="USA" [checked]="permissions[5]['location'].includes('USA')" class="custom-control-input" id="USA-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="USA" [checked]="permissions[6]['location'].includes('USA')" class="custom-control-input" id="USA-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="USA" [checked]="permissions[7]['location'].includes('USA')" class="custom-control-input" id="USA-Card8"></td>
                     </tr>
                     <tr>
                         <th>Europe</th>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card1"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card2"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card3"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card4"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card5"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card6"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card7"></td>
-                        <td><input type="checkbox" value="Europe" class="custom-control-input" id="Europe-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="Europe" [checked]="permissions[0]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="Europe" [checked]="permissions[1]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="Europe"  [checked]="permissions[2]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="Europe"  [checked]="permissions[3]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="Europe"  [checked]="permissions[4]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="Europe"  [checked]="permissions[5]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="Europe"  [checked]="permissions[6]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="Europe"  [checked]="permissions[7]['location'].includes('Europe')" class="custom-control-input" id="Europe-Card8"></td>
                     </tr>
                     <tr>
                         <th>India</th>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card1"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card2"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card3"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card4"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card5"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card6"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card7"></td>
-                        <td><input type="checkbox" value="India" class="custom-control-input" id="India-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="India" [checked]="permissions[0]['location'].includes('India')" class="custom-control-input" id="India-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="India"  [checked]="permissions[1]['location'].includes('India')" class="custom-control-input" id="India-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="India"  [checked]="permissions[2]['location'].includes('India')" class="custom-control-input" id="India-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="India"  [checked]="permissions[3]['location'].includes('India')" class="custom-control-input" id="India-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="India"  [checked]="permissions[4]['location'].includes('India')" class="custom-control-input" id="India-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="India"  [checked]="permissions[5]['location'].includes('India')" class="custom-control-input" id="India-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="India"  [checked]="permissions[6]['location'].includes('India')" class="custom-control-input" id="India-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="India"  [checked]="permissions[7]['location'].includes('India')" class="custom-control-input" id="India-Card8"></td>
                     </tr>
                     <tr>
                         <th>South East Asia</th>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card1"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card2"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card3"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card4"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card5"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card6"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card7"></td>
-                        <td><input type="checkbox" value="South East Asia" class="custom-control-input" id="SouthEastAsia-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="South East Asia"  [checked]="permissions[0]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="South East Asia"  [checked]="permissions[1]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="South East Asia"  [checked]="permissions[2]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="South East Asia"  [checked]="permissions[3]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="South East Asia"  [checked]="permissions[4]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="South East Asia"  [checked]="permissions[5]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="South East Asia"  [checked]="permissions[6]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="South East Asia"  [checked]="permissions[7]['location'].includes('South East Asia')" class="custom-control-input" id="SouthEastAsia-Card8"></td>
                     </tr>
                     <tr>
                         <th>Australia & New Zealand</th>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card1"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card2"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card3"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card4"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card5"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card6"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card7"></td>
-                        <td><input type="checkbox" value="Australia & New Zealand" class="custom-control-input" id="Australia-NewZealand-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="Australia & New Zealand"  [checked]="permissions[0]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="Australia & New Zealand" [checked]="permissions[1]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="Australia & New Zealand" [checked]="permissions[2]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="Australia & New Zealand" [checked]="permissions[3]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="Australia & New Zealand" [checked]="permissions[4]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="Australia & New Zealand" [checked]="permissions[5]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="Australia & New Zealand" [checked]="permissions[6]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="Australia & New Zealand" [checked]="permissions[7]['location'].includes('Australia & New Zealand')" class="custom-control-input" id="Australia-NewZealand-Card8"></td>
                     </tr>
                     <tr>
                         <th>Middle East</th>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card1"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card2"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card3"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card4"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card5"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card6"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card7"></td>
-                        <td><input type="checkbox" value="Middle East" class="custom-control-input" id="MiddleEast-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="Middle East" [checked]="permissions[0]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="Middle East"  [checked]="permissions[1]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="Middle East"  [checked]="permissions[2]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="Middle East"  [checked]="permissions[3]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="Middle East"  [checked]="permissions[4]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="Middle East"  [checked]="permissions[5]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="Middle East"  [checked]="permissions[6]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="Middle East"  [checked]="permissions[7]['location'].includes('Middle East')" class="custom-control-input" id="MiddleEast-Card8"></td>
                     </tr>
                     <tr>
                         <th>Africa</th>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card1"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card2"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card3"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card4"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card5"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card6"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card7"></td>
-                        <td><input type="checkbox" value="Africa" class="custom-control-input" id="Africa-Card8"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 1)" value="Africa"  [checked]="permissions[0]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card1"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 2)" value="Africa"  [checked]="permissions[1]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card2"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 3)" value="Africa"  [checked]="permissions[2]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card3"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 4)" value="Africa"  [checked]="permissions[3]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card4"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 5)" value="Africa"  [checked]="permissions[4]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card5"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 6)" value="Africa"  [checked]="permissions[5]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card6"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 7)" value="Africa"  [checked]="permissions[6]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card7"></td>
+                        <td><input type="checkbox" (change)="selectCountry($event, 8)" value="Africa"  [checked]="permissions[7]['location'].includes('Africa')" class="custom-control-input" id="Africa-Card8"></td>
                     </tr>
                 </tbody>
               </table>

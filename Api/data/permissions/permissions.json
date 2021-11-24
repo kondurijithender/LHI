@@ -1,0 +1,42 @@
+[
+    {   
+        "name": "Market LHI Speedometer",
+        "screen": "1",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "Industry LHI Speedometer",
+        "screen": "2",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "Company LHI Speedometer",
+        "screen": "3",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "Overall Web/Radar Chart",
+        "screen": "4",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "Dimension-wise Charts",
+        "screen": "5",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "Tech Trends Bar Charts",
+        "screen": "6",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "Critical Focus Areas",
+        "screen": "7",
+        "location": ["USA", "Middle East", "Africa"]
+    },
+    {   
+        "name": "About EdCast Card",
+        "screen": "8",
+        "location": ["USA", "Middle East", "Africa"]
+    }
+]

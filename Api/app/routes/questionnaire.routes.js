@@ -72,5 +72,13 @@ module.exports = function (app) {
     "/api/download-users",
     controller.downloadUsers
   );
+  app.get(
+    "/api/permissions",
+    controller.permissions
+  );
+  app.post(
+    "/api/update-permission",
+    controller.updatePermission
+  );
 
 };

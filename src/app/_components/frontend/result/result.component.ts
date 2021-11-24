@@ -76,6 +76,7 @@ export class ResultComponent implements OnInit {
   leastFiveAnswered: any;
   companyScores: any;
   businessSector: any = 0;
+  permissions: any;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -119,11 +120,15 @@ export class ResultComponent implements OnInit {
         break;
       }
     }
-    console.log(retunvalue)
     return retunvalue;
   }
 
   async loadSurvey() {
+    const permissions = await this.apiService.readAll('permissions').toPromise();
+    if(permissions) {
+      this.permissions = permissions.permissions;
+    }
+    console.log('permissions', this.permissions);
     const d = await this.apiService.readAll('dimension').toPromise();
     this.dimensionsList = d.dimensions.sort((a: any, b: any) =>
       a.name.localeCompare(b.name)
@@ -145,7 +150,6 @@ export class ResultComponent implements OnInit {
       (data) => {
         let result = data.survey;
         this.surveyDetails = data.survey;
-        console.log("this.surveyDetails", this.surveyDetails);
         this.leastFiveAnswered = _.orderBy(result.questionnaires, [
           'selectedvalue',
         ]);
@@ -182,7 +186,6 @@ export class ResultComponent implements OnInit {
             d_score: item.d_score,
           };
         });
-        console.log(this.finalDimensionList);
         const dimensionValues = this.finalDimensionList.map(
           (res: any) => res.d_score
         );
@@ -252,6 +255,9 @@ export class ResultComponent implements OnInit {
         this.router.navigate(['/']);
       }
     );
+  }
+  showWidget(pos: number) {
+    return !this.permissions[pos].location.includes(this.surveyDetails?.country)
   }
   avgScore(item: any) {
     let v = _.omit(item, ['_id', 'companies', 'name']);
