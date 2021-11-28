@@ -15,12 +15,11 @@
     }
     div[size="A4"] {
         background: white;
-        width: 21cm;
-        height: 29.7cm;
+        height: 3500px;
+        width: 2480px;
         display: block;
         margin: 0 auto;
         margin-bottom: 0.5cm;
-        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
         position: relative;
         overflow: hidden;
         .PDFLogo{
@@ -46,15 +45,15 @@
         top: 0;
     }
     .header{
-        padding: 40px;
+        padding: 120px;
         display: block;
-        max-width: 500px;
+        max-width: 45%;
 
         .LHILogo{
-            width: 400px;
+            width: 850px;
         }
         .india-study{
-            font-size: 28px;
+            font-size: 90px;
             letter-spacing: 3px;
             color: #494260;
             padding: 10px 0;
@@ -66,18 +65,18 @@
 
         .individual-learning{
             font-weight: 600;
-            font-size: 20px;
+            font-size: 40px;
             strong{
                 display: block;
-                font-size: 38px;
+                font-size: 80px;
                 font-weight: 700;
                 letter-spacing: 1px;
                 padding-bottom: 10px;
                 border-bottom: solid 2px rgb(68,133,197);
                 text-shadow: -1px -1px 3px #00000040;
-                background: -webkit-linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+                // background: -webkit-linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);
+                // -webkit-background-clip: text;
+                // -webkit-text-fill-color: transparent;
             }
         }
     }
@@ -85,9 +84,9 @@
         background: rgb(68,133,197);
         background: linear-gradient(90deg, rgba(68,133,197,1) 0%, rgba(120,197,179,1) 100%);
         width: 100%;
-        font-size: 24px;
+        font-size: 70px;
         font-weight: 600;
-        line-height: 70px;
+        line-height: 120px;
         text-align: center;
         color: #ffffff;
         letter-spacing: 2px;
@@ -100,17 +99,19 @@
     }
     .footer-logos{
         position: absolute;
-        bottom: 70px;
-        padding: 30px 50px;
+        bottom: 150px;
+        width: 100%;
+        font-size: 40px;
+        padding: 30px 80px;
     }
     table{
         td{
-            padding: 10px 20px;
+            padding: 20px 40px;
             text-align: center;
         }
         img{
-            max-width: 150px;
-            max-height: 50px;
+            max-width: 350px;
+            max-height: 120px;
         }
     }
     .pulse{
